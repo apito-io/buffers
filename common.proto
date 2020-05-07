@@ -4,98 +4,104 @@ package protobuff;
 option go_package = "gitlab.com/xbackend/buffers/protobuff";
 
 message TokenClaims {
-    string UserId = 1;
-    string Role = 2;
-    string ProjectId = 3;
+    string user_id = 1;
+    string role = 2;
+    string project_id = 3;
 }
 
 message UserProject {
-    string ProjectId = 1;
-    repeated string Roles = 2;
+    string project_id = 1;
+    repeated string roles = 2;
 }
 
 message LoginRequest {
-    string Username = 1;
-    string Email = 2;
-    string Secret = 3;
+    string username = 1;
+    string email = 2;
+    string secret = 3;
 }
 
 message RegisteredUsers {
-    string Key = 1;
-    string Name = 2;
-    string Username = 3;
-    string Email = 4;
-    string Secret = 5;
-    uint32 TokenRefreshVal = 6;
-    repeated UserProject Accounts = 7;
-    string Avatar = 8;
+    string key = 1;
+    string name = 2;
+    string username = 3;
+    string email = 4;
+    string secret = 5;
+    uint32 token_refresh_val = 6;
+    repeated UserProject accounts = 7;
+    string avatar = 8;
 }
 
 // data
 
 message UserMeta {
-    string Id = 1;
-    string Avatar = 2;
-    string Name = 3;
-    string Role = 4;
+    string id = 1;
+    string avatar = 2;
+    string name = 3;
+    string role = 4;
 }
 
 message MetaField {
-    string CreatedAt = 1;
-    string UpdatedAt = 2;
-    UserMeta CreatedBy = 3;
-    UserMeta LastModifiedBy = 4;
+    string created_at = 1;
+    string updated_at = 2;
+    UserMeta created_by = 3;
+    UserMeta last_modified_by = 4;
 }
 
 // user project
 message Project {
-    string Key = 1; //exclude:"true"`
-    string Id = 2;
-    string UserId = 3;
-    string ProjectName = 4;
-    string ProjectDescription = 5;
-    UserDefinedGraphSchema Schema = 6;
+    string key = 1; //exclude:"true"`
+    string id = 2;
+    string user_id = 3;
+    string project_name = 4;
+    string project_description = 5;
+    UserDefinedGraphSchema schema = 6;
 }
 
 message UserDefinedGraphSchema {
-    repeated CustomType CustomTypes = 1;
-    repeated CustomResolver CustomResolvers = 2;
+    repeated CustomType custom_types = 1;
+    repeated CustomResolver custom_resolvers = 2;
 }
 
 message CustomType {
-    string Name = 1;
-    repeated FieldInfo Fields = 2;
-    repeated ConnectionType ConnectionTypes = 3;
+    string name = 1;
+    repeated FieldInfo fields = 2;
+    repeated ConnectionType connection_types = 3;
 }
 
 message CustomResolver {
-    string Id = 1;
-    string Name = 2;
-    CustomResolverRequestType Request = 3;
-    CustomResolverResponseType Response = 4;
+    string id = 1;
+    string name = 2;
+    CustomResolverRequestType request = 3;
+    CustomResolverResponseType response = 4;
 }
 
 message FieldInfo {
-    string Name = 1;
-    string Type = 2;
-    bool Required = 3;
-    repeated FieldInfo Fields = 4;
+    string name = 1;
+    string type = 2;
+    bool required = 3;
+    repeated SubFieldInfo fields = 4; // to avoid a loop
+}
+
+message SubFieldInfo {
+    string name = 1;
+    string type = 2;
+    bool required = 3;
 }
 
 message ConnectionType {
-    string Type = 1;
-    string Document = 2;
-    string Relation = 3;
+    string type = 1;
+    string document = 2;
+    string relation = 3;
 }
 
 message CustomResolverRequestType {
-    string Type = 1;
-    string Document = 2;
-    repeated FieldInfo Params = 3;
+    string type = 1;
+    string document = 2;
+    repeated FieldInfo params = 3;
 }
 
 message CustomResolverResponseType {
-    string Type = 1;
-    string Document = 2;
-    string Relation = 3;
+    string type = 1;
+    string document = 2;
+    string relation = 3;
 }
