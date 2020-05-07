@@ -26,7 +26,7 @@ message RegisteredUsers {
     string username = 3;
     string email = 4;
     string secret = 5;
-    uint32 token_refresh_val = 6;
+    uint64 token_refresh_val = 6;
     repeated UserProject accounts = 7;
     string avatar = 8;
 }
