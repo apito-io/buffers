@@ -65,7 +65,7 @@ message UserDefinedGraphSchema {
 message CustomType {
     string name = 1;
     repeated FieldInfo fields = 2;
-    repeated ConnectionType connection_types = 3;
+    repeated ConnectionType connections = 3;
 }
 
 message CustomResolver {
