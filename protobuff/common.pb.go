@@ -516,8 +516,8 @@ func (m *Project) GetSchema() *UserDefinedGraphSchema {
 }
 
 type UserDefinedGraphSchema struct {
-	CustomTypes     []*CustomType     `protobuf:"bytes,1,rep,name=custom_types,json=customTypes,proto3" json:"custom_types,omitempty"`
-	CustomResolvers []*CustomResolver `protobuf:"bytes,2,rep,name=custom_resolvers,json=customResolvers,proto3" json:"custom_resolvers,omitempty"`
+	Models    []*ModelType     `protobuf:"bytes,1,rep,name=models,proto3" json:"models,omitempty"`
+	Functions []*CloudFunction `protobuf:"bytes,2,rep,name=functions,proto3" json:"functions,omitempty"`
 }
 
 func (m *UserDefinedGraphSchema) Reset()         { *m = UserDefinedGraphSchema{} }
@@ -553,38 +553,38 @@ func (m *UserDefinedGraphSchema) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_UserDefinedGraphSchema proto.InternalMessageInfo
 
-func (m *UserDefinedGraphSchema) GetCustomTypes() []*CustomType {
+func (m *UserDefinedGraphSchema) GetModels() []*ModelType {
 	if m != nil {
-		return m.CustomTypes
+		return m.Models
 	}
 	return nil
 }
 
-func (m *UserDefinedGraphSchema) GetCustomResolvers() []*CustomResolver {
+func (m *UserDefinedGraphSchema) GetFunctions() []*CloudFunction {
 	if m != nil {
-		return m.CustomResolvers
+		return m.Functions
 	}
 	return nil
 }
 
-type CustomType struct {
+type ModelType struct {
 	Name        string            `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	Fields      []*FieldInfo      `protobuf:"bytes,2,rep,name=fields,proto3" json:"fields,omitempty"`
 	Connections []*ConnectionType `protobuf:"bytes,3,rep,name=connections,proto3" json:"connections,omitempty"`
 }
 
-func (m *CustomType) Reset()         { *m = CustomType{} }
-func (m *CustomType) String() string { return proto.CompactTextString(m) }
-func (*CustomType) ProtoMessage()    {}
-func (*CustomType) Descriptor() ([]byte, []int) {
+func (m *ModelType) Reset()         { *m = ModelType{} }
+func (m *ModelType) String() string { return proto.CompactTextString(m) }
+func (*ModelType) ProtoMessage()    {}
+func (*ModelType) Descriptor() ([]byte, []int) {
 	return fileDescriptor_555bd8c177793206, []int{8}
 }
-func (m *CustomType) XXX_Unmarshal(b []byte) error {
+func (m *ModelType) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *CustomType) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *ModelType) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_CustomType.Marshal(b, m, deterministic)
+		return xxx_messageInfo_ModelType.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -594,58 +594,58 @@ func (m *CustomType) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 		return b[:n], nil
 	}
 }
-func (m *CustomType) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CustomType.Merge(m, src)
+func (m *ModelType) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ModelType.Merge(m, src)
 }
-func (m *CustomType) XXX_Size() int {
+func (m *ModelType) XXX_Size() int {
 	return m.Size()
 }
-func (m *CustomType) XXX_DiscardUnknown() {
-	xxx_messageInfo_CustomType.DiscardUnknown(m)
+func (m *ModelType) XXX_DiscardUnknown() {
+	xxx_messageInfo_ModelType.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_CustomType proto.InternalMessageInfo
+var xxx_messageInfo_ModelType proto.InternalMessageInfo
 
-func (m *CustomType) GetName() string {
+func (m *ModelType) GetName() string {
 	if m != nil {
 		return m.Name
 	}
 	return ""
 }
 
-func (m *CustomType) GetFields() []*FieldInfo {
+func (m *ModelType) GetFields() []*FieldInfo {
 	if m != nil {
 		return m.Fields
 	}
 	return nil
 }
 
-func (m *CustomType) GetConnections() []*ConnectionType {
+func (m *ModelType) GetConnections() []*ConnectionType {
 	if m != nil {
 		return m.Connections
 	}
 	return nil
 }
 
-type CustomResolver struct {
-	Id       string                      `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Name     string                      `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Request  *CustomResolverRequestType  `protobuf:"bytes,3,opt,name=request,proto3" json:"request,omitempty"`
-	Response *CustomResolverResponseType `protobuf:"bytes,4,opt,name=response,proto3" json:"response,omitempty"`
+type CloudFunction struct {
+	Id       string                     `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name     string                     `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Request  *CloudFunctionRequestType  `protobuf:"bytes,3,opt,name=request,proto3" json:"request,omitempty"`
+	Response *CloudFunctionResponseType `protobuf:"bytes,4,opt,name=response,proto3" json:"response,omitempty"`
 }
 
-func (m *CustomResolver) Reset()         { *m = CustomResolver{} }
-func (m *CustomResolver) String() string { return proto.CompactTextString(m) }
-func (*CustomResolver) ProtoMessage()    {}
-func (*CustomResolver) Descriptor() ([]byte, []int) {
+func (m *CloudFunction) Reset()         { *m = CloudFunction{} }
+func (m *CloudFunction) String() string { return proto.CompactTextString(m) }
+func (*CloudFunction) ProtoMessage()    {}
+func (*CloudFunction) Descriptor() ([]byte, []int) {
 	return fileDescriptor_555bd8c177793206, []int{9}
 }
-func (m *CustomResolver) XXX_Unmarshal(b []byte) error {
+func (m *CloudFunction) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *CustomResolver) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *CloudFunction) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_CustomResolver.Marshal(b, m, deterministic)
+		return xxx_messageInfo_CloudFunction.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -655,40 +655,40 @@ func (m *CustomResolver) XXX_Marshal(b []byte, deterministic bool) ([]byte, erro
 		return b[:n], nil
 	}
 }
-func (m *CustomResolver) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CustomResolver.Merge(m, src)
+func (m *CloudFunction) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CloudFunction.Merge(m, src)
 }
-func (m *CustomResolver) XXX_Size() int {
+func (m *CloudFunction) XXX_Size() int {
 	return m.Size()
 }
-func (m *CustomResolver) XXX_DiscardUnknown() {
-	xxx_messageInfo_CustomResolver.DiscardUnknown(m)
+func (m *CloudFunction) XXX_DiscardUnknown() {
+	xxx_messageInfo_CloudFunction.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_CustomResolver proto.InternalMessageInfo
+var xxx_messageInfo_CloudFunction proto.InternalMessageInfo
 
-func (m *CustomResolver) GetId() string {
+func (m *CloudFunction) GetId() string {
 	if m != nil {
 		return m.Id
 	}
 	return ""
 }
 
-func (m *CustomResolver) GetName() string {
+func (m *CloudFunction) GetName() string {
 	if m != nil {
 		return m.Name
 	}
 	return ""
 }
 
-func (m *CustomResolver) GetRequest() *CustomResolverRequestType {
+func (m *CloudFunction) GetRequest() *CloudFunctionRequestType {
 	if m != nil {
 		return m.Request
 	}
 	return nil
 }
 
-func (m *CustomResolver) GetResponse() *CustomResolverResponseType {
+func (m *CloudFunction) GetResponse() *CloudFunctionResponseType {
 	if m != nil {
 		return m.Response
 	}
@@ -883,24 +883,24 @@ func (m *ConnectionType) GetRelation() string {
 	return ""
 }
 
-type CustomResolverRequestType struct {
+type CloudFunctionRequestType struct {
 	Type     string       `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
 	Document string       `protobuf:"bytes,2,opt,name=document,proto3" json:"document,omitempty"`
 	Params   []*FieldInfo `protobuf:"bytes,3,rep,name=params,proto3" json:"params,omitempty"`
 }
 
-func (m *CustomResolverRequestType) Reset()         { *m = CustomResolverRequestType{} }
-func (m *CustomResolverRequestType) String() string { return proto.CompactTextString(m) }
-func (*CustomResolverRequestType) ProtoMessage()    {}
-func (*CustomResolverRequestType) Descriptor() ([]byte, []int) {
+func (m *CloudFunctionRequestType) Reset()         { *m = CloudFunctionRequestType{} }
+func (m *CloudFunctionRequestType) String() string { return proto.CompactTextString(m) }
+func (*CloudFunctionRequestType) ProtoMessage()    {}
+func (*CloudFunctionRequestType) Descriptor() ([]byte, []int) {
 	return fileDescriptor_555bd8c177793206, []int{13}
 }
-func (m *CustomResolverRequestType) XXX_Unmarshal(b []byte) error {
+func (m *CloudFunctionRequestType) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *CustomResolverRequestType) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *CloudFunctionRequestType) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_CustomResolverRequestType.Marshal(b, m, deterministic)
+		return xxx_messageInfo_CloudFunctionRequestType.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -910,57 +910,57 @@ func (m *CustomResolverRequestType) XXX_Marshal(b []byte, deterministic bool) ([
 		return b[:n], nil
 	}
 }
-func (m *CustomResolverRequestType) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CustomResolverRequestType.Merge(m, src)
+func (m *CloudFunctionRequestType) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CloudFunctionRequestType.Merge(m, src)
 }
-func (m *CustomResolverRequestType) XXX_Size() int {
+func (m *CloudFunctionRequestType) XXX_Size() int {
 	return m.Size()
 }
-func (m *CustomResolverRequestType) XXX_DiscardUnknown() {
-	xxx_messageInfo_CustomResolverRequestType.DiscardUnknown(m)
+func (m *CloudFunctionRequestType) XXX_DiscardUnknown() {
+	xxx_messageInfo_CloudFunctionRequestType.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_CustomResolverRequestType proto.InternalMessageInfo
+var xxx_messageInfo_CloudFunctionRequestType proto.InternalMessageInfo
 
-func (m *CustomResolverRequestType) GetType() string {
+func (m *CloudFunctionRequestType) GetType() string {
 	if m != nil {
 		return m.Type
 	}
 	return ""
 }
 
-func (m *CustomResolverRequestType) GetDocument() string {
+func (m *CloudFunctionRequestType) GetDocument() string {
 	if m != nil {
 		return m.Document
 	}
 	return ""
 }
 
-func (m *CustomResolverRequestType) GetParams() []*FieldInfo {
+func (m *CloudFunctionRequestType) GetParams() []*FieldInfo {
 	if m != nil {
 		return m.Params
 	}
 	return nil
 }
 
-type CustomResolverResponseType struct {
+type CloudFunctionResponseType struct {
 	Type     string `protobuf:"bytes,1,opt,name=type,proto3" json:"type,omitempty"`
 	Document string `protobuf:"bytes,2,opt,name=document,proto3" json:"document,omitempty"`
 	Relation string `protobuf:"bytes,3,opt,name=relation,proto3" json:"relation,omitempty"`
 }
 
-func (m *CustomResolverResponseType) Reset()         { *m = CustomResolverResponseType{} }
-func (m *CustomResolverResponseType) String() string { return proto.CompactTextString(m) }
-func (*CustomResolverResponseType) ProtoMessage()    {}
-func (*CustomResolverResponseType) Descriptor() ([]byte, []int) {
+func (m *CloudFunctionResponseType) Reset()         { *m = CloudFunctionResponseType{} }
+func (m *CloudFunctionResponseType) String() string { return proto.CompactTextString(m) }
+func (*CloudFunctionResponseType) ProtoMessage()    {}
+func (*CloudFunctionResponseType) Descriptor() ([]byte, []int) {
 	return fileDescriptor_555bd8c177793206, []int{14}
 }
-func (m *CustomResolverResponseType) XXX_Unmarshal(b []byte) error {
+func (m *CloudFunctionResponseType) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *CustomResolverResponseType) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *CloudFunctionResponseType) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_CustomResolverResponseType.Marshal(b, m, deterministic)
+		return xxx_messageInfo_CloudFunctionResponseType.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -970,33 +970,33 @@ func (m *CustomResolverResponseType) XXX_Marshal(b []byte, deterministic bool) (
 		return b[:n], nil
 	}
 }
-func (m *CustomResolverResponseType) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CustomResolverResponseType.Merge(m, src)
+func (m *CloudFunctionResponseType) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CloudFunctionResponseType.Merge(m, src)
 }
-func (m *CustomResolverResponseType) XXX_Size() int {
+func (m *CloudFunctionResponseType) XXX_Size() int {
 	return m.Size()
 }
-func (m *CustomResolverResponseType) XXX_DiscardUnknown() {
-	xxx_messageInfo_CustomResolverResponseType.DiscardUnknown(m)
+func (m *CloudFunctionResponseType) XXX_DiscardUnknown() {
+	xxx_messageInfo_CloudFunctionResponseType.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_CustomResolverResponseType proto.InternalMessageInfo
+var xxx_messageInfo_CloudFunctionResponseType proto.InternalMessageInfo
 
-func (m *CustomResolverResponseType) GetType() string {
+func (m *CloudFunctionResponseType) GetType() string {
 	if m != nil {
 		return m.Type
 	}
 	return ""
 }
 
-func (m *CustomResolverResponseType) GetDocument() string {
+func (m *CloudFunctionResponseType) GetDocument() string {
 	if m != nil {
 		return m.Document
 	}
 	return ""
 }
 
-func (m *CustomResolverResponseType) GetRelation() string {
+func (m *CloudFunctionResponseType) GetRelation() string {
 	if m != nil {
 		return m.Relation
 	}
@@ -1012,73 +1012,73 @@ func init() {
 	proto.RegisterType((*MetaField)(nil), "protobuff.MetaField")
 	proto.RegisterType((*Project)(nil), "protobuff.Project")
 	proto.RegisterType((*UserDefinedGraphSchema)(nil), "protobuff.UserDefinedGraphSchema")
-	proto.RegisterType((*CustomType)(nil), "protobuff.CustomType")
-	proto.RegisterType((*CustomResolver)(nil), "protobuff.CustomResolver")
+	proto.RegisterType((*ModelType)(nil), "protobuff.ModelType")
+	proto.RegisterType((*CloudFunction)(nil), "protobuff.CloudFunction")
 	proto.RegisterType((*FieldInfo)(nil), "protobuff.FieldInfo")
 	proto.RegisterType((*SubFieldInfo)(nil), "protobuff.SubFieldInfo")
 	proto.RegisterType((*ConnectionType)(nil), "protobuff.ConnectionType")
-	proto.RegisterType((*CustomResolverRequestType)(nil), "protobuff.CustomResolverRequestType")
-	proto.RegisterType((*CustomResolverResponseType)(nil), "protobuff.CustomResolverResponseType")
+	proto.RegisterType((*CloudFunctionRequestType)(nil), "protobuff.CloudFunctionRequestType")
+	proto.RegisterType((*CloudFunctionResponseType)(nil), "protobuff.CloudFunctionResponseType")
 }
 
 func init() { proto.RegisterFile("common.proto", fileDescriptor_555bd8c177793206) }
 
 var fileDescriptor_555bd8c177793206 = []byte{
-	// 859 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x54, 0xcf, 0x6f, 0x1b, 0x45,
-	0x14, 0xce, 0xd8, 0xae, 0x63, 0xbf, 0xb5, 0x92, 0x30, 0x2d, 0xa9, 0x5b, 0x09, 0x2b, 0x5d, 0x51,
-	0x29, 0x42, 0x55, 0x2c, 0x99, 0x0b, 0x08, 0x01, 0x4a, 0x1a, 0x81, 0x22, 0x51, 0x84, 0xb6, 0x05,
-	0x41, 0x85, 0x64, 0x8d, 0x77, 0x9f, 0x93, 0x25, 0xbb, 0x3b, 0xcb, 0xcc, 0x38, 0xc2, 0x37, 0xee,
-	0x5c, 0x38, 0xf2, 0x9f, 0x70, 0xe1, 0x0f, 0xe0, 0x58, 0x89, 0x0b, 0x47, 0x94, 0xfc, 0x15, 0xdc,
-	0xd0, 0xfc, 0xd8, 0xf1, 0x3a, 0xb6, 0x91, 0x2a, 0xf5, 0xb4, 0xfb, 0x66, 0xbe, 0xf7, 0xde, 0x37,
-	0xdf, 0xfb, 0x66, 0xa0, 0x17, 0xf3, 0x3c, 0xe7, 0xc5, 0x51, 0x29, 0xb8, 0xe2, 0xb4, 0x6b, 0x3e,
-	0x93, 0xd9, 0x74, 0x1a, 0x7e, 0x07, 0xc1, 0x0b, 0x7e, 0x89, 0xc5, 0xd3, 0x8c, 0xa5, 0xb9, 0xa4,
-	0xf7, 0x61, 0x7b, 0x26, 0x51, 0x8c, 0xd3, 0xa4, 0x4f, 0x0e, 0xc8, 0x61, 0x37, 0x6a, 0xeb, 0xf0,
-	0x2c, 0xa1, 0x14, 0x5a, 0x82, 0x67, 0xd8, 0x6f, 0x98, 0x55, 0xf3, 0x4f, 0xdf, 0x01, 0x28, 0x05,
-	0xff, 0x01, 0x63, 0xa5, 0xf1, 0x4d, 0xb3, 0xd3, 0x75, 0x2b, 0x67, 0x49, 0x78, 0x02, 0xc1, 0xd7,
-	0x12, 0xc5, 0x57, 0x76, 0xe1, 0x16, 0x9a, 0xdc, 0x42, 0xd3, 0x7b, 0x70, 0x47, 0x17, 0x95, 0xfd,
-	0xc6, 0x41, 0xf3, 0xb0, 0x1b, 0xd9, 0x20, 0xfc, 0x16, 0x7a, 0x5f, 0xf0, 0xf3, 0xb4, 0x88, 0xf0,
-	0xc7, 0x19, 0x4a, 0x45, 0x1f, 0x42, 0x47, 0x13, 0x2a, 0x58, 0x8e, 0xae, 0x84, 0x8f, 0x75, 0x05,
-	0xcc, 0x59, 0x9a, 0x39, 0x8e, 0x36, 0xa0, 0xfb, 0xd0, 0x96, 0x18, 0x0b, 0x54, 0x8e, 0xa0, 0x8b,
-	0xc2, 0x7f, 0x09, 0xec, 0x46, 0x78, 0x9e, 0x4a, 0x85, 0x02, 0x13, 0x4d, 0x54, 0xd2, 0x3d, 0x68,
-	0x5e, 0xe2, 0xdc, 0x15, 0xd6, 0xbf, 0xfa, 0xd8, 0xa6, 0x97, 0x3b, 0xb6, 0xe9, 0x53, 0xe7, 0xd0,
-	0xdc, 0xc4, 0xa1, 0xb5, 0x9e, 0xc3, 0x9d, 0x3a, 0x07, 0xfa, 0x1e, 0xbc, 0xa5, 0xb4, 0xf8, 0x63,
-	0x81, 0x53, 0x81, 0xf2, 0x62, 0x7c, 0xc5, 0xb2, 0x7e, 0xfb, 0x80, 0x1c, 0xb6, 0xa2, 0x5d, 0xb3,
-	0x11, 0xd9, 0xf5, 0x6f, 0x58, 0x46, 0x47, 0xd0, 0x61, 0x71, 0xcc, 0x67, 0x85, 0x92, 0xfd, 0xed,
-	0x83, 0xe6, 0x61, 0x30, 0xda, 0x3f, 0xf2, 0x63, 0x3c, 0xaa, 0x09, 0x1d, 0x79, 0x9c, 0xee, 0xcb,
-	0xae, 0x98, 0x62, 0xa2, 0xdf, 0xb1, 0x7d, 0x6d, 0x14, 0xbe, 0x84, 0x8e, 0x4e, 0x78, 0x86, 0x8a,
-	0xd1, 0x1d, 0x68, 0xf8, 0x71, 0x34, 0xd2, 0xa4, 0x96, 0xd3, 0xa8, 0xe7, 0x78, 0x25, 0x9a, 0x35,
-	0x25, 0x2a, 0x53, 0xb4, 0x16, 0xa6, 0x08, 0xff, 0x20, 0xd0, 0xd5, 0x85, 0x3f, 0x4b, 0x31, 0x4b,
-	0xf4, 0xd0, 0x63, 0x81, 0x4c, 0x61, 0x32, 0x66, 0xaa, 0x1a, 0xba, 0x5b, 0x39, 0x36, 0x9e, 0x98,
-	0x95, 0x49, 0xb5, 0x6d, 0x1b, 0x76, 0xdd, 0xca, 0xb1, 0xa2, 0xa3, 0x45, 0xf6, 0x64, 0x6e, 0x3a,
-	0x07, 0xa3, 0xbb, 0xb7, 0x4e, 0xad, 0x7b, 0xf9, 0x92, 0x27, 0x73, 0xfa, 0x31, 0xec, 0x65, 0x4c,
-	0xaa, 0x71, 0xce, 0x93, 0x74, 0x9a, 0xda, 0xcc, 0xd6, 0xe6, 0xcc, 0x1d, 0x0d, 0x7e, 0xe6, 0xb0,
-	0x27, 0xf3, 0xf0, 0x2f, 0x02, 0xdb, 0x95, 0x63, 0x57, 0xed, 0x60, 0xc5, 0x6a, 0x78, 0xb1, 0x6a,
-	0xd7, 0xa5, 0xb9, 0x74, 0x5d, 0x1e, 0x41, 0xaf, 0x32, 0xbb, 0x51, 0xcd, 0x2a, 0x14, 0xb8, 0xb5,
-	0x2f, 0xb5, 0x78, 0x43, 0xb8, 0x5b, 0x41, 0x12, 0x94, 0xb1, 0x48, 0x4b, 0x95, 0xf2, 0xc2, 0x39,
-	0x84, 0xba, 0xad, 0xd3, 0xc5, 0x0e, 0xfd, 0x10, 0xda, 0x32, 0xbe, 0xc0, 0x9c, 0x19, 0x8b, 0x04,
-	0xa3, 0x47, 0xb7, 0xce, 0x73, 0x8a, 0xd3, 0xb4, 0xc0, 0xe4, 0x73, 0xc1, 0xca, 0x8b, 0xe7, 0x06,
-	0x18, 0xb9, 0x84, 0xf0, 0x37, 0x02, 0xfb, 0xeb, 0x21, 0xf4, 0x03, 0xe8, 0xc5, 0x33, 0xa9, 0x78,
-	0x3e, 0x56, 0xf3, 0x12, 0x65, 0x9f, 0x18, 0x6f, 0xbd, 0x5d, 0xab, 0xfd, 0xd4, 0x6c, 0xbf, 0x98,
-	0x97, 0x18, 0x05, 0xb1, 0xff, 0x97, 0xf4, 0x14, 0xf6, 0x5c, 0xa6, 0x40, 0xc9, 0xb3, 0x2b, 0x14,
-	0xf6, 0xf2, 0x06, 0xa3, 0x07, 0x2b, 0xd9, 0x91, 0x43, 0x44, 0xbb, 0xf1, 0x52, 0x2c, 0xc3, 0x5f,
-	0x08, 0xc0, 0xa2, 0x83, 0xb7, 0x19, 0xa9, 0xd9, 0xec, 0x09, 0xb4, 0xa7, 0xda, 0x4d, 0x55, 0xf9,
-	0x7b, 0xb5, 0xf2, 0xc6, 0x66, 0x67, 0xc5, 0x94, 0x47, 0x0e, 0x43, 0x3f, 0x82, 0x20, 0xe6, 0x45,
-	0x81, 0xb1, 0x16, 0x4d, 0xf6, 0x9b, 0xab, 0x8c, 0xfc, 0xae, 0x3b, 0xd3, 0x02, 0x1d, 0xfe, 0x4e,
-	0x60, 0x67, 0x99, 0xf1, 0xca, 0x05, 0x59, 0xf7, 0x24, 0x7c, 0x02, 0xdb, 0xc2, 0xbe, 0x50, 0xce,
-	0xa5, 0xef, 0x6e, 0x56, 0xc0, 0xe2, 0x4c, 0xeb, 0x2a, 0x89, 0x1e, 0x43, 0x47, 0xa0, 0x2c, 0x79,
-	0x21, 0xd1, 0x99, 0xf5, 0xf1, 0xff, 0x14, 0xb0, 0x40, 0x53, 0xc1, 0xa7, 0x85, 0x3f, 0x13, 0xe8,
-	0x7a, 0x31, 0xd6, 0xca, 0x48, 0xa1, 0xa5, 0x47, 0x5c, 0x11, 0xd7, 0xff, 0xfa, 0x2d, 0xd3, 0x1c,
-	0x52, 0x81, 0xd6, 0xc1, 0x9d, 0xc8, 0xc7, 0x74, 0xe8, 0x65, 0x6f, 0x19, 0x0d, 0xef, 0xd7, 0x28,
-	0x3d, 0x9f, 0x4d, 0x56, 0x94, 0x0f, 0x23, 0xe8, 0xd5, 0xd7, 0xdf, 0x04, 0x89, 0xf0, 0x7b, 0xd8,
-	0x59, 0x9e, 0x97, 0xaf, 0x40, 0x96, 0x2b, 0x24, 0x3c, 0x9e, 0xe5, 0x58, 0x54, 0xaf, 0x88, 0x8f,
-	0x6d, 0xf5, 0x8c, 0x99, 0xcb, 0xe5, 0x9e, 0xeb, 0x2a, 0x0e, 0xe7, 0xf0, 0x60, 0xe3, 0x74, 0x5e,
-	0xbb, 0xd1, 0x13, 0x68, 0x97, 0x4c, 0xb0, 0xbc, 0xf2, 0xdc, 0x06, 0x9b, 0x5a, 0x4c, 0x78, 0x01,
-	0x0f, 0x37, 0xcf, 0xf5, 0x4d, 0x1e, 0xf2, 0xe4, 0xd3, 0x3f, 0xaf, 0x07, 0xe4, 0xd5, 0xf5, 0x80,
-	0xfc, 0x73, 0x3d, 0x20, 0xbf, 0xde, 0x0c, 0xb6, 0x5e, 0xdd, 0x0c, 0xb6, 0xfe, 0xbe, 0x19, 0x6c,
-	0xbd, 0x7c, 0x7c, 0x9e, 0xaa, 0x8c, 0x4d, 0x8e, 0x62, 0x9e, 0x0f, 0x7f, 0x9a, 0xb0, 0xf8, 0x12,
-	0x8b, 0x64, 0xa8, 0xf9, 0xa2, 0x90, 0x43, 0x4f, 0x7e, 0xd2, 0x36, 0xbf, 0xef, 0xff, 0x17, 0x00,
-	0x00, 0xff, 0xff, 0xdd, 0x61, 0x23, 0x78, 0x45, 0x08, 0x00, 0x00,
+	// 849 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x54, 0xcf, 0x6f, 0xdc, 0x44,
+	0x14, 0x8e, 0x77, 0xb7, 0xce, 0xfa, 0x39, 0xa4, 0x65, 0x5a, 0xa5, 0x2e, 0x12, 0xab, 0xd4, 0x80,
+	0x14, 0xa1, 0x28, 0x2b, 0x2d, 0x12, 0x12, 0x42, 0x15, 0x34, 0xad, 0x8a, 0x22, 0x11, 0x84, 0xdc,
+	0x82, 0xa0, 0x42, 0x5a, 0xcd, 0xda, 0xcf, 0x89, 0x89, 0xed, 0x31, 0x33, 0xe3, 0xaa, 0x7b, 0x41,
+	0x9c, 0x39, 0xf1, 0xc7, 0x70, 0xe4, 0x0f, 0xe0, 0x58, 0x89, 0x0b, 0x47, 0x94, 0xfc, 0x15, 0xdc,
+	0xd0, 0xfc, 0xf0, 0xc4, 0xf9, 0xb1, 0x07, 0xa4, 0x9c, 0xec, 0xf7, 0xe6, 0x7b, 0xef, 0x7d, 0xf3,
+	0xcd, 0x37, 0x03, 0x1b, 0x29, 0xab, 0x2a, 0x56, 0xef, 0x35, 0x9c, 0x49, 0x46, 0x02, 0xfd, 0x59,
+	0xb4, 0x79, 0x1e, 0x7f, 0x0f, 0xe1, 0x0b, 0x76, 0x82, 0xf5, 0x93, 0x92, 0x16, 0x95, 0x20, 0xf7,
+	0x61, 0xbd, 0x15, 0xc8, 0xe7, 0x45, 0x16, 0x79, 0xdb, 0xde, 0x4e, 0x90, 0xf8, 0x2a, 0x3c, 0xc8,
+	0x08, 0x81, 0x11, 0x67, 0x25, 0x46, 0x03, 0x9d, 0xd5, 0xff, 0xe4, 0x5d, 0x80, 0x86, 0xb3, 0x1f,
+	0x31, 0x95, 0x0a, 0x3f, 0xd4, 0x2b, 0x81, 0xcd, 0x1c, 0x64, 0xf1, 0x3e, 0x84, 0xdf, 0x08, 0xe4,
+	0x5f, 0x9b, 0xc4, 0x25, 0xb4, 0x77, 0x09, 0x4d, 0xee, 0xc1, 0x2d, 0xd5, 0x54, 0x44, 0x83, 0xed,
+	0xe1, 0x4e, 0x90, 0x98, 0x20, 0xfe, 0x0e, 0x36, 0xbe, 0x64, 0x47, 0x45, 0x9d, 0xe0, 0x4f, 0x2d,
+	0x0a, 0x49, 0xde, 0x81, 0xb1, 0x22, 0x54, 0xd3, 0x0a, 0x6d, 0x0b, 0x17, 0xab, 0x0e, 0x58, 0xd1,
+	0xa2, 0xb4, 0x1c, 0x4d, 0x40, 0xb6, 0xc0, 0x17, 0x98, 0x72, 0x94, 0x96, 0xa0, 0x8d, 0xe2, 0x7f,
+	0x3d, 0xb8, 0x9d, 0xe0, 0x51, 0x21, 0x24, 0x72, 0xcc, 0x14, 0x51, 0x41, 0xee, 0xc0, 0xf0, 0x04,
+	0x97, 0xb6, 0xb1, 0xfa, 0x55, 0xdb, 0xd6, 0xb3, 0xec, 0xb6, 0xf5, 0x9c, 0x3e, 0x87, 0xe1, 0x2a,
+	0x0e, 0xa3, 0xeb, 0x39, 0xdc, 0xea, 0x73, 0x20, 0x1f, 0xc2, 0xdb, 0x52, 0x89, 0x3f, 0xe7, 0x98,
+	0x73, 0x14, 0xc7, 0xf3, 0x57, 0xb4, 0x8c, 0xfc, 0x6d, 0x6f, 0x67, 0x94, 0xdc, 0xd6, 0x0b, 0x89,
+	0xc9, 0x7f, 0x4b, 0x4b, 0x32, 0x83, 0x31, 0x4d, 0x53, 0xd6, 0xd6, 0x52, 0x44, 0xeb, 0xdb, 0xc3,
+	0x9d, 0x70, 0xb6, 0xb5, 0xe7, 0x8e, 0x71, 0xaf, 0x27, 0x74, 0xe2, 0x70, 0x6a, 0x2e, 0x7d, 0x45,
+	0x25, 0xe5, 0xd1, 0xd8, 0xcc, 0x35, 0x51, 0xfc, 0x12, 0xc6, 0xaa, 0xe0, 0x10, 0x25, 0x25, 0x9b,
+	0x30, 0x70, 0xc7, 0x31, 0x28, 0xb2, 0x5e, 0xcd, 0xa0, 0x5f, 0xe3, 0x94, 0x18, 0xf6, 0x94, 0xe8,
+	0x4c, 0x31, 0x3a, 0x37, 0x45, 0xfc, 0x87, 0x07, 0x81, 0x6a, 0xfc, 0xac, 0xc0, 0x32, 0x53, 0x87,
+	0x9e, 0x72, 0xa4, 0x12, 0xb3, 0x39, 0x95, 0xdd, 0xa1, 0xdb, 0xcc, 0x63, 0xed, 0x89, 0xb6, 0xc9,
+	0xba, 0x65, 0x33, 0x30, 0xb0, 0x99, 0xc7, 0x92, 0xcc, 0xce, 0xab, 0x17, 0x4b, 0x3d, 0x39, 0x9c,
+	0xdd, 0xbd, 0xb4, 0x6b, 0x35, 0xcb, 0xb5, 0xdc, 0x5f, 0x92, 0x47, 0x70, 0xa7, 0xa4, 0x42, 0xce,
+	0x2b, 0x96, 0x15, 0x79, 0x61, 0x2a, 0x47, 0xab, 0x2b, 0x37, 0x15, 0xf8, 0xd0, 0x62, 0xf7, 0x97,
+	0xf1, 0x5f, 0x1e, 0xac, 0x77, 0x8e, 0xbd, 0x6a, 0x07, 0x23, 0xd6, 0xc0, 0x89, 0xd5, 0xbb, 0x2e,
+	0xc3, 0x0b, 0xd7, 0xe5, 0x21, 0x6c, 0x74, 0x66, 0xd7, 0xaa, 0x19, 0x85, 0x42, 0x9b, 0xfb, 0x4a,
+	0x89, 0x37, 0x85, 0xbb, 0x1d, 0x24, 0x43, 0x91, 0xf2, 0xa2, 0x91, 0x05, 0xab, 0xad, 0x43, 0x88,
+	0x5d, 0x7a, 0x7a, 0xbe, 0x42, 0x3e, 0x01, 0x5f, 0xa4, 0xc7, 0x58, 0x51, 0x6d, 0x91, 0x70, 0xf6,
+	0xf0, 0xd2, 0x7e, 0x9e, 0x62, 0x5e, 0xd4, 0x98, 0x7d, 0xc1, 0x69, 0x73, 0xfc, 0x5c, 0x03, 0x13,
+	0x5b, 0x10, 0xff, 0x0c, 0x5b, 0xd7, 0x23, 0xc8, 0x2e, 0xf8, 0x15, 0xcb, 0xb0, 0x14, 0x91, 0xa7,
+	0x4d, 0x75, 0xaf, 0xd7, 0xf4, 0x50, 0x2d, 0xbc, 0x58, 0x36, 0x98, 0x58, 0x0c, 0xf9, 0x18, 0x82,
+	0xbc, 0xad, 0x53, 0x45, 0xc7, 0x5c, 0xd4, 0x70, 0x16, 0xf5, 0x0a, 0x9e, 0x94, 0xac, 0xcd, 0x9e,
+	0x59, 0x40, 0x72, 0x0e, 0x8d, 0x7f, 0x55, 0xa6, 0xe8, 0xba, 0x39, 0x2b, 0x79, 0x3d, 0x2b, 0xed,
+	0x82, 0x9f, 0x2b, 0xc7, 0x74, 0x6d, 0xfb, 0x3c, 0xb4, 0x95, 0x0e, 0xea, 0x9c, 0x25, 0x16, 0x43,
+	0x3e, 0x85, 0x30, 0x65, 0x75, 0x8d, 0x96, 0xc9, 0x50, 0x97, 0x3c, 0xe8, 0x33, 0x71, 0xab, 0x9a,
+	0x7f, 0x1f, 0x1d, 0xff, 0xee, 0xc1, 0x5b, 0x17, 0x98, 0x5e, 0xb9, 0x03, 0xd7, 0xdd, 0xfa, 0x47,
+	0xb0, 0xce, 0xcd, 0x23, 0x64, 0x8d, 0xf8, 0xde, 0xca, 0x8d, 0x1b, 0x98, 0x1e, 0xdc, 0xd5, 0x90,
+	0xcf, 0x61, 0xcc, 0x51, 0x34, 0xac, 0x16, 0x68, 0xed, 0xf8, 0xfe, 0xea, 0x7a, 0x83, 0xd3, 0x0d,
+	0x5c, 0x55, 0xfc, 0x8b, 0x07, 0x81, 0x53, 0xe2, 0x5a, 0x0d, 0x09, 0x8c, 0xe4, 0xb2, 0x71, 0xb4,
+	0xd5, 0xbf, 0x7a, 0xac, 0x14, 0x85, 0x82, 0xa3, 0xb1, 0xe8, 0x38, 0x71, 0x31, 0x99, 0x3a, 0xcd,
+	0x47, 0x5a, 0xc0, 0xfb, 0x3d, 0x46, 0xcf, 0xdb, 0xc5, 0x15, 0xd9, 0xe3, 0x04, 0x36, 0xfa, 0xf9,
+	0x9b, 0x20, 0x11, 0xff, 0x00, 0x9b, 0x17, 0x0f, 0xcb, 0x75, 0xf0, 0x2e, 0x76, 0xc8, 0x58, 0xda,
+	0x56, 0x58, 0x77, 0xcf, 0x84, 0x8b, 0x4d, 0xf7, 0x92, 0xea, 0xdb, 0x63, 0xdf, 0xe3, 0x2e, 0x8e,
+	0x5f, 0x43, 0xb4, 0xea, 0x6c, 0xfe, 0xf7, 0x9c, 0x5d, 0xf0, 0x1b, 0xca, 0x69, 0xd5, 0xf9, 0x6d,
+	0x85, 0x45, 0x0d, 0x26, 0x3e, 0x82, 0x07, 0x2b, 0x4f, 0xf5, 0x26, 0xb7, 0xb8, 0xff, 0xd9, 0x9f,
+	0xa7, 0x13, 0xef, 0xcd, 0xe9, 0xc4, 0xfb, 0xe7, 0x74, 0xe2, 0xfd, 0x76, 0x36, 0x59, 0x7b, 0x73,
+	0x36, 0x59, 0xfb, 0xfb, 0x6c, 0xb2, 0xf6, 0xf2, 0x83, 0xa3, 0x42, 0x96, 0x74, 0xb1, 0x97, 0xb2,
+	0x6a, 0xfa, 0x7a, 0x41, 0xd3, 0x13, 0xac, 0xb3, 0xa9, 0xa2, 0x8b, 0x5c, 0x4c, 0x1d, 0xf7, 0x85,
+	0xaf, 0x7f, 0x3f, 0xfa, 0x2f, 0x00, 0x00, 0xff, 0xff, 0x4c, 0xfa, 0x31, 0xc2, 0x24, 0x08, 0x00,
+	0x00,
 }
 
 func (m *TokenClaims) Marshal() (dAtA []byte, err error) {
@@ -1494,10 +1494,10 @@ func (m *UserDefinedGraphSchema) MarshalToSizedBuffer(dAtA []byte) (int, error) 
 	_ = i
 	var l int
 	_ = l
-	if len(m.CustomResolvers) > 0 {
-		for iNdEx := len(m.CustomResolvers) - 1; iNdEx >= 0; iNdEx-- {
+	if len(m.Functions) > 0 {
+		for iNdEx := len(m.Functions) - 1; iNdEx >= 0; iNdEx-- {
 			{
-				size, err := m.CustomResolvers[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				size, err := m.Functions[iNdEx].MarshalToSizedBuffer(dAtA[:i])
 				if err != nil {
 					return 0, err
 				}
@@ -1508,10 +1508,10 @@ func (m *UserDefinedGraphSchema) MarshalToSizedBuffer(dAtA []byte) (int, error) 
 			dAtA[i] = 0x12
 		}
 	}
-	if len(m.CustomTypes) > 0 {
-		for iNdEx := len(m.CustomTypes) - 1; iNdEx >= 0; iNdEx-- {
+	if len(m.Models) > 0 {
+		for iNdEx := len(m.Models) - 1; iNdEx >= 0; iNdEx-- {
 			{
-				size, err := m.CustomTypes[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				size, err := m.Models[iNdEx].MarshalToSizedBuffer(dAtA[:i])
 				if err != nil {
 					return 0, err
 				}
@@ -1525,7 +1525,7 @@ func (m *UserDefinedGraphSchema) MarshalToSizedBuffer(dAtA []byte) (int, error) 
 	return len(dAtA) - i, nil
 }
 
-func (m *CustomType) Marshal() (dAtA []byte, err error) {
+func (m *ModelType) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1535,12 +1535,12 @@ func (m *CustomType) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *CustomType) MarshalTo(dAtA []byte) (int, error) {
+func (m *ModelType) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *CustomType) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *ModelType) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1583,7 +1583,7 @@ func (m *CustomType) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *CustomResolver) Marshal() (dAtA []byte, err error) {
+func (m *CloudFunction) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1593,12 +1593,12 @@ func (m *CustomResolver) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *CustomResolver) MarshalTo(dAtA []byte) (int, error) {
+func (m *CloudFunction) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *CustomResolver) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *CloudFunction) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1796,7 +1796,7 @@ func (m *ConnectionType) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *CustomResolverRequestType) Marshal() (dAtA []byte, err error) {
+func (m *CloudFunctionRequestType) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1806,12 +1806,12 @@ func (m *CustomResolverRequestType) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *CustomResolverRequestType) MarshalTo(dAtA []byte) (int, error) {
+func (m *CloudFunctionRequestType) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *CustomResolverRequestType) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *CloudFunctionRequestType) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1847,7 +1847,7 @@ func (m *CustomResolverRequestType) MarshalToSizedBuffer(dAtA []byte) (int, erro
 	return len(dAtA) - i, nil
 }
 
-func (m *CustomResolverResponseType) Marshal() (dAtA []byte, err error) {
+func (m *CloudFunctionResponseType) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1857,12 +1857,12 @@ func (m *CustomResolverResponseType) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *CustomResolverResponseType) MarshalTo(dAtA []byte) (int, error) {
+func (m *CloudFunctionResponseType) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *CustomResolverResponseType) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *CloudFunctionResponseType) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -2094,14 +2094,14 @@ func (m *UserDefinedGraphSchema) Size() (n int) {
 	}
 	var l int
 	_ = l
-	if len(m.CustomTypes) > 0 {
-		for _, e := range m.CustomTypes {
+	if len(m.Models) > 0 {
+		for _, e := range m.Models {
 			l = e.Size()
 			n += 1 + l + sovCommon(uint64(l))
 		}
 	}
-	if len(m.CustomResolvers) > 0 {
-		for _, e := range m.CustomResolvers {
+	if len(m.Functions) > 0 {
+		for _, e := range m.Functions {
 			l = e.Size()
 			n += 1 + l + sovCommon(uint64(l))
 		}
@@ -2109,7 +2109,7 @@ func (m *UserDefinedGraphSchema) Size() (n int) {
 	return n
 }
 
-func (m *CustomType) Size() (n int) {
+func (m *ModelType) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -2134,7 +2134,7 @@ func (m *CustomType) Size() (n int) {
 	return n
 }
 
-func (m *CustomResolver) Size() (n int) {
+func (m *CloudFunction) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -2226,7 +2226,7 @@ func (m *ConnectionType) Size() (n int) {
 	return n
 }
 
-func (m *CustomResolverRequestType) Size() (n int) {
+func (m *CloudFunctionRequestType) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -2249,7 +2249,7 @@ func (m *CustomResolverRequestType) Size() (n int) {
 	return n
 }
 
-func (m *CustomResolverResponseType) Size() (n int) {
+func (m *CloudFunctionResponseType) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -3639,7 +3639,7 @@ func (m *UserDefinedGraphSchema) Unmarshal(dAtA []byte) error {
 		switch fieldNum {
 		case 1:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field CustomTypes", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field Models", wireType)
 			}
 			var msglen int
 			for shift := uint(0); ; shift += 7 {
@@ -3666,14 +3666,14 @@ func (m *UserDefinedGraphSchema) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.CustomTypes = append(m.CustomTypes, &CustomType{})
-			if err := m.CustomTypes[len(m.CustomTypes)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+			m.Models = append(m.Models, &ModelType{})
+			if err := m.Models[len(m.Models)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field CustomResolvers", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field Functions", wireType)
 			}
 			var msglen int
 			for shift := uint(0); ; shift += 7 {
@@ -3700,8 +3700,8 @@ func (m *UserDefinedGraphSchema) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.CustomResolvers = append(m.CustomResolvers, &CustomResolver{})
-			if err := m.CustomResolvers[len(m.CustomResolvers)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+			m.Functions = append(m.Functions, &CloudFunction{})
+			if err := m.Functions[len(m.Functions)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
 			}
 			iNdEx = postIndex
@@ -3729,7 +3729,7 @@ func (m *UserDefinedGraphSchema) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *CustomType) Unmarshal(dAtA []byte) error {
+func (m *ModelType) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -3752,10 +3752,10 @@ func (m *CustomType) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: CustomType: wiretype end group for non-group")
+			return fmt.Errorf("proto: ModelType: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: CustomType: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: ModelType: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -3882,7 +3882,7 @@ func (m *CustomType) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *CustomResolver) Unmarshal(dAtA []byte) error {
+func (m *CloudFunction) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -3905,10 +3905,10 @@ func (m *CustomResolver) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: CustomResolver: wiretype end group for non-group")
+			return fmt.Errorf("proto: CloudFunction: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: CustomResolver: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: CloudFunction: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -4005,7 +4005,7 @@ func (m *CustomResolver) Unmarshal(dAtA []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			if m.Request == nil {
-				m.Request = &CustomResolverRequestType{}
+				m.Request = &CloudFunctionRequestType{}
 			}
 			if err := m.Request.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
@@ -4041,7 +4041,7 @@ func (m *CustomResolver) Unmarshal(dAtA []byte) error {
 				return io.ErrUnexpectedEOF
 			}
 			if m.Response == nil {
-				m.Response = &CustomResolverResponseType{}
+				m.Response = &CloudFunctionResponseType{}
 			}
 			if err := m.Response.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
@@ -4528,7 +4528,7 @@ func (m *ConnectionType) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *CustomResolverRequestType) Unmarshal(dAtA []byte) error {
+func (m *CloudFunctionRequestType) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -4551,10 +4551,10 @@ func (m *CustomResolverRequestType) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: CustomResolverRequestType: wiretype end group for non-group")
+			return fmt.Errorf("proto: CloudFunctionRequestType: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: CustomResolverRequestType: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: CloudFunctionRequestType: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -4679,7 +4679,7 @@ func (m *CustomResolverRequestType) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *CustomResolverResponseType) Unmarshal(dAtA []byte) error {
+func (m *CloudFunctionResponseType) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -4702,10 +4702,10 @@ func (m *CustomResolverResponseType) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: CustomResolverResponseType: wiretype end group for non-group")
+			return fmt.Errorf("proto: CloudFunctionResponseType: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: CustomResolverResponseType: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: CloudFunctionResponseType: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:

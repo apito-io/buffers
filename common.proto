@@ -58,21 +58,21 @@ message Project {
 }
 
 message UserDefinedGraphSchema {
-    repeated CustomType custom_types = 1;
-    repeated CustomResolver custom_resolvers = 2;
+    repeated ModelType models = 1;
+    repeated CloudFunction functions = 2;
 }
 
-message CustomType {
+message ModelType {
     string name = 1;
     repeated FieldInfo fields = 2;
     repeated ConnectionType connections = 3;
 }
 
-message CustomResolver {
+message CloudFunction {
     string id = 1;
     string name = 2;
-    CustomResolverRequestType request = 3;
-    CustomResolverResponseType response = 4;
+    CloudFunctionRequestType request = 3;
+    CloudFunctionResponseType response = 4;
 }
 
 message FieldInfo {
@@ -94,13 +94,13 @@ message ConnectionType {
     string relation = 3;
 }
 
-message CustomResolverRequestType {
+message CloudFunctionRequestType {
     string type = 1;
     string document = 2;
     repeated FieldInfo params = 3;
 }
 
-message CustomResolverResponseType {
+message CloudFunctionResponseType {
     string type = 1;
     string document = 2;
     string relation = 3;
