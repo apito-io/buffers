@@ -54,10 +54,10 @@ message Project {
     string user_id = 3;
     string project_name = 4;
     string project_description = 5;
-    UserDefinedGraphSchema schema = 6;
+    UserDefinedSchema schema = 6;
 }
 
-message UserDefinedGraphSchema {
+message UserDefinedSchema {
     repeated ModelType models = 1;
     repeated CloudFunction functions = 2;
 }
@@ -80,6 +80,7 @@ message FieldInfo {
     string type = 2;
     bool required = 3;
     repeated SubFieldInfo fields = 4; // to avoid a loop
+    repeated string locals = 5;
 }
 
 message SubFieldInfo {
