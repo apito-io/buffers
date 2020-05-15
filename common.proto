@@ -22,6 +22,7 @@ message LoginRequest {
 
 message RegisteredUsers {
     string key = 1;
+    string id = 9;
     string name = 2;
     string username = 3;
     string email = 4;
