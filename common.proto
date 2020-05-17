@@ -46,6 +46,7 @@ message MetaField {
     string updated_at = 2;
     UserMeta created_by = 3;
     UserMeta last_modified_by = 4;
+    string status = 5;
 }
 
 // user project
