@@ -57,6 +57,7 @@ message Project {
     string project_name = 4;
     string project_description = 5;
     UserDefinedSchema schema = 6;
+    repeated string locals = 7;
 }
 
 message UserDefinedSchema {
