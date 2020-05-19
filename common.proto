@@ -21,7 +21,7 @@ message LoginRequest {
 }
 
 message RegisteredUsers {
-    string key = 1;
+    string _key = 1;
     string id = 9;
     string name = 2;
     string username = 3;
@@ -51,7 +51,7 @@ message MetaField {
 
 // user project
 message Project {
-    string key = 1; //exclude:"true"`
+    string _key = 1; //exclude:"true"`
     string id = 2;
     string user_id = 3;
     string project_name = 4;
