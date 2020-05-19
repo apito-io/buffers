@@ -58,6 +58,9 @@ message Project {
     string project_description = 5;
     UserDefinedSchema schema = 6;
     repeated string locals = 7;
+    string created_at = 8;
+    string updated_at = 9;
+    string expire_at = 10;
 }
 
 message UserDefinedSchema {
