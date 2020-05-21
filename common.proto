@@ -49,6 +49,12 @@ message MetaField {
     string status = 5;
 }
 
+message PreviewMode {
+    string title = 1;
+    string icon = 2;
+    string status = 3;
+}
+
 // user project
 message Project {
     string _key = 1; //exclude:"true"`
