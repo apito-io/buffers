@@ -110,9 +110,8 @@ message SubFieldInfo {
 }
 
 message ConnectionType {
-    string type = 1;
-    string document = 2;
-    string relation = 3;
+    string model = 1;
+    string relation = 2;
 }
 
 message CloudFunctionRequestType {
