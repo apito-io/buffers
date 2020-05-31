@@ -53,6 +53,7 @@ message PreviewMode {
     string title = 1;
     string icon = 2;
     string status = 3;
+    string id = 4;
 }
 
 // user project
