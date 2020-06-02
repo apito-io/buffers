@@ -100,6 +100,9 @@ message Validation {
     repeated string locals = 4;
     bool unique = 5;
     map<string, Limit> limits = 6;
+    bool is_email = 7;
+    bool is_fixed_list = 8;
+    repeated string fixed_list_elements = 9;
 }
 
 message FieldInfo {
