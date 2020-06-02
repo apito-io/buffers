@@ -88,18 +88,15 @@ message CloudFunction {
     CloudFunctionResponseType response = 4;
 }
 
-message Limit {
-    uint32 min = 1;
-    uint32 max = 2;
-}
-
 message Validation {
     bool required = 1;
     bool hide = 2;
     bool as_title = 3;
     repeated string locals = 4;
     bool unique = 5;
-    map<string, Limit> limits = 6;
+    repeated uint32 char_limit = 6;
+    repeated uint32 int_range_limit = 10;
+    repeated double double_range_limit = 11;
     bool is_email = 7;
     bool is_fixed_list = 8;
     repeated string fixed_list_elements = 9;
