@@ -88,26 +88,35 @@ message CloudFunction {
     CloudFunctionResponseType response = 4;
 }
 
+message Limit {
+    uint32 min = 1;
+    uint32 max = 2;
+}
+
 message Validation {
     bool required = 1;
     bool hide = 2;
     bool as_title = 3;
     repeated string locals = 4;
+    bool unique = 5;
+    map<string, Limit> limits = 6;
 }
 
 message FieldInfo {
     string name = 1;
     string description = 2;
-    string type = 3;
-    repeated SubFieldInfo modules = 4; // to avoid a loop
-    Validation validation = 5;
+    string input_type = 3; // string
+    string field_type = 4; // array
+    repeated SubFieldInfo modules = 5; // to avoid a loop
+    Validation validation = 6;
 }
 
 message SubFieldInfo {
     string name = 1;
     string description = 2;
-    string type = 3;
-    Validation validation = 4;
+    string input_type = 3; // string
+    string field_type = 4; // array
+    Validation validation = 5;
 }
 
 message ConnectionType {
