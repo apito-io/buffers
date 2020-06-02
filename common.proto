@@ -112,6 +112,7 @@ message FieldInfo {
     string field_type = 4; // array
     repeated SubFieldInfo modules = 5; // to avoid a loop
     Validation validation = 6;
+    uint32 serial = 7;
 }
 
 message SubFieldInfo {
@@ -120,6 +121,7 @@ message SubFieldInfo {
     string input_type = 3; // string
     string field_type = 4; // array
     Validation validation = 5;
+    uint32 serial = 6;
 }
 
 message ConnectionType {
