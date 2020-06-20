@@ -31,7 +31,7 @@ package protobuff;
 
 import "google/protobuf/descriptor.proto";
 
-option go_package = "gitlab.com/xbackend/buffers/protobuff";
+option go_package = "gitlab.com/apito.io/buffers/protobuff";
 
 extend google.protobuf.EnumOptions {
 	optional bool goproto_enum_prefix = 62001;

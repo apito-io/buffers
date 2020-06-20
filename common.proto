@@ -1,7 +1,61 @@
 syntax = "proto3";
 
 package protobuff;
-option go_package = "gitlab.com/xbackend/buffers/protobuff";
+option go_package = "gitlab.com/apito.io/buffers/protobuff";
+
+message Filter {
+    uint32 page = 1;
+    uint32 offset = 2;
+    uint32 limit = 3;
+    string order = 4;
+    uint32 min = 5;
+    uint32 max = 6;
+    string category = 7;
+}
+
+message Request {
+    string id = 1;
+    string type = 2;
+    Filter filter = 4;
+    string search_string = 5;
+    bool retry = 6;
+}
+
+// File Picker
+message FileLink {
+    string link = 1;
+    string title = 2;
+    string created_at = 3;
+    string updated_at = 4;
+}
+
+message FileDetails {
+    FilePickParameter picker_parameter = 6;
+    RegisteredUsers uploader = 2;
+    string created_at = 3;
+    FileLink file = 4;
+    string url =  7;
+    ImageMetaInfo asset_in_device = 10;
+    bytes byte_buffer = 11;
+    string _key = 12;
+    string name = 15;
+}
+
+message FilePickParameter{
+    uint32 number_of_images = 1;
+    string s3_folder = 2;
+    string picker_title = 3;
+    RegisteredUsers origin = 4;
+}
+
+message ImageMetaInfo {
+    string identifier = 1;
+    string name = 2;
+    uint32 width = 3;
+    uint32 height = 4;
+    string type = 5;
+}
+
 
 message TokenClaims {
     string user_id = 1;

@@ -11,4 +11,4 @@ $(ALL):
 		make profile && make chat && make notification && make vendors && make place && make search && make graph
 
 $(COMMON_DIR):
-		protoc --gogofaster_out=plugins=grpc:$(GOPATH)/src $(COMMON_DIR)*.proto gogo.proto
+		protoc --gogofaster_out=plugins=grpc:$(GOPATH)/src $(COMMON_DIR)*.proto gogo.proto --dart_out=/Users/diablo/Projects/flutter/udhvabon/xbackend_web_mvp/lib/buffers
