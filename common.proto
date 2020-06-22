@@ -164,6 +164,7 @@ message FieldInfo {
     repeated SubFieldInfo modules = 5; // to avoid a loop
     Validation validation = 6;
     uint32 serial = 7;
+    string label = 8;
 }
 
 message SubFieldInfo {
