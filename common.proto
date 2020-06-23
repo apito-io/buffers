@@ -157,7 +157,7 @@ message Validation {
 }
 
 message FieldInfo {
-    string name = 1;
+    string identifier = 1;
     string description = 2;
     string input_type = 3; // string
     string field_type = 4; // list
