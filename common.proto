@@ -152,7 +152,7 @@ message Validation {
     repeated uint32 int_range_limit = 10;
     repeated double double_range_limit = 11;
     bool is_email = 7;
-    bool is_fixed_list = 8;
+    bool is_multi_choice = 8;
     repeated string fixed_list_elements = 9;
 }
 
@@ -160,7 +160,7 @@ message FieldInfo {
     string name = 1;
     string description = 2;
     string input_type = 3; // string
-    string field_type = 4; // array
+    string field_type = 4; // list
     repeated SubFieldInfo modules = 5; // to avoid a loop
     Validation validation = 6;
     uint32 serial = 7;
