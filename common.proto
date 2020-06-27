@@ -179,6 +179,7 @@ message SubFieldInfo {
 message ConnectionType {
     string model = 1;
     string relation = 2;
+    string type = 3;
 }
 
 message CloudFunctionRequestType {
