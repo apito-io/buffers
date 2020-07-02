@@ -155,6 +155,7 @@ message Validation {
     string placeholder = 8;
     repeated string fixed_list_elements = 9;
     bool is_multi_choice = 12;
+    string list_type = 13;
 }
 
 message FieldInfo {
