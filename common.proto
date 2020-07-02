@@ -152,7 +152,7 @@ message Validation {
     repeated uint32 int_range_limit = 10;
     repeated double double_range_limit = 11;
     bool is_email = 7;
-    bool is_multi_choice = 8;
+    string placeholder = 8;
     repeated string fixed_list_elements = 9;
 }
 
