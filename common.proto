@@ -154,6 +154,7 @@ message Validation {
     bool is_email = 7;
     string placeholder = 8;
     repeated string fixed_list_elements = 9;
+    bool is_multi_choice = 12;
 }
 
 message FieldInfo {
