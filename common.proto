@@ -29,18 +29,6 @@ message FileLink {
     string updated_at = 4;
 }
 
-message FileDetails {
-    FilePickParameter picker_parameter = 6;
-    RegisteredUsers uploader = 2;
-    string created_at = 3;
-    FileLink file = 4;
-    string url =  7;
-    ImageMetaInfo asset_in_device = 10;
-    bytes byte_buffer = 11;
-    string _key = 12;
-    string name = 15;
-}
-
 message FilePickParameter{
     uint32 number_of_images = 1;
     string s3_folder = 2;
