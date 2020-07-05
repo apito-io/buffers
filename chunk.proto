@@ -13,18 +13,8 @@ message FileData {
     string FileExtension = 1;
     string Filename = 2;
     string RemotePath = 3;
-    FileDetails image_details = 4;
+    string is_image = 4;
 }
-
-
-message FileDetails {
-    string created_at = 3;
-    string url =  7;
-    bytes byte_buffer = 11;
-    string _key = 12;
-    string name = 15;
-}
-
 
 message BigFileChunk {
     // Fine Name
