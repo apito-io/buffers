@@ -14,6 +14,7 @@ message FileData {
     string Filename = 2;
     string ProjectId = 3;
     string ModelName = 4;
+    string ContentType = 5;
 }
 
 message BigFileChunk {
