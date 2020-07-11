@@ -12,8 +12,8 @@ service Peer {
 message FileData {
     string FileExtension = 1;
     string Filename = 2;
-    string RemotePath = 3;
-    string is_image = 4;
+    string ProjectId = 3;
+    string ModelName = 4;
 }
 
 message BigFileChunk {
