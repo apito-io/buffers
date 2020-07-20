@@ -5,8 +5,7 @@ option go_package = "gitlab.com/apito.io/buffers/protobuff";
 
 service Peer {
     // client always sends a big file to the server.
-    rpc SendFile (stream BigFileChunk) returns (BigFileAck) {
-    }
+    rpc SendFile (stream BigFileChunk) returns (BigFileAck) {}
 }
 
 message FileData {
