@@ -135,8 +135,6 @@ message ModelType {
     string name = 1;
     repeated FieldInfo fields = 2;
     repeated ConnectionType connections = 3;
-    bool single_instance = 4;
-    string single_instance_resource_id = 5;
 }
 
 message CloudFunction {
