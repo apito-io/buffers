@@ -47,7 +47,7 @@ message FilePickParameter{
     uint32 number_of_images = 1;
     string s3_folder = 2;
     string picker_title = 3;
-    RegisteredUsers origin = 4;
+    RegisteredUser origin = 4;
 }
 
 message ImageMetaInfo {
@@ -76,7 +76,7 @@ message LoginRequest {
     string secret = 3;
 }
 
-message RegisteredUsers {
+message RegisteredUser {
     string _key = 1;
     string id = 9;
     string name = 2;
@@ -86,6 +86,7 @@ message RegisteredUsers {
     uint64 token_refresh_val = 6;
     repeated UserProject accounts = 7;
     string avatar = 8;
+    string current_project_id = 10;
 }
 
 // data
@@ -124,6 +125,7 @@ message Project {
     string created_at = 8;
     string updated_at = 9;
     string expire_at = 10;
+    repeated UserMeta teams = 11;
 }
 
 message UserDefinedSchema {
