@@ -9,6 +9,12 @@ message PictureDetails {
     string created_at = 3;
 }
 
+message PictureDeleteRequest {
+    repeated string urls = 1;
+    string model = 2;
+    string field_name = 3;
+}
+
 message ModelPictureHistory {
     string _key = 1;
     string id = 2;
