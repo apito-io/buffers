@@ -12,7 +12,8 @@ message PictureDetails {
 message PictureDeleteRequest {
     repeated string urls = 1;
     string model = 2;
-    string field_name = 3;
+    string id = 3;
+    string field_name = 4;
 }
 
 message ModelPictureHistory {
