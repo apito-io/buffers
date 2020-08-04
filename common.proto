@@ -22,6 +22,7 @@ message FileDetails {
     string s3_key = 9;
     string url = 10;
     string created_at = 11;
+    string upload_folder = 12;
 }
 
 message Filter {
