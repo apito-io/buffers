@@ -16,14 +16,19 @@ message FileDetails {
     string type = 3;
     string file_extension = 4;
     string file_name = 5;
-    string model_name = 6;
-    string content_type = 7;
-    int64 size = 8;
-    string s3_key = 9;
-    string url = 10;
-    string created_at = 11;
-    string upload_folder = 12;
-    string project_id = 13;
+    string content_type = 6;
+    int64 size = 7;
+    string s3_key = 8;
+    string url = 9;
+    string created_at = 10;
+    UploadParams upload_param = 11;
+}
+
+message UploadParams {
+    string doc_id = 1;
+    string project_id = 2;
+    string model_name = 3;
+    string field_name = 4;
 }
 
 message Filter {
