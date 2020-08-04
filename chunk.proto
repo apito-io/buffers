@@ -68,6 +68,5 @@ message BigFileAck {
     fixed64 RecvTime = 3;
     bytes WholeFileBlake2B = 4;
     string Err = 5;
-    string S3Path = 6;
-    string upload_id = 7;
+    FileDetails file_details = 7;
 }
