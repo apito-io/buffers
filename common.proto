@@ -20,7 +20,8 @@ message FileDetails {
     string content_type = 7;
     int64 size = 8;
     string s3_key = 9;
-    string created_at = 10;
+    string url = 10;
+    string created_at = 11;
 }
 
 message Filter {
