@@ -3,12 +3,6 @@ syntax = "proto3";
 package protobuff;
 option go_package = "gitlab.com/apito.io/buffers/protobuff";
 
-message PictureDetails {
-    string url = 1;
-    string size = 2;
-    string created_at = 3;
-}
-
 message PictureDeleteRequest {
     repeated string urls = 1;
     string model = 2;
@@ -16,12 +10,17 @@ message PictureDeleteRequest {
     string field_name = 4;
 }
 
-message ModelPictureHistory {
-    string _key = 1;
-    string id = 2;
+message FileDetails {
+    string id = 1;
+    string _key = 2;
     string type = 3;
-    repeated PictureDetails pictures = 4;
-    string marker = 5;
+    string file_extension = 4;
+    string file_name = 5;
+    string model_name = 6;
+    string content_type = 7;
+    int64 size = 8;
+    string s3_key = 9;
+    string created_at = 10;
 }
 
 message Filter {
