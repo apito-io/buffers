@@ -23,6 +23,7 @@ message FileDetails {
     string url = 10;
     string created_at = 11;
     string upload_folder = 12;
+    string project_id = 13;
 }
 
 message Filter {
