@@ -29,6 +29,7 @@ message UploadParams {
     string project_id = 2;
     string model_name = 3;
     string field_name = 4;
+    bool allow_multi = 5;
 }
 
 message Filter {
@@ -140,6 +141,16 @@ message Project {
     string updated_at = 9;
     string expire_at = 10;
     repeated UserMeta teams = 11;
+    ThirdPartyCredential third_party_cred = 12;
+}
+
+message ThirdPartyCredential {
+    AWSCredential aws = 1;
+}
+
+message AWSCredential {
+    string access = 1;
+    string secret = 2;
 }
 
 message UserDefinedSchema {
@@ -151,6 +162,18 @@ message ModelType {
     string name = 1;
     repeated FieldInfo fields = 2;
     repeated ConnectionType connections = 3;
+}
+
+message CloudFunctionRequestType {
+    string type = 1; // fixed, json
+    string fixed_model_name = 2; // fixed model name
+    repeated FieldInfo params = 3; // fixed dynamic request type
+}
+
+message CloudFunctionResponseType {
+    string type = 1; // fixed, json
+    string fixed_model_name = 2; // fixed model name
+    string relation = 3; // array, object
 }
 
 message CloudFunction {
@@ -204,14 +227,4 @@ message ConnectionType {
     string type = 3;
 }
 
-message CloudFunctionRequestType {
-    string type = 1;
-    string document = 2;
-    repeated FieldInfo params = 3;
-}
 
-message CloudFunctionResponseType {
-    string type = 1;
-    string document = 2;
-    string relation = 3;
-}
