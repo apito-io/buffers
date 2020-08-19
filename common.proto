@@ -140,7 +140,7 @@ message Project {
     string created_at = 8;
     string updated_at = 9;
     string expire_at = 10;
-    ExtensionDetails extensions = 11;
+    repeated ExtensionDetails extensions = 11;
     AddOnsDetails addOns = 12;
 }
 
