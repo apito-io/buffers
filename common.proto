@@ -136,12 +136,12 @@ message Project {
     string project_name = 4;
     string project_description = 5;
     UserDefinedSchema schema = 6;
-    repeated string locals = 7;
+    repeated UserMeta teams = 7;
     string created_at = 8;
     string updated_at = 9;
     string expire_at = 10;
-    repeated UserMeta teams = 11;
-    ExtensionDetails extensions = 12;
+    ExtensionDetails extensions = 11;
+    AddOnsDetails addOns = 12;
 }
 
 message ExtensionDetails {
@@ -156,6 +156,17 @@ message ThirdPartyCredential {
     string access_key = 2;
     string secret_key = 3;
     string api_key = 4;
+}
+
+message AddOnsDetails {
+    repeated string locals = 1;
+    bool system_graphql_hooks = 2;
+    bool revision_history = 3;
+    AuthenticationAddOns auth = 4;
+}
+
+message AuthenticationAddOns {
+    string type = 1; // phone or email
 }
 
 message ProjectSubscription {
@@ -178,6 +189,7 @@ message AccountUsage {
     string _key = 2;
     string type = 3;
     map<string, ProjectUsages> usages = 4;
+    ProjectUsages limit = 5;
 }
 
 message ProjectUsages {
