@@ -58,7 +58,7 @@ message FileLink {
     string updated_at = 4;
 }
 
-message FilePickParameter{
+message FilePickParameter {
     uint32 number_of_images = 1;
     string s3_folder = 2;
     string picker_title = 3;
@@ -140,7 +140,7 @@ message Project {
     string created_at = 8;
     string updated_at = 9;
     string expire_at = 10;
-    repeated ExtensionDetails extensions = 11;
+    map<string, ExtensionDetails> extensions = 11;
     AddOnsDetails addOns = 12;
 }
 
