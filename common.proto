@@ -189,9 +189,10 @@ message AccountUsage {
 message ProjectUsages {
     uint32 api_calls = 1;
     uint32 api_bandwidth = 2;
-    uint32 media_bandwidth = 3;
-    uint32 number_of_media = 4;
-    uint32 number_of_records = 5;
+    uint32 media_storage = 3;
+    uint32 media_bandwidth = 4;
+    uint32 number_of_media = 5;
+    uint32 number_of_records = 6;
 }
 
 message UserDefinedSchema {
