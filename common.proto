@@ -141,16 +141,51 @@ message Project {
     string updated_at = 9;
     string expire_at = 10;
     repeated UserMeta teams = 11;
-    ThirdPartyCredential third_party_cred = 12;
+    ExtensionDetails extensions = 12;
+}
+
+message ExtensionDetails {
+    string name = 1;
+    string description = 2;
+    string type = 3;
+    ThirdPartyCredential credentials = 4;
 }
 
 message ThirdPartyCredential {
-    AWSCredential aws = 1;
+    string account_id = 1;
+    string access_key = 2;
+    string secret_key = 3;
+    string api_key = 4;
 }
 
-message AWSCredential {
-    string access = 1;
-    string secret = 2;
+message ProjectSubscription {
+    string id = 1;
+    string _key = 2;
+    string type = 3;
+    repeated MonthlySubscription subscriptions = 4;
+}
+
+message MonthlySubscription {
+    string start_date = 1;
+    string end_date = 2;
+    string plan_code = 3;
+    double amount = 4;
+    string promo_code = 5;
+}
+
+message AccountUsage {
+    string id = 1;
+    string _key = 2;
+    string type = 3;
+    map<string, ProjectUsages> usages = 4;
+}
+
+message ProjectUsages {
+    uint32 api_calls = 1;
+    uint32 api_traffic = 2;
+    uint32 media_records = 3;
+    uint32 number_of_media = 4;
+    uint32 used_records = 5;
 }
 
 message UserDefinedSchema {
