@@ -169,13 +169,6 @@ message AuthenticationAddOns {
     string type = 1; // phone or email
 }
 
-message ProjectSubscription {
-    string id = 1;
-    string _key = 2;
-    string type = 3;
-    repeated MonthlySubscription subscriptions = 4;
-}
-
 message MonthlySubscription {
     string start_date = 1;
     string end_date = 2;
@@ -188,16 +181,17 @@ message AccountUsage {
     string id = 1;
     string _key = 2;
     string type = 3;
-    map<string, ProjectUsages> usages = 4;
+    repeated MonthlySubscription subscriptions = 4;
     ProjectUsages limit = 5;
+    map<string, ProjectUsages> usages = 6;
 }
 
 message ProjectUsages {
     uint32 api_calls = 1;
-    uint32 api_traffic = 2;
-    uint32 media_records = 3;
+    uint32 api_bandwidth = 2;
+    uint32 media_bandwidth = 3;
     uint32 number_of_media = 4;
-    uint32 used_records = 5;
+    uint32 number_of_records = 5;
 }
 
 message UserDefinedSchema {
