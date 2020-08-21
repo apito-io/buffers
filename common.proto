@@ -193,9 +193,9 @@ message ProjectUsages {
     string _key = 2;
     string type = 3;
     uint64 api_calls = 4;
-    uint64 api_bandwidth = 5;
+    double api_bandwidth = 5;
     uint64 media_storage = 6;
-    uint64 media_bandwidth = 7;
+    double media_bandwidth = 7;
     uint64 number_of_media = 8;
     uint64 number_of_records = 9;
 }
