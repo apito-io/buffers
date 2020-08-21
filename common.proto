@@ -192,12 +192,12 @@ message ProjectUsages {
     string id = 1;
     string _key = 2;
     string type = 3;
-    uint32 api_calls = 4;
-    uint32 api_bandwidth = 5;
-    uint32 media_storage = 6;
-    uint32 media_bandwidth = 7;
-    uint32 number_of_media = 8;
-    uint32 number_of_records = 9;
+    uint64 api_calls = 4;
+    uint64 api_bandwidth = 5;
+    uint64 media_storage = 6;
+    uint64 media_bandwidth = 7;
+    uint64 number_of_media = 8;
+    uint64 number_of_records = 9;
 }
 
 message UserDefinedSchema {
