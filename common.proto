@@ -184,6 +184,7 @@ message AccountUsage {
     repeated MonthlySubscription subscriptions = 4;
     ProjectUsages limit = 5;
     map<string, ProjectUsages> usages = 6;
+    uint32 number_of_project = 7;
 }
 
 message ProjectUsages {
