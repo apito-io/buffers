@@ -102,6 +102,7 @@ message RegisteredUser {
     repeated UserProject accounts = 7;
     string avatar = 8;
     string current_project_id = 10;
+    AccountUsage account_usage = 11;
 }
 
 // data
