@@ -144,7 +144,7 @@ message Project {
     map<string, ExtensionDetails> extensions = 11;
     AddOnsDetails addons = 12;
     ProjectUsages usage = 13;
-    ProjectUsages limit = 14;
+    ProjectUsages limits = 14;
 }
 
 message ExtensionDetails {
@@ -177,7 +177,7 @@ message AccountUsage {
     string _key = 2;
     string type = 3;
     repeated MonthlySubscription subscriptions = 4;
-    ProjectUsages limit = 5;
+    ProjectUsages limits = 5;
     repeated ProjectUsages usages = 6;
     uint32 number_of_project = 7;
 }
