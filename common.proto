@@ -143,6 +143,7 @@ message Project {
     string expire_at = 10;
     map<string, ExtensionDetails> extensions = 11;
     AddOnsDetails addons = 12;
+    ProjectUsages usage = 13;
 }
 
 message ExtensionDetails {
