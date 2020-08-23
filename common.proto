@@ -144,6 +144,7 @@ message Project {
     map<string, ExtensionDetails> extensions = 11;
     AddOnsDetails addons = 12;
     ProjectUsages usage = 13;
+    ProjectUsages limit = 14;
 }
 
 message ExtensionDetails {
