@@ -80,11 +80,6 @@ message TokenClaims {
     string project_id = 3;
 }
 
-message UserProject {
-    string project_id = 1;
-    repeated string roles = 2;
-}
-
 message LoginRequest {
     string username = 1;
     string email = 2;
@@ -99,10 +94,9 @@ message RegisteredUser {
     string email = 4;
     string secret = 5;
     uint64 token_refresh_val = 6;
-    repeated UserProject accounts = 7;
-    string avatar = 8;
-    string current_project_id = 10;
-    AccountUsage account_usage = 11;
+    string avatar = 7;
+    string current_project_id = 8;
+    AccountUsage account_usage = 10;
 }
 
 // data
@@ -137,7 +131,7 @@ message Project {
     string project_name = 4;
     string project_description = 5;
     UserDefinedSchema schema = 6;
-    repeated UserMeta teams = 7;
+    UserMeta teams = 7;
     string created_at = 8;
     string updated_at = 9;
     string expire_at = 10;
