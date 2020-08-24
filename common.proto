@@ -73,7 +73,6 @@ message ImageMetaInfo {
     string type = 5;
 }
 
-
 message TokenClaims {
     string user_id = 1;
     string role = 2;
@@ -88,18 +87,18 @@ message LoginRequest {
 
 message RegisteredUser {
     string _key = 1;
-    string id = 9;
-    string name = 2;
-    string username = 3;
-    string email = 4;
-    string secret = 5;
-    uint64 token_refresh_val = 6;
+    string id = 2;
+    string name = 3;
+    string username = 4;
+    string email = 5;
+    string secret = 6;
     string avatar = 7;
-    string current_project_id = 8;
-    AccountUsage account_usage = 10;
+    uint64 token_refresh_val = 8;
+    repeated string projects = 9;
+    repeated string third_party_projects = 10;
+    string current_project_id = 11;
+    AccountUsage account_usage = 12;
 }
-
-// data
 
 message UserMeta {
     string id = 1;
@@ -131,7 +130,7 @@ message Project {
     string project_name = 4;
     string project_description = 5;
     UserDefinedSchema schema = 6;
-    UserMeta teams = 7;
+    repeated UserMeta teams = 7;
     string created_at = 8;
     string updated_at = 9;
     string expire_at = 10;
