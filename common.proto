@@ -85,6 +85,11 @@ message LoginRequest {
     string secret = 3;
 }
 
+message ProjectInvolvement {
+    string id = 1;
+    UserMeta user = 3;
+}
+
 message RegisteredUser {
     string _key = 1;
     string id = 2;
@@ -93,11 +98,10 @@ message RegisteredUser {
     string email = 5;
     string secret = 6;
     string avatar = 7;
-    uint64 token_refresh_val = 8;
-    repeated string projects = 9;
-    repeated string third_party_projects = 10;
-    string current_project_id = 11;
-    AccountUsage account_usage = 12;
+    uint64 current_project_id = 8;
+    string current_project_token = 9;
+    repeated ProjectInvolvement projects = 10;
+    AccountUsage account_usage = 11;
 }
 
 message UserMeta {
