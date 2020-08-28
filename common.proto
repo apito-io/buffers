@@ -74,7 +74,6 @@ message ImageMetaInfo {
 }
 
 message TokenClaims {
-    string user_id = 1;
     string role = 2;
     string project_id = 3;
 }
