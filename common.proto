@@ -142,6 +142,12 @@ message Project {
     AddOnsDetails addons = 12;
     ProjectUsages usage = 13;
     ProjectUsages limits = 14;
+    repeated APIToken tokens = 15;
+}
+
+message APIToken {
+    string token = 1;
+    string payload = 2;
 }
 
 message ExtensionDetails {
