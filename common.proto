@@ -102,6 +102,7 @@ message RegisteredUser {
     string current_project_token = 9;
     repeated ProjectInvolvement projects = 10;
     AccountUsage account_usage = 11;
+    bool apito_access = 12;
 }
 
 message UserMeta {
