@@ -150,7 +150,7 @@ message APIToken {
     string name = 1;
     string token = 2;
     string payload = 3;
-    string ttl = 4;
+    uint32 ttl = 4;
 }
 
 message ExtensionDetails {
