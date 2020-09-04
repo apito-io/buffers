@@ -144,6 +144,7 @@ message Project {
     ProjectUsages usage = 13;
     ProjectUsages limits = 14;
     repeated APIToken tokens = 15;
+    string permission_payload = 16;
 }
 
 message APIToken {
