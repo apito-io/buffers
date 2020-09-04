@@ -147,8 +147,10 @@ message Project {
 }
 
 message APIToken {
-    string token = 1;
-    string payload = 2;
+    string name = 1;
+    string token = 2;
+    string payload = 3;
+    string ttl = 4;
 }
 
 message ExtensionDetails {
