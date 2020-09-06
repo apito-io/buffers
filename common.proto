@@ -151,7 +151,7 @@ message APIToken {
     string name = 1;
     string token = 2;
     string payload = 3;
-    uint32 duration = 4;
+    string expire = 4;
 }
 
 message ExtensionDetails {
