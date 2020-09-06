@@ -218,6 +218,7 @@ message ModelType {
     string name = 1;
     repeated FieldInfo fields = 2;
     repeated ConnectionType connections = 3;
+    bool hook_ids = 4;
 }
 
 message CloudFunctionRequestType {
@@ -282,4 +283,13 @@ message ConnectionType {
     string type = 3;
 }
 
+message Webhook {
+    string id = 1;
+    string _key = 2;
+    string type = 3;
+    string name = 4;
+    string model = 5;
+    repeated string events = 6;
+    string url = 7;
+}
 
