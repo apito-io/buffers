@@ -73,12 +73,6 @@ message ImageMetaInfo {
     string type = 5;
 }
 
-message TokenClaims {
-    string payload = 1;
-    string user_id = 2;
-    string project_id = 3;
-}
-
 message LoginRequest {
     string username = 1;
     string email = 2;
@@ -110,6 +104,7 @@ message UserMeta {
     string avatar = 2;
     string name = 3;
     string role = 4;
+    string email = 5;
 }
 
 message MetaField {
