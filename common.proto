@@ -217,22 +217,29 @@ message ModelType {
 }
 
 message CloudFunctionRequestType {
-    string type = 1; // fixed, json
-    string fixed_model_name = 2; // fixed model name
-    repeated FieldInfo params = 3; // fixed dynamic request type
+    string model = 2; // fixed model name Ex: model, JSON, CUSTOM
+    repeated FieldInfo params = 3; // for only fixed CUSTOM request type
 }
 
 message CloudFunctionResponseType {
-    string type = 1; // fixed, json
-    string fixed_model_name = 2; // fixed model name
-    string relation = 3; // array, object
+    string model = 2; // fixed model name Ex: model, JSON, CUSTOM
+    string response_type = 3; // array, object or string
 }
 
 message CloudFunction {
     string id = 1;
     string name = 2;
-    CloudFunctionRequestType request = 3;
-    CloudFunctionResponseType response = 4;
+    map<string, string> env_vars = 3;
+    CloudFunctionRequestType request = 4;
+    CloudFunctionResponseType response = 5;
+    FunctionConfig configs = 6;
+}
+
+message FunctionConfig {
+    string runtime = 1;
+    uint32 memory = 2;
+    string handler = 3;
+    uint32 time_out = 4;
 }
 
 message Validation {
