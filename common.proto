@@ -223,6 +223,8 @@ message CloudFunction {
     CloudFunctionRequestResponseType request = 4;
     CloudFunctionRequestResponseType response = 5;
     FunctionConfig configs = 6;
+    string remote_function_name = 7;
+    string updated_at = 8;
 }
 
 message CloudFunctionRequestResponseType {
