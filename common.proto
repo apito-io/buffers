@@ -228,6 +228,7 @@ message CloudFunction {
     string created_at = 9;
     string function_provider = 10;
     bool function_connected = 11;
+    string region = 12;
 }
 
 message CloudFunctionRequestResponseType {
