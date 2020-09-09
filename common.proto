@@ -225,6 +225,9 @@ message CloudFunction {
     FunctionConfig configs = 6;
     string remote_function_name = 7;
     string updated_at = 8;
+    string created_at = 9;
+    string function_provider = 10;
+    bool function_connected = 11;
 }
 
 message CloudFunctionRequestResponseType {
