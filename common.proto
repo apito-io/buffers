@@ -219,16 +219,20 @@ message ModelType {
 message CloudFunction {
     string id = 1;
     string name = 2;
+    CloudFunctionRequestResponseType request = 3;
+    CloudFunctionRequestResponseType response = 4;
+    string function_provider = 5;
+    bool function_connected = 6;
+    string updated_at = 7;
+    string created_at = 8;
+    FunctionProviderConfig provider_config = 9;
+}
+
+message FunctionProviderConfig {
+    string remote_function_name = 1;
+    string region = 2;
     map<string, string> env_vars = 3;
-    CloudFunctionRequestResponseType request = 4;
-    CloudFunctionRequestResponseType response = 5;
-    FunctionConfig configs = 6;
-    string remote_function_name = 7;
-    string updated_at = 8;
-    string created_at = 9;
-    string function_provider = 10;
-    bool function_connected = 11;
-    string region = 12;
+    FunctionInternalConfig configs = 4;
 }
 
 message CloudFunctionRequestResponseType {
@@ -236,7 +240,7 @@ message CloudFunctionRequestResponseType {
     repeated FieldInfo params = 3; // for only fixed CUSTOM request type
 }
 
-message FunctionConfig {
+message FunctionInternalConfig {
     string runtime = 1;
     uint32 memory = 2;
     string handler = 3;
