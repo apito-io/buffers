@@ -242,9 +242,9 @@ message CloudFunctionRequestResponseType {
 
 message FunctionInternalConfig {
     string runtime = 1;
-    uint32 memory = 2;
+    int64 memory = 2;
     string handler = 3;
-    uint32 time_out = 4;
+    int64 time_out = 4;
 }
 
 message Validation {
