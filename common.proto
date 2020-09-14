@@ -6,299 +6,299 @@ option go_package = "gitlab.com/apito.io/buffers/protobuff";
 import "third/gogo.proto";
 
 message PictureDeleteRequest {
-    repeated string urls = 1;
-    string model = 2;
-    string id = 3;
-    string field_name = 4;
+    repeated string urls = 1  [(gogoproto.moretags) = 'firestore:"urls,omitempty"'];
+    string model = 2 [(gogoproto.moretags) = 'firestore:"model,omitempty"'];
+    string id = 3 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
+    string field_name = 4 [(gogoproto.moretags) = 'firestore:"field_name,omitempty"'];
 }
 
 message FileDetails {
-    string id = 1;
-    string _key = 2;
-    string type = 3;
-    string file_extension = 4;
-    string file_name = 5;
-    string content_type = 6;
-    int64 size = 7;
-    string s3_key = 8;
-    string url = 9;
-    string created_at = 10;
-    UploadParams upload_param = 11;
+    string id = 1 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
+    string _key = 2 [(gogoproto.moretags) = 'firestore:"_key,omitempty"'];
+    string type = 3 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
+    string file_extension = 4 [(gogoproto.moretags) = 'file_extension:"title,omitempty"'];
+    string file_name = 5 [(gogoproto.moretags) = 'firestore:"file_name,omitempty"'];
+    string content_type = 6 [(gogoproto.moretags) = 'firestore:"content_type,omitempty"'];
+    int64 size = 7 [(gogoproto.moretags) = 'firestore:"size,omitempty"'];
+    string s3_key = 8 [(gogoproto.moretags) = 'firestore:"s3_key,omitempty"'];
+    string url = 9 [(gogoproto.moretags) = 'firestore:"url,omitempty"'];
+    string created_at = 10 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
+    UploadParams upload_param = 11 [(gogoproto.moretags) = 'firestore:"upload_param,omitempty"'];
 }
 
 message UploadParams {
-    string doc_id = 1;
-    string project_id = 2;
-    string model_name = 3;
-    string field_name = 4;
-    bool allow_multi = 5;
+    string doc_id = 1 [(gogoproto.moretags) = 'firestore:"doc_id,omitempty"'];
+    string project_id = 2 [(gogoproto.moretags) = 'firestore:"project_id,omitempty"'];
+    string model_name = 3 [(gogoproto.moretags) = 'firestore:"model_name,omitempty"'];
+    string field_name = 4 [(gogoproto.moretags) = 'firestore:"field_name,omitempty"'];
+    bool allow_multi = 5 [(gogoproto.moretags) = 'firestore:"allow_multi,omitempty"'];
 }
 
 message Filter {
-    uint32 page = 1;
-    uint32 offset = 2;
-    uint32 limit = 3;
-    string order = 4;
-    uint32 min = 5;
-    uint32 max = 6;
-    string category = 7;
+    uint32 page = 1 [(gogoproto.moretags) = 'firestore:"page,omitempty"'];
+    uint32 offset = 2 [(gogoproto.moretags) = 'firestore:"offset,omitempty"'];
+    uint32 limit = 3 [(gogoproto.moretags) = 'firestore:"limit,omitempty"'];
+    string order = 4 [(gogoproto.moretags) = 'firestore:"order,omitempty"'];
+    uint32 min = 5 [(gogoproto.moretags) = 'firestore:"min,omitempty"'];
+    uint32 max = 6 [(gogoproto.moretags) = 'firestore:"max,omitempty"'];
+    string category = 7 [(gogoproto.moretags) = 'firestore:"category,omitempty"'];
 }
 
 message Request {
-    string id = 1;
-    string type = 2;
-    Filter filter = 4;
-    string search_string = 5;
-    bool retry = 6;
+    string id = 1 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
+    string type = 2 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
+    Filter filter = 4 [(gogoproto.moretags) = 'firestore:"filter,omitempty"'];
+    string search_string = 5 [(gogoproto.moretags) = 'firestore:"search_string,omitempty"'];
+    bool retry = 6 [(gogoproto.moretags) = 'firestore:"retry,omitempty"'];
 }
 
 // File Picker
 message FileLink {
-    string link = 1;
-    string title = 2;
-    string created_at = 3;
-    string updated_at = 4;
+    string link = 1 [(gogoproto.moretags) = 'firestore:"link,omitempty"'];
+    string title = 2 [(gogoproto.moretags) = 'firestore:"title,omitempty"'];
+    string created_at = 3 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
+    string updated_at = 4 [(gogoproto.moretags) = 'firestore:"updated_at,omitempty"'];
 }
 
 message FilePickParameter {
-    uint32 number_of_images = 1;
-    string s3_folder = 2;
-    string picker_title = 3;
-    RegisteredUser origin = 4;
+    uint32 number_of_images = 1 [(gogoproto.moretags) = 'firestore:"number_of_images,omitempty"'];
+    string s3_folder = 2 [(gogoproto.moretags) = 'firestore:"s3_folder,omitempty"'];
+    string picker_title = 3 [(gogoproto.moretags) = 'firestore:"picker_title,omitempty"'];
+    RegisteredUser origin = 4 [(gogoproto.moretags) = 'firestore:"origin,omitempty"'];
 }
 
 message ImageMetaInfo {
-    string identifier = 1;
-    string name = 2;
-    uint32 width = 3;
-    uint32 height = 4;
-    string type = 5;
+    string identifier = 1 [(gogoproto.moretags) = 'firestore:"identifier,omitempty"'];
+    string name = 2 [(gogoproto.moretags) = 'firestore:"name,omitempty"'];
+    uint32 width = 3 [(gogoproto.moretags) = 'firestore:"width,omitempty"'];
+    uint32 height = 4 [(gogoproto.moretags) = 'firestore:"height,omitempty"'];
+    string type = 5 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
 }
 
 message LoginRequest {
-    string username = 1;
-    string email = 2;
-    string secret = 3;
+    string username = 1 [(gogoproto.moretags) = 'firestore:"username,omitempty"'];
+    string email = 2 [(gogoproto.moretags) = 'firestore:"email,omitempty"'];
+    string secret = 3 [(gogoproto.moretags) = 'firestore:"secret,omitempty"'];
 }
 
 message ProjectInvolvement {
-    string id = 1;
-    UserMeta user = 3;
+    string id = 1 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
+    UserMeta user = 3 [(gogoproto.moretags) = 'firestore:"user,omitempty"'];
 }
 
 message RegisteredUser {
-    string _key = 1;
-    string id = 2;
-    string name = 3;
-    string username = 4;
-    string email = 5;
-    string secret = 6;
-    string avatar = 7;
-    string current_project_id = 8;
-    string current_project_token = 9;
-    repeated ProjectInvolvement projects = 10;
-    AccountUsage account_usage = 11;
-    bool apito_access = 12;
+    string _key = 1 [(gogoproto.moretags) = 'firestore:"_key,omitempty"'];
+    string id = 2 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
+    string name = 3 [(gogoproto.moretags) = 'firestore:"name,omitempty"'];
+    string username = 4 [(gogoproto.moretags) = 'firestore:"username,omitempty"'];
+    string email = 5 [(gogoproto.moretags) = 'firestore:"email,omitempty"'];
+    string secret = 6 [(gogoproto.moretags) = 'firestore:"secret,omitempty"'];
+    string avatar = 7 [(gogoproto.moretags) = 'firestore:"avatar,omitempty"'];
+    string current_project_id = 8 [(gogoproto.moretags) = 'firestore:"current_project_id,omitempty"'];
+    string current_project_token = 9 [(gogoproto.moretags) = 'firestore:"current_project_token,omitempty"'];
+    repeated ProjectInvolvement projects = 10 [(gogoproto.moretags) = 'firestore:"projects,omitempty"'];
+    AccountUsage account_usage = 11 [(gogoproto.moretags) = 'firestore:"account_usage,omitempty"'];
+    bool apito_access = 12 [(gogoproto.moretags) = 'firestore:"apito_access,omitempty"'];
 }
 
 message UserMeta {
-    string id = 1;
-    string avatar = 2;
-    string name = 3;
-    string role = 4;
-    string email = 5;
+    string id = 1 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
+    string avatar = 2 [(gogoproto.moretags) = 'firestore:"avatar,omitempty"'];
+    string name = 3 [(gogoproto.moretags) = 'firestore:"name,omitempty"'];
+    string role = 4 [(gogoproto.moretags) = 'firestore:"role,omitempty"'];
+    string email = 5 [(gogoproto.moretags) = 'firestore:"email,omitempty"'];
 }
 
 message MetaField {
-    string created_at = 1;
-    string updated_at = 2;
-    UserMeta created_by = 3;
-    UserMeta last_modified_by = 4;
-    string status = 5;
+    string created_at = 1 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
+    string updated_at = 2 [(gogoproto.moretags) = 'firestore:"updated_at,omitempty"'];
+    UserMeta created_by = 3 [(gogoproto.moretags) = 'firestore:"title,omitempty"'];
+    UserMeta last_modified_by = 4 [(gogoproto.moretags) = 'firestore:"created_by,omitempty"'];
+    string status = 5 [(gogoproto.moretags) = 'firestore:"status,omitempty"'];
 }
 
 message PreviewMode {
-    string title = 1 [(gogoproto.moretags) = 'firebase:"title,omitempty"'];
-    string icon = 2 [(gogoproto.moretags) = 'firebase:"icon,omitempty"'];
-    string status = 3 [(gogoproto.moretags) = 'firebase:"status,omitempty"'];
-    string id = 4 [(gogoproto.moretags) = 'firebase:"id,omitempty"'];
+    string title = 1 [(gogoproto.moretags) = 'firestore:"title,omitempty"'];
+    string icon = 2 [(gogoproto.moretags) = 'firestore:"icon,omitempty"'];
+    string status = 3 [(gogoproto.moretags) = 'firestore:"status,omitempty"'];
+    string id = 4 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
 }
 
 // user project
 message Project {
-    string _key = 1 [(gogoproto.moretags) = 'firebase:"_key,omitempty"']; //exclude:"true"`
-    string id = 2 [(gogoproto.moretags) = 'firebase:"id,omitempty"'];
-    string user_id = 3;
-    string project_name = 4;
-    string project_description = 5;
-    UserDefinedSchema schema = 6;
-    repeated UserMeta teams = 7;
-    string created_at = 8;
-    string updated_at = 9;
-    string expire_at = 10;
-    map<string, ExtensionDetails> extensions = 11;
-    AddOnsDetails addons = 12;
-    ProjectUsages usage = 13;
-    ProjectUsages limits = 14;
-    repeated APIToken tokens = 15;
-    string permission_payload = 16;
+    string _key = 1 [(gogoproto.moretags) = 'firestore:"_key,omitempty"']; //exclude:"true"`
+    string id = 2 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
+    string user_id = 3 [(gogoproto.moretags) = 'firestore:"user_id,omitempty"'];
+    string project_name = 4 [(gogoproto.moretags) = 'firestore:"project_name,omitempty"'];
+    string project_description = 5 [(gogoproto.moretags) = 'firestore:"project_description,omitempty"'];
+    UserDefinedSchema schema = 6 [(gogoproto.moretags) = 'firestore:"schema,omitempty"'];
+    repeated UserMeta teams = 7 [(gogoproto.moretags) = 'firestore:"teams,omitempty"'];
+    string created_at = 8 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
+    string updated_at = 9 [(gogoproto.moretags) = 'firestore:"updated_at,omitempty"'];
+    string expire_at = 10 [(gogoproto.moretags) = 'firestore:"expire_at,omitempty"'];
+    map<string, ExtensionDetails> extensions = 11 [(gogoproto.moretags) = 'firestore:"extensions,omitempty"'];
+    AddOnsDetails addons = 12 [(gogoproto.moretags) = 'firestore:"addons,omitempty"'];
+    ProjectUsages usage = 13 [(gogoproto.moretags) = 'firestore:"usage,omitempty"'];
+    ProjectUsages limits = 14 [(gogoproto.moretags) = 'firestore:"limits,omitempty"'];
+    repeated APIToken tokens = 15 [(gogoproto.moretags) = 'firestore:"tokens,omitempty"'];
+    string permission_payload = 16 [(gogoproto.moretags) = 'firestore:"permission_payload,omitempty"'];
 }
 
 message APIToken {
-    string name = 1;
-    string token = 2;
-    string payload = 3;
-    string expire = 4;
+    string name = 1 [(gogoproto.moretags) = 'firestore:"name,omitempty"'];
+    string token = 2 [(gogoproto.moretags) = 'firestore:"token,omitempty"'];
+    string payload = 3 [(gogoproto.moretags) = 'firestore:"payload,omitempty"'];
+    string expire = 4 [(gogoproto.moretags) = 'firestore:"expire,omitempty"'];
 }
 
 message ExtensionDetails {
-    string name = 1;
-    string description = 2;
-    string type = 3;
-    ThirdPartyCredential credentials = 4;
+    string name = 1 [(gogoproto.moretags) = 'firestore:"name,omitempty"'];
+    string description = 2 [(gogoproto.moretags) = 'firestore:"description,omitempty"'];
+    string type = 3 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
+    ThirdPartyCredential credentials = 4 [(gogoproto.moretags) = 'firestore:"credentials,omitempty"'];
 }
 
 message ThirdPartyCredential {
-    string account_id = 1;
-    string access_key = 2;
-    string secret_key = 3;
-    string api_key = 4;
+    string account_id = 1 [(gogoproto.moretags) = 'firestore:"account_id,omitempty"'];
+    string access_key = 2 [(gogoproto.moretags) = 'firestore:"access_key,omitempty"'];
+    string secret_key = 3 [(gogoproto.moretags) = 'firestore:"secret_key,omitempty"'];
+    string api_key = 4 [(gogoproto.moretags) = 'firestore:"api_key,omitempty"'];
 }
 
 message AddOnsDetails {
-    repeated string locals = 1;
-    bool system_graphql_hooks = 2;
-    bool revision_history = 3;
-    AuthenticationAddOns auth = 4;
+    repeated string locals = 1 [(gogoproto.moretags) = 'firestore:"locals,omitempty"'];
+    bool system_graphql_hooks = 2 [(gogoproto.moretags) = 'firestore:"system_graphql_hooks,omitempty"'];
+    bool revision_history = 3 [(gogoproto.moretags) = 'firestore:"revision_history,omitempty"'];
+    AuthenticationAddOns auth = 4 [(gogoproto.moretags) = 'firestore:"auth,omitempty"'];
 }
 
 message AuthenticationAddOns {
-    string type = 1; // phone or email
+    string type = 1 [(gogoproto.moretags) = 'firestore:"type,omitempty"']; // phone or email
 }
 
 message AccountUsage {
-    string id = 1;
-    string _key = 2;
-    string type = 3;
-    repeated MonthlySubscription subscriptions = 4;
-    ProjectUsages limits = 5;
-    repeated ProjectUsages usages = 6;
-    uint32 number_of_project = 7;
+    string id = 1 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
+    string _key = 2 [(gogoproto.moretags) = 'firestore:"_key,omitempty"'];
+    string type = 3 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
+    repeated MonthlySubscription subscriptions = 4 [(gogoproto.moretags) = 'firestore:"subscriptions,omitempty"'];
+    ProjectUsages limits = 5 [(gogoproto.moretags) = 'firestore:"limits,omitempty"'];
+    repeated ProjectUsages usages = 6 [(gogoproto.moretags) = 'firestore:"usages,omitempty"'];
+    uint32 number_of_project = 7 [(gogoproto.moretags) = 'firestore:"number_of_project,omitempty"'];
 }
 
 message MonthlySubscription {
-    string start_date = 1;
-    string end_date = 2;
-    string plan_code = 3;
-    double amount = 4;
-    string promo_code = 5;
+    string start_date = 1 [(gogoproto.moretags) = 'firestore:"start_date,omitempty"'];
+    string end_date = 2 [(gogoproto.moretags) = 'firestore:"end_date,omitempty"'];
+    string plan_code = 3 [(gogoproto.moretags) = 'firestore:"plan_code,omitempty"'];
+    double amount = 4 [(gogoproto.moretags) = 'firestore:"amount,omitempty"'];
+    string promo_code = 5 [(gogoproto.moretags) = 'firestore:"promo_code,omitempty"'];
 }
 
 message ProjectUsages {
-    string id = 1;
-    string _key = 2;
-    string type = 3;
-    uint64 api_calls = 4;
-    double api_bandwidth = 5;
-    uint64 media_storage = 6;
-    double media_bandwidth = 7;
-    uint64 number_of_media = 8;
-    uint64 number_of_records = 9;
+    string id = 1 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
+    string _key = 2 [(gogoproto.moretags) = 'firestore:"_key,omitempty"'];
+    string type = 3 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
+    uint64 api_calls = 4 [(gogoproto.moretags) = 'firestore:"api_calls,omitempty"'];
+    double api_bandwidth = 5 [(gogoproto.moretags) = 'firestore:"api_bandwidth,omitempty"'];
+    uint64 media_storage = 6 [(gogoproto.moretags) = 'firestore:"media_storage,omitempty"'];
+    double media_bandwidth = 7 [(gogoproto.moretags) = 'firestore:"media_bandwidth,omitempty"'];
+    uint64 number_of_media = 8 [(gogoproto.moretags) = 'firestore:"number_of_media,omitempty"'];
+    uint64 number_of_records = 9 [(gogoproto.moretags) = 'firestore:"number_of_records,omitempty"'];
 }
 
 message UserDefinedSchema {
-    repeated ModelType models = 1;
-    repeated CloudFunction functions = 2;
+    repeated ModelType models = 1 [(gogoproto.moretags) = 'firestore:"models,omitempty"'];
+    repeated CloudFunction functions = 2 [(gogoproto.moretags) = 'firestore:"functions,omitempty"'];
 }
 
 message ModelType {
-    string name = 1;
-    repeated FieldInfo fields = 2;
-    repeated ConnectionType connections = 3;
-    repeated string hook_ids = 4;
+    string name = 1 [(gogoproto.moretags) = 'firestore:"name,omitempty"'];
+    repeated FieldInfo fields = 2 [(gogoproto.moretags) = 'firestore:"fields,omitempty"'];
+    repeated ConnectionType connections = 3 [(gogoproto.moretags) = 'firestore:"connections,omitempty"'];
+    repeated string hook_ids = 4 [(gogoproto.moretags) = 'firestore:"hook_ids,omitempty"'];
 }
 
 message CloudFunction {
-    string id = 1;
-    string name = 2;
-    CloudFunctionRequestResponseType request = 3;
-    CloudFunctionRequestResponseType response = 4;
-    string function_provider = 5;
-    bool function_connected = 6;
-    string updated_at = 7;
-    string created_at = 8;
-    FunctionProviderConfig provider_config = 9;
+    string id = 1 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
+    string name = 2 [(gogoproto.moretags) = 'firestore:"name,omitempty"'];
+    CloudFunctionRequestResponseType request = 3 [(gogoproto.moretags) = 'firestore:"request,omitempty"'];
+    CloudFunctionRequestResponseType response = 4 [(gogoproto.moretags) = 'firestore:"response,omitempty"'];
+    string function_provider = 5 [(gogoproto.moretags) = 'firestore:"function_provider,omitempty"'];
+    bool function_connected = 6 [(gogoproto.moretags) = 'firestore:"function_connected,omitempty"'];
+    string updated_at = 7 [(gogoproto.moretags) = 'firestore:"updated_at,omitempty"'];
+    string created_at = 8 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
+    FunctionProviderConfig provider_config = 9 [(gogoproto.moretags) = 'firestore:"provider_config,omitempty"'];
 }
 
 message FunctionProviderConfig {
-    string remote_function_name = 1;
-    string region = 2;
-    map<string, string> env_vars = 3;
-    FunctionInternalConfig configs = 4;
+    string remote_function_name = 1 [(gogoproto.moretags) = 'firestore:"remote_function_name,omitempty"'];
+    string region = 2 [(gogoproto.moretags) = 'firestore:"region,omitempty"'];
+    map<string, string> env_vars = 3 [(gogoproto.moretags) = 'firestore:"env_vars,omitempty"'];
+    FunctionInternalConfig configs = 4 [(gogoproto.moretags) = 'firestore:"configs,omitempty"'];
 }
 
 message CloudFunctionRequestResponseType {
-    string model = 2; // fixed model name Ex: model, JSON, CUSTOM
-    repeated FieldInfo params = 3; // for only fixed CUSTOM request type
+    string model = 2 [(gogoproto.moretags) = 'firestore:"model,omitempty"']; // fixed model name Ex: model, JSON, CUSTOM
+    repeated FieldInfo params = 3 [(gogoproto.moretags) = 'firestore:"params,omitempty"']; // for only fixed CUSTOM request type
 }
 
 message FunctionInternalConfig {
-    string runtime = 1;
-    int64 memory = 2;
-    string handler = 3;
-    int64 time_out = 4;
+    string runtime = 1 [(gogoproto.moretags) = 'firestore:"runtime,omitempty"'];
+    int64 memory = 2 [(gogoproto.moretags) = 'firestore:"memory,omitempty"'];
+    string handler = 3 [(gogoproto.moretags) = 'firestore:"handler,omitempty"'];
+    int64 time_out = 4 [(gogoproto.moretags) = 'firestore:"time_out,omitempty"'];
 }
 
 message Validation {
-    bool required = 1;
-    bool hide = 2;
-    bool as_title = 3;
-    repeated string locals = 4;
-    bool unique = 5;
-    repeated uint32 char_limit = 6;
-    repeated uint32 int_range_limit = 10;
-    repeated double double_range_limit = 11;
-    bool is_email = 7;
-    string placeholder = 8;
-    repeated string fixed_list_elements = 9;
-    bool is_multi_choice = 12;
-    string list_type = 13;
-    bool is_gallery = 14;
+    bool required = 1 [(gogoproto.moretags) = 'firestore:"required,omitempty"'];
+    bool hide = 2 [(gogoproto.moretags) = 'firestore:"hide,omitempty"'];
+    bool as_title = 3 [(gogoproto.moretags) = 'firestore:"as_title,omitempty"'];
+    repeated string locals = 4 [(gogoproto.moretags) = 'firestore:"locals,omitempty"'];
+    bool unique = 5 [(gogoproto.moretags) = 'firestore:"unique,omitempty"'];
+    repeated uint32 char_limit = 6 [(gogoproto.moretags) = 'firestore:"char_limit,omitempty"'];
+    repeated uint32 int_range_limit = 10 [(gogoproto.moretags) = 'firestore:"int_range_limit,omitempty"'];
+    repeated double double_range_limit = 11 [(gogoproto.moretags) = 'firestore:"double_range_limit,omitempty"'];
+    bool is_email = 7 [(gogoproto.moretags) = 'firestore:"is_email,omitempty"'];
+    string placeholder = 8 [(gogoproto.moretags) = 'firestore:"placeholder,omitempty"'];
+    repeated string fixed_list_elements = 9 [(gogoproto.moretags) = 'firestore:"fixed_list_elements,omitempty"'];
+    bool is_multi_choice = 12 [(gogoproto.moretags) = 'firestore:"is_multi_choice,omitempty"'];
+    string list_type = 13 [(gogoproto.moretags) = 'firestore:"list_type,omitempty"'];
+    bool is_gallery = 14 [(gogoproto.moretags) = 'firestore:"is_gallery,omitempty"'];
 }
 
 message FieldInfo {
-    string identifier = 1;
-    string description = 2;
-    string input_type = 3; // string
-    string field_type = 4; // list
-    repeated SubFieldInfo modules = 5; // to avoid a loop
-    Validation validation = 6;
-    uint32 serial = 7;
-    string label = 8;
+    string identifier = 1 [(gogoproto.moretags) = 'firestore:"identifier,omitempty"'];
+    string description = 2 [(gogoproto.moretags) = 'firestore:"description,omitempty"'];
+    string input_type = 3 [(gogoproto.moretags) = 'firestore:"input_type,omitempty"']; // string
+    string field_type = 4 [(gogoproto.moretags) = 'firestore:"field_type,omitempty"']; // list
+    repeated SubFieldInfo modules = 5 [(gogoproto.moretags) = 'firestore:"modules,omitempty"']; // to avoid a loop
+    Validation validation = 6 [(gogoproto.moretags) = 'firestore:"validation,omitempty"'];
+    uint32 serial = 7 [(gogoproto.moretags) = 'firestore:"serial,omitempty"'];
+    string label = 8 [(gogoproto.moretags) = 'firestore:"label,omitempty"'];
 }
 
 message SubFieldInfo {
-    string name = 1;
-    string description = 2;
-    string input_type = 3; // string
-    string field_type = 4; // array
-    Validation validation = 5;
-    uint32 serial = 6;
+    string name = 1 [(gogoproto.moretags) = 'firestore:"name,omitempty"'];
+    string description = 2 [(gogoproto.moretags) = 'firestore:"description,omitempty"'];
+    string input_type = 3 [(gogoproto.moretags) = 'firestore:"input_type,omitempty"']; // string
+    string field_type = 4 [(gogoproto.moretags) = 'firestore:"field_type,omitempty"']; // array
+    Validation validation = 5 [(gogoproto.moretags) = 'firestore:"validation,omitempty"'];
+    uint32 serial = 6 [(gogoproto.moretags) = 'firestore:"serial,omitempty"'];
 }
 
 message ConnectionType {
-    string model = 1;
-    string relation = 2;
-    string type = 3;
+    string model = 1 [(gogoproto.moretags) = 'firestore:"model,omitempty"'];
+    string relation = 2 [(gogoproto.moretags) = 'firestore:"relation,omitempty"'];
+    string type = 3 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
 }
 
 message Webhook {
-    string id = 1;
-    string _key = 2;
-    string type = 3;
-    string name = 4;
-    string model = 5;
-    repeated string events = 6;
-    string url = 7;
+    string id = 1 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
+    string _key = 2 [(gogoproto.moretags) = 'firestore:"_key,omitempty"'];
+    string type = 3 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
+    string name = 4 [(gogoproto.moretags) = 'firestore:"name,omitempty"'];
+    string model = 5 [(gogoproto.moretags) = 'firestore:"model,omitempty"'];
+    repeated string events = 6 [(gogoproto.moretags) = 'firestore:"events,omitempty"'];
+    string url = 7 [(gogoproto.moretags) = 'firestore:"url,omitempty"'];
 }
 
