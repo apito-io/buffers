@@ -3,6 +3,8 @@ syntax = "proto3";
 package protobuff;
 option go_package = "gitlab.com/apito.io/buffers/protobuff";
 
+import "third/gogo.proto";
+
 message PictureDeleteRequest {
     repeated string urls = 1;
     string model = 2;
@@ -116,16 +118,16 @@ message MetaField {
 }
 
 message PreviewMode {
-    string title = 1;
-    string icon = 2;
-    string status = 3;
-    string id = 4;
+    string title = 1 [(gogoproto.moretags) = 'firebase:"title,omitempty"'];
+    string icon = 2 [(gogoproto.moretags) = 'firebase:"icon,omitempty"'];
+    string status = 3 [(gogoproto.moretags) = 'firebase:"status,omitempty"'];
+    string id = 4 [(gogoproto.moretags) = 'firebase:"id,omitempty"'];
 }
 
 // user project
 message Project {
-    string _key = 1; //exclude:"true"`
-    string id = 2;
+    string _key = 1 [(gogoproto.moretags) = 'firebase:"_key,omitempty"']; //exclude:"true"`
+    string id = 2 [(gogoproto.moretags) = 'firebase:"id,omitempty"'];
     string user_id = 3;
     string project_name = 4;
     string project_description = 5;

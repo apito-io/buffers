@@ -12,4 +12,4 @@ $(ALL):
 
 $(COMMON_DIR):
 		#protoc --gogofaster_out=plugins=grpc:$(GOPATH)/src $(COMMON_DIR)*.proto gogo.proto chunk.proto --dart_out=/Users/diablo/Projects/flutter/udhvabon/xbackend_web_mvp/lib/buffers
-		protoc --gogofaster_out=plugins=grpc:$(GOPATH)/src $(COMMON_DIR)*.proto gogo.proto chunk.proto
+		protoc  --gogofaster_out=plugins=grpc:$(GOPATH)/src $(COMMON_DIR)*.proto chunk.proto
