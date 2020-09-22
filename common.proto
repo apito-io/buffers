@@ -64,7 +64,7 @@ message FilePickParameter {
     uint32 number_of_images = 1 [(gogoproto.moretags) = 'firestore:"number_of_images,omitempty"'];
     string s3_folder = 2 [(gogoproto.moretags) = 'firestore:"s3_folder,omitempty"'];
     string picker_title = 3 [(gogoproto.moretags) = 'firestore:"picker_title,omitempty"'];
-    RegisteredUser origin = 4 [(gogoproto.moretags) = 'firestore:"origin,omitempty"'];
+    SystemUser origin = 4 [(gogoproto.moretags) = 'firestore:"origin,omitempty"'];
 }
 
 message ImageMetaInfo {
@@ -86,7 +86,23 @@ message ProjectInvolvement {
     UserMeta user = 3 [(gogoproto.moretags) = 'firestore:"user,omitempty"'];
 }
 
-message RegisteredUser {
+message Role {
+    string id = 1;
+    string _key = 2;
+    string type = 3;
+    string name = 4;
+    map<string, APIPermission> permissions = 5;
+    repeated string administrative_permissions = 6;
+}
+
+message APIPermission {
+    string read = 2;
+    string create = 3;
+    string update = 4;
+    string delete = 5;
+}
+
+message SystemUser {
     string _key = 1 [(gogoproto.moretags) = 'firestore:"_key,omitempty"'];
     string id = 2 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
     string name = 3 [(gogoproto.moretags) = 'firestore:"name,omitempty"'];
@@ -100,6 +116,20 @@ message RegisteredUser {
     AccountUsage account_usage = 11 [(gogoproto.moretags) = 'firestore:"account_usage,omitempty"'];
     bool apito_access = 12 [(gogoproto.moretags) = 'firestore:"apito_access,omitempty"'];
 }
+
+message ProjectUser {
+    string _key = 1 [(gogoproto.moretags) = 'firestore:"_key,omitempty"'];
+    string id = 2 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
+    string name = 3 [(gogoproto.moretags) = 'firestore:"name,omitempty"'];
+    string username = 4 [(gogoproto.moretags) = 'firestore:"username,omitempty"'];
+    string email = 5 [(gogoproto.moretags) = 'firestore:"email,omitempty"'];
+    string secret = 6 [(gogoproto.moretags) = 'firestore:"secret,omitempty"'];
+    string avatar = 7 [(gogoproto.moretags) = 'firestore:"avatar,omitempty"'];
+    repeated string roles = 8 [(gogoproto.moretags) = 'firestore:"roles,omitempty"'];
+    repeated string tenants = 9 [(gogoproto.moretags) = 'firestore:"tenants,omitempty"'];
+    map<string, string> extra_info = 10 [(gogoproto.moretags) = 'firestore:"extra_info,omitempty"'];
+}
+
 
 message UserMeta {
     string id = 1 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
@@ -175,6 +205,7 @@ message AddOnsDetails {
 
 message AuthenticationAddOns {
     string type = 1 [(gogoproto.moretags) = 'firestore:"type,omitempty"']; // phone or email
+    string auth_user_roles = 2 [(gogoproto.moretags) = 'firestore:"auth_user_roles,omitempty"'];
 }
 
 message AccountUsage {
