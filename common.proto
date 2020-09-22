@@ -90,6 +90,7 @@ message Role {
     map<string, APIPermission> api_permissions = 1 [(gogoproto.moretags) = 'firestore:"permissions,omitempty"'];
     repeated string administrative_permissions = 2 [(gogoproto.moretags) = 'firestore:"administrative_permissions,omitempty"'];
     bool system_generated = 3 [(gogoproto.moretags) = 'firestore:"system_generated,omitempty"'];
+    bool is_admin = 4 [(gogoproto.moretags) = 'firestore:"is_admin,omitempty"'];
 }
 
 message APIPermission {
