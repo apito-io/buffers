@@ -169,7 +169,7 @@ message Project {
     ProjectUsages limits = 14 [(gogoproto.moretags) = 'firestore:"limits,omitempty"'];
     repeated APIToken tokens = 15 [(gogoproto.moretags) = 'firestore:"tokens,omitempty"'];
     string permission_payload = 16 [(gogoproto.moretags) = 'firestore:"permission_payload,omitempty"'];
-    Role roles = 17  [(gogoproto.moretags) = 'firestore:"roles,omitempty"'];
+    map<string,Role> roles = 17  [(gogoproto.moretags) = 'firestore:"roles,omitempty"'];
 }
 
 message APIToken {
