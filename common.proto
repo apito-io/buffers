@@ -91,7 +91,7 @@ message Role {
     string _key = 2 [(gogoproto.moretags) = 'firestore:"_key,omitempty"'];
     string type = 3 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
     string name = 4 [(gogoproto.moretags) = 'firestore:"name,omitempty"'];
-    map<string, APIPermission> permissions = 5 [(gogoproto.moretags) = 'firestore:"permissions,omitempty"'];
+    map<string, APIPermission> api_permissions = 5 [(gogoproto.moretags) = 'firestore:"permissions,omitempty"'];
     repeated string administrative_permissions = 6 [(gogoproto.moretags) = 'firestore:"administrative_permissions,omitempty"'];
     bool system_generated = 7 [(gogoproto.moretags) = 'firestore:"system_generated,omitempty"'];
 }
