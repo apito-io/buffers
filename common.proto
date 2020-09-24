@@ -144,6 +144,7 @@ message MetaField {
     UserMeta created_by = 3 [(gogoproto.moretags) = 'firestore:"title,omitempty"'];
     UserMeta last_modified_by = 4 [(gogoproto.moretags) = 'firestore:"created_by,omitempty"'];
     string status = 5 [(gogoproto.moretags) = 'firestore:"status,omitempty"'];
+    string tenant_id = 6 [(gogoproto.moretags) = 'firestore:"tenant_id,omitempty"'];
 }
 
 message PreviewMode {
