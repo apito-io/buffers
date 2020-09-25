@@ -206,6 +206,7 @@ message AddOnsDetails {
 message AuthenticationAddOns {
     string type = 1 [(gogoproto.moretags) = 'firestore:"type,omitempty"']; // phone or email
     string auth_user_roles = 2 [(gogoproto.moretags) = 'firestore:"auth_user_roles,omitempty"'];
+    repeated string protected_models = 3 [(gogoproto.moretags) = 'firestore:"protected_models,omitempty"'];
 }
 
 message AccountUsage {
