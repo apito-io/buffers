@@ -248,6 +248,7 @@ message ModelType {
     repeated FieldInfo fields = 2 [(gogoproto.moretags) = 'firestore:"fields,omitempty"'];
     repeated ConnectionType connections = 3 [(gogoproto.moretags) = 'firestore:"connections,omitempty"'];
     repeated string hook_ids = 4 [(gogoproto.moretags) = 'firestore:"hook_ids,omitempty"'];
+    bool system_generated = 5;
 }
 
 message CloudFunction {
@@ -322,6 +323,8 @@ message ConnectionType {
     string model = 1 [(gogoproto.moretags) = 'firestore:"model,omitempty"'];
     string relation = 2 [(gogoproto.moretags) = 'firestore:"relation,omitempty"'];
     string type = 3 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
+    bool multi_tenant_relation = 4;
+    bool protected_relation = 5;
 }
 
 message Webhook {
