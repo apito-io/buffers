@@ -177,7 +177,7 @@ message Project {
 message APIToken {
     string name = 1 [(gogoproto.moretags) = 'firestore:"name,omitempty"'];
     string token = 2 [(gogoproto.moretags) = 'firestore:"token,omitempty"'];
-    string payload = 3 [(gogoproto.moretags) = 'firestore:"payload,omitempty"'];
+    string role = 3 [(gogoproto.moretags) = 'firestore:"role,omitempty"'];
     string expire = 4 [(gogoproto.moretags) = 'firestore:"expire,omitempty"'];
 }
 
