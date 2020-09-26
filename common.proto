@@ -309,6 +309,7 @@ message FieldInfo {
     Validation validation = 6 [(gogoproto.moretags) = 'firestore:"validation,omitempty"'];
     uint32 serial = 7 [(gogoproto.moretags) = 'firestore:"serial,omitempty"'];
     string label = 8 [(gogoproto.moretags) = 'firestore:"label,omitempty"'];
+    bool system_generated = 9 [(gogoproto.moretags) = 'firestore:"system_generated,omitempty"'];
 }
 
 message SubFieldInfo {
@@ -318,6 +319,7 @@ message SubFieldInfo {
     string field_type = 4 [(gogoproto.moretags) = 'firestore:"field_type,omitempty"']; // array
     Validation validation = 5 [(gogoproto.moretags) = 'firestore:"validation,omitempty"'];
     uint32 serial = 6 [(gogoproto.moretags) = 'firestore:"serial,omitempty"'];
+    bool system_generated = 7 [(gogoproto.moretags) = 'firestore:"system_generated,omitempty"'];
 }
 
 message ConnectionType {
