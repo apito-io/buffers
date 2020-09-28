@@ -286,6 +286,7 @@ message Validation {
     string list_type = 13 [(gogoproto.moretags) = 'firestore:"list_type,omitempty"'];
     bool is_gallery = 14 [(gogoproto.moretags) = 'firestore:"is_gallery,omitempty"'];
     bool is_password = 15 [(gogoproto.moretags) = 'firestore:"is_gallery,omitempty"'];
+    bool is_system_role = 16 [(gogoproto.moretags) = 'firestore:"is_gallery,omitempty"'];
 }
 
 message FieldInfo {
