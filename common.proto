@@ -113,7 +113,7 @@ message SystemUser {
     string current_project_token = 9 [(gogoproto.moretags) = 'firestore:"current_project_token,omitempty"'];
     repeated ProjectInvolvement projects = 10 [(gogoproto.moretags) = 'firestore:"projects,omitempty"'];
     AccountUsage account_usage = 11 [(gogoproto.moretags) = 'firestore:"account_usage,omitempty"'];
-    bool apito_access = 12 [(gogoproto.moretags) = 'firestore:"apito_access,omitempty"'];
+    bool is_super_admin = 12 [(gogoproto.moretags) = 'firestore:"is_super_admin,omitempty"'];
 }
 
 message UserMeta {
