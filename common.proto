@@ -219,7 +219,7 @@ message ProjectUsages {
     string type = 3 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
     uint32 api_calls = 4 [(gogoproto.moretags) = 'firestore:"api_calls,omitempty"'];
     double api_bandwidth = 5 [(gogoproto.moretags) = 'firestore:"api_bandwidth,omitempty"'];
-    uint32 media_storage = 6 [(gogoproto.moretags) = 'firestore:"media_storage,omitempty"'];
+    double media_storage = 6 [(gogoproto.moretags) = 'firestore:"media_storage,omitempty"'];
     double media_bandwidth = 7 [(gogoproto.moretags) = 'firestore:"media_bandwidth,omitempty"'];
     uint32 number_of_media = 8 [(gogoproto.moretags) = 'firestore:"number_of_media,omitempty"'];
     uint32 number_of_records = 9 [(gogoproto.moretags) = 'firestore:"number_of_records,omitempty"'];
