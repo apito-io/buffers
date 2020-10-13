@@ -162,11 +162,12 @@ message Project {
 }
 
 message DriverCredentials {
-    string engine = 5;
-    string host = 1;
-    string port = 2;
-    string user = 3;
-    string secret = 4;
+    string engine = 1;
+    string host = 2;
+    string port = 3;
+    string user = 4;
+    string secret = 5;
+    string database = 6;
 }
 
 message APIToken {
