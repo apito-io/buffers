@@ -158,6 +158,15 @@ message Project {
     ProjectUsages limits = 14 [(gogoproto.moretags) = 'firestore:"limits,omitempty"'];
     repeated APIToken tokens = 15 [(gogoproto.moretags) = 'firestore:"tokens,omitempty"'];
     map<string,Role> roles = 16  [(gogoproto.moretags) = 'firestore:"roles,omitempty"'];
+    DriverCredentials driver = 17 [(gogoproto.moretags) = 'firestore:"driver,omitempty"'];
+}
+
+message DriverCredentials {
+    string engine = 5;
+    string host = 1;
+    string port = 2;
+    string user = 3;
+    string secret = 4;
 }
 
 message APIToken {
