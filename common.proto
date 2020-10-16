@@ -334,8 +334,8 @@ message Webhook {
     string id = 1 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
     string _key = 2 [(gogoproto.moretags) = 'firestore:"_key,omitempty"'];
     string type = 3 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
-    string name = 4 [(gogoproto.moretags) = 'firestore:"name,omitempty"'];
-    string model = 5 [(gogoproto.moretags) = 'firestore:"model,omitempty"'];
+    string project_id = 4 [(gogoproto.moretags) = 'firestore:"project_id,omitempty"'];
+    string name = 5 [(gogoproto.moretags) = 'firestore:"name,omitempty"'];
     repeated string events = 6 [(gogoproto.moretags) = 'firestore:"events,omitempty"'];
     string url = 7 [(gogoproto.moretags) = 'firestore:"url,omitempty"'];
     repeated string logic_executions = 8 [(gogoproto.moretags) = 'firestore:"logic_executions,omitempty"'];
