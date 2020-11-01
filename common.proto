@@ -305,7 +305,7 @@ message FieldInfo {
     string description = 2 [(gogoproto.moretags) = 'firestore:"description,omitempty"'];
     string input_type = 3 [(gogoproto.moretags) = 'firestore:"input_type,omitempty"']; // string
     string field_type = 4 [(gogoproto.moretags) = 'firestore:"field_type,omitempty"']; // list
-    repeated SubFieldInfo modules = 5 [(gogoproto.moretags) = 'firestore:"modules,omitempty"']; // to avoid a loop
+    repeated SubFieldInfo sub_field_info = 5 [(gogoproto.moretags) = 'firestore:"modules,omitempty"']; // to avoid a loop
     Validation validation = 6 [(gogoproto.moretags) = 'firestore:"validation,omitempty"'];
     uint32 serial = 7 [(gogoproto.moretags) = 'firestore:"serial,omitempty"'];
     string label = 8 [(gogoproto.moretags) = 'firestore:"label,omitempty"'];
