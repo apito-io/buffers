@@ -246,7 +246,8 @@ message ModelType {
     repeated ConnectionType connections = 3 [(gogoproto.moretags) = 'firestore:"connections,omitempty"'];
     repeated string hook_ids = 4 [(gogoproto.moretags) = 'firestore:"hook_ids,omitempty"'];
     repeated string locals  = 5 [(gogoproto.moretags) = 'firestore:"locals,omitempty"'];
-    bool system_generated = 6 [(gogoproto.moretags) = 'firestore:"system_generated,omitempty"'];
+    repeated string repeated_groups = 6 [(gogoproto.moretags) = 'firestore:"locals,omitempty"'];
+    bool system_generated = 7 [(gogoproto.moretags) = 'firestore:"system_generated,omitempty"'];
 }
 
 message CloudFunction {
