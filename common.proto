@@ -168,6 +168,8 @@ message DriverCredentials {
     string user = 4;
     string secret = 5;
     string database = 6;
+    string project_id = 7;
+    string project_credential_json = 8;
 }
 
 message APIToken {
