@@ -312,6 +312,7 @@ message FieldInfo {
     uint32 serial = 7 [(gogoproto.moretags) = 'firestore:"serial,omitempty"'];
     string label = 8 [(gogoproto.moretags) = 'firestore:"label,omitempty"'];
     bool system_generated = 9 [(gogoproto.moretags) = 'firestore:"system_generated,omitempty"'];
+    uint32 index = 10 [(gogoproto.moretags) = 'firestore:"index,omitempty"'];
 }
 
 message SubFieldInfo {
