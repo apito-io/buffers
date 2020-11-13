@@ -154,8 +154,8 @@ message Project {
     string expire_at = 10 [(gogoproto.moretags) = 'firestore:"expire_at,omitempty"'];
     map<string, ExtensionDetails> extensions = 11 [(gogoproto.moretags) = 'firestore:"extensions,omitempty"'];
     AddOnsDetails addons = 12 [(gogoproto.moretags) = 'firestore:"addons,omitempty"'];
-    ProjectUsages usage = 13 [(gogoproto.moretags) = 'firestore:"usage,omitempty"'];
-    ProjectUsages limits = 14 [(gogoproto.moretags) = 'firestore:"limits,omitempty"'];
+    ProjectUse usage = 13 [(gogoproto.moretags) = 'firestore:"usage,omitempty"'];
+    ProjectUse limits = 14 [(gogoproto.moretags) = 'firestore:"limits,omitempty"'];
     repeated APIToken tokens = 15 [(gogoproto.moretags) = 'firestore:"tokens,omitempty"'];
     map<string,Role> roles = 16  [(gogoproto.moretags) = 'firestore:"roles,omitempty"'];
     DriverCredentials driver = 17 [(gogoproto.moretags) = 'firestore:"driver,omitempty"'];
@@ -212,8 +212,8 @@ message AccountUsage {
     string _key = 2 [(gogoproto.moretags) = 'firestore:"_key,omitempty"'];
     string type = 3 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
     repeated MonthlySubscription subscriptions = 4 [(gogoproto.moretags) = 'firestore:"subscriptions,omitempty"'];
-    ProjectUsages limits = 5 [(gogoproto.moretags) = 'firestore:"limits,omitempty"'];
-    repeated ProjectUsages usages = 6 [(gogoproto.moretags) = 'firestore:"usages,omitempty"'];
+    ProjectUse limits = 5 [(gogoproto.moretags) = 'firestore:"limits,omitempty"'];
+    repeated ProjectUse usages = 6 [(gogoproto.moretags) = 'firestore:"usages,omitempty"'];
     uint32 number_of_project = 7 [(gogoproto.moretags) = 'firestore:"number_of_project,omitempty"'];
 }
 
@@ -225,7 +225,7 @@ message MonthlySubscription {
     string promo_code = 5 [(gogoproto.moretags) = 'firestore:"promo_code,omitempty"'];
 }
 
-message ProjectUsages {
+message ProjectUse {
     string id = 1 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
     string _key = 2 [(gogoproto.moretags) = 'firestore:"_key,omitempty"'];
     string type = 3 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
@@ -234,7 +234,7 @@ message ProjectUsages {
     uint32 number_of_records = 9 [(gogoproto.moretags) = 'firestore:"number_of_records,omitempty"'];
 }
 
-message AccountUsages {
+message AccountUse {
     string id = 1 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
     string _key = 2 [(gogoproto.moretags) = 'firestore:"_key,omitempty"'];
     string type = 3 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
