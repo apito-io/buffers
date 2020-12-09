@@ -272,8 +272,13 @@ message CloudFunction {
 message FunctionProviderConfig {
     string remote_function_name = 1 [(gogoproto.moretags) = 'firestore:"remote_function_name,omitempty"'];
     string region = 2 [(gogoproto.moretags) = 'firestore:"region,omitempty"'];
-    map<string, string> env_vars = 3 [(gogoproto.moretags) = 'firestore:"env_vars,omitempty"'];
+    repeated FunctionEnvVariables env_vars = 3 [(gogoproto.moretags) = 'firestore:"env_vars,omitempty"'];
     FunctionInternalConfig configs = 4 [(gogoproto.moretags) = 'firestore:"configs,omitempty"'];
+}
+
+message FunctionEnvVariables {
+    string key = 1 [(gogoproto.moretags) = 'firestore:"key,omitempty"'];
+    string value = 2 [(gogoproto.moretags) = 'firestore:"value,omitempty"'];
 }
 
 message CloudFunctionRequestResponseType {
