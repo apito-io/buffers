@@ -268,6 +268,7 @@ message CloudFunction {
     string updated_at = 7 [(gogoproto.moretags) = 'firestore:"updated_at,omitempty"'];
     string created_at = 8 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
     FunctionProviderConfig provider_config = 9 [(gogoproto.moretags) = 'firestore:"provider_config,omitempty"'];
+    string description = 10 [(gogoproto.moretags) = 'firestore:"description,omitempty"'];
 }
 
 message FunctionProviderConfig {
