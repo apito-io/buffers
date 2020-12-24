@@ -164,6 +164,26 @@ message Project {
     bool temp_banned = 16 [(gogoproto.moretags) = 'firestore:"temp_banned,omitempty"'];
 }
 
+message SupportAndTicket {
+    string _key = 1;
+    string id = 2;
+    string type = 3;
+    string project_id = 4;
+    bool resolved = 5;
+    string title = 6;
+    string issue_description = 7;
+    string created_at = 8;
+    string updated_at = 9;
+    repeated TicketReply replies = 10;
+}
+
+message TicketReply {
+    string description = 1;
+    UserMeta user = 2;
+    string created_at = 3;
+    bool edited = 4;
+}
+
 message ProjectInvoices {
     string _key = 1 [(gogoproto.moretags) = 'firestore:"_key,omitempty"'];
     string id = 2 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
