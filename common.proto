@@ -6,7 +6,7 @@ option go_package = "gitlab.com/apito.io/buffers/protobuff";
 import "third/gogo.proto";
 
 message PictureDeleteRequest {
-    repeated string urls = 1  [(gogoproto.moretags) = 'firestore:"urls,omitempty"'];
+    repeated string urls = 1 [(gogoproto.moretags) = 'firestore:"urls,omitempty"'];
     string model = 2 [(gogoproto.moretags) = 'firestore:"model,omitempty"'];
     string id = 3 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
     string field_name = 4 [(gogoproto.moretags) = 'firestore:"field_name,omitempty"'];
@@ -116,6 +116,8 @@ message SystemUser {
     bool is_super_admin = 12 [(gogoproto.moretags) = 'firestore:"is_super_admin,omitempty"'];
     string refresh_token = 13 [(gogoproto.moretags) = 'firestore:"refresh_token,omitempty"'];
     string access_token = 14 [(gogoproto.moretags) = 'firestore:"access_token,omitempty"'];
+    string created_at = 15 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
+    string updated_at = 16 [(gogoproto.moretags) = 'firestore:"updated_at,omitempty"'];
 }
 
 message UserMeta {
@@ -157,9 +159,25 @@ message Project {
     map<string, ExtensionDetails> extensions = 11 [(gogoproto.moretags) = 'firestore:"extensions,omitempty"'];
     AddOnsDetails addons = 12 [(gogoproto.moretags) = 'firestore:"addons,omitempty"'];
     repeated APIToken tokens = 13 [(gogoproto.moretags) = 'firestore:"tokens,omitempty"'];
-    map<string,Role> roles = 14  [(gogoproto.moretags) = 'firestore:"roles,omitempty"'];
+    map<string, Role> roles = 14 [(gogoproto.moretags) = 'firestore:"roles,omitempty"'];
     DriverCredentials driver = 15 [(gogoproto.moretags) = 'firestore:"driver,omitempty"'];
     bool temp_banned = 16 [(gogoproto.moretags) = 'firestore:"temp_banned,omitempty"'];
+}
+
+message ProjectInvoices {
+    string _key = 1 [(gogoproto.moretags) = 'firestore:"_key,omitempty"'];
+    string id = 2 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
+    string type = 3 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
+    string project_id = 4 [(gogoproto.moretags) = 'firestore:"project_id,omitempty"'];
+    string subscription_start = 5 [(gogoproto.moretags) = 'firestore:"subscription_start,omitempty"'];
+    string subscription_end = 6 [(gogoproto.moretags) = 'firestore:"subscription_end,omitempty"'];
+    string coupon_code = 7 [(gogoproto.moretags) = 'firestore:"coupon_code,omitempty"'];
+    double discount_amount = 8 [(gogoproto.moretags) = 'firestore:"discount_amount,omitempty"'];
+    int64 discount_percentage = 9 [(gogoproto.moretags) = 'firestore:"discount_percentage,omitempty"'];
+    string payment_method = 10 [(gogoproto.moretags) = 'firestore:"payment_method,omitempty"'];
+    double amount = 11 [(gogoproto.moretags) = 'firestore:"amount,omitempty"'];
+    double tax = 12 [(gogoproto.moretags) = 'firestore:"tax,omitempty"'];
+    double payment_gateway = 13 [(gogoproto.moretags) = 'firestore:"payment_gateway,omitempty"'];
 }
 
 message ProjectUsages {
@@ -253,7 +271,7 @@ message ModelType {
     repeated FieldInfo fields = 2 [(gogoproto.moretags) = 'firestore:"fields,omitempty"'];
     repeated ConnectionType connections = 3 [(gogoproto.moretags) = 'firestore:"connections,omitempty"'];
     repeated string hook_ids = 4 [(gogoproto.moretags) = 'firestore:"hook_ids,omitempty"'];
-    repeated string locals  = 5 [(gogoproto.moretags) = 'firestore:"locals,omitempty"'];
+    repeated string locals = 5 [(gogoproto.moretags) = 'firestore:"locals,omitempty"'];
     repeated string repeated_groups = 6 [(gogoproto.moretags) = 'firestore:"locals,omitempty"'];
     bool system_generated = 7 [(gogoproto.moretags) = 'firestore:"system_generated,omitempty"'];
 }
