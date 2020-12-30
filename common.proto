@@ -120,6 +120,11 @@ message SystemUser {
     string updated_at = 16 [(gogoproto.moretags) = 'firestore:"updated_at,omitempty"'];
 }
 
+message UserProjects {
+    SystemUser user = 1 [(gogoproto.moretags) = 'firestore:"user,omitempty"'];
+    repeated Project projects = 2 [(gogoproto.moretags) = 'firestore:"projects,omitempty"'];
+}
+
 message UserMeta {
     string id = 1 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
     string avatar = 2 [(gogoproto.moretags) = 'firestore:"avatar,omitempty"'];
