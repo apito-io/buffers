@@ -24,6 +24,7 @@ message FileDetails {
     string url = 9 [(gogoproto.moretags) = 'firestore:"url,omitempty"'];
     string created_at = 10 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
     UploadParams upload_param = 11 [(gogoproto.moretags) = 'firestore:"upload_param,omitempty"'];
+    bytes buffer = 12 [(gogoproto.moretags) = 'firestore:"upload_param,omitempty"'];
 }
 
 message UploadParams {
