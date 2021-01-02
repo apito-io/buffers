@@ -132,6 +132,7 @@ message UserMeta {
     string name = 3 [(gogoproto.moretags) = 'firestore:"name,omitempty"'];
     string role = 4 [(gogoproto.moretags) = 'firestore:"role,omitempty"'];
     string email = 5 [(gogoproto.moretags) = 'firestore:"email,omitempty"'];
+    bool project_user = 6 [(gogoproto.moretags) = 'firestore:"email,omitempty"'];
 }
 
 message MetaField {
