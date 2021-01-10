@@ -204,6 +204,8 @@ message ProjectUsages {
     string type = 3 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
     UsagesTracking usage = 4 [(gogoproto.moretags) = 'firestore:"usage,omitempty"'];
     UsagesTracking limits = 5 [(gogoproto.moretags) = 'firestore:"limits,omitempty"'];
+    string plan = 6 [(gogoproto.moretags) = 'firestore:"limits,omitempty"'];
+    uint32 trial_ends = 7 [(gogoproto.moretags) = 'firestore:"limits,omitempty"'];
 }
 
 message DriverCredentials {
