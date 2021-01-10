@@ -111,14 +111,12 @@ message SystemUser {
     string secret = 6 [(gogoproto.moretags) = 'firestore:"secret,omitempty"'];
     string avatar = 7 [(gogoproto.moretags) = 'firestore:"avatar,omitempty"'];
     string current_project_id = 8 [(gogoproto.moretags) = 'firestore:"current_project_id,omitempty"'];
-    string current_project_token = 9 [(gogoproto.moretags) = 'firestore:"current_project_token,omitempty"'];
-    repeated ProjectInvolvement projects = 10 [(gogoproto.moretags) = 'firestore:"projects,omitempty"'];
+    string created_at = 9 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
+    string updated_at = 10 [(gogoproto.moretags) = 'firestore:"updated_at,omitempty"'];
     uint32 project_limit = 11 [(gogoproto.moretags) = 'firestore:"project_limit,omitempty"'];
     bool is_super_admin = 12 [(gogoproto.moretags) = 'firestore:"is_super_admin,omitempty"'];
     string refresh_token = 13 [(gogoproto.moretags) = 'firestore:"refresh_token,omitempty"'];
     string access_token = 14 [(gogoproto.moretags) = 'firestore:"access_token,omitempty"'];
-    string created_at = 15 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
-    string updated_at = 16 [(gogoproto.moretags) = 'firestore:"updated_at,omitempty"'];
 }
 
 message UserProjects {
@@ -155,20 +153,18 @@ message PreviewMode {
 message Project {
     string _key = 1 [(gogoproto.moretags) = 'firestore:"_key,omitempty"']; //exclude:"true"`
     string id = 2 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
-    string user_id = 3 [(gogoproto.moretags) = 'firestore:"user_id,omitempty"'];
-    string project_name = 4 [(gogoproto.moretags) = 'firestore:"project_name,omitempty"'];
-    string project_description = 5 [(gogoproto.moretags) = 'firestore:"project_description,omitempty"'];
-    UserDefinedSchema schema = 6 [(gogoproto.moretags) = 'firestore:"schema,omitempty"'];
-    repeated UserMeta teams = 7 [(gogoproto.moretags) = 'firestore:"teams,omitempty"'];
-    string created_at = 8 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
-    string updated_at = 9 [(gogoproto.moretags) = 'firestore:"updated_at,omitempty"'];
-    string expire_at = 10 [(gogoproto.moretags) = 'firestore:"expire_at,omitempty"'];
-    map<string, ExtensionDetails> extensions = 11 [(gogoproto.moretags) = 'firestore:"extensions,omitempty"'];
-    AddOnsDetails addons = 12 [(gogoproto.moretags) = 'firestore:"addons,omitempty"'];
-    repeated APIToken tokens = 13 [(gogoproto.moretags) = 'firestore:"tokens,omitempty"'];
-    map<string, Role> roles = 14 [(gogoproto.moretags) = 'firestore:"roles,omitempty"'];
-    DriverCredentials driver = 15 [(gogoproto.moretags) = 'firestore:"driver,omitempty"'];
-    bool temp_banned = 16 [(gogoproto.moretags) = 'firestore:"temp_banned,omitempty"'];
+    string project_name = 3 [(gogoproto.moretags) = 'firestore:"project_name,omitempty"'];
+    string project_description = 4 [(gogoproto.moretags) = 'firestore:"project_description,omitempty"'];
+    UserDefinedSchema schema = 5 [(gogoproto.moretags) = 'firestore:"schema,omitempty"'];
+    string created_at = 6 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
+    string updated_at = 7 [(gogoproto.moretags) = 'firestore:"updated_at,omitempty"'];
+    string expire_at = 8 [(gogoproto.moretags) = 'firestore:"expire_at,omitempty"'];
+    map<string, ExtensionDetails> extensions = 9 [(gogoproto.moretags) = 'firestore:"extensions,omitempty"'];
+    AddOnsDetails addons = 10 [(gogoproto.moretags) = 'firestore:"addons,omitempty"'];
+    repeated APIToken tokens = 11 [(gogoproto.moretags) = 'firestore:"tokens,omitempty"'];
+    map<string, Role> roles = 12 [(gogoproto.moretags) = 'firestore:"roles,omitempty"'];
+    DriverCredentials driver = 13 [(gogoproto.moretags) = 'firestore:"driver,omitempty"'];
+    bool temp_banned = 14 [(gogoproto.moretags) = 'firestore:"temp_banned,omitempty"'];
 }
 
 message SupportAndTicket {
