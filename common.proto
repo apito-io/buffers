@@ -82,11 +82,6 @@ message LoginRequest {
     string secret = 3 [(gogoproto.moretags) = 'firestore:"secret,omitempty"'];
 }
 
-message ProjectInvolvement {
-    string id = 1 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
-    UserMeta user = 3 [(gogoproto.moretags) = 'firestore:"user,omitempty"'];
-}
-
 message Role {
     map<string, APIPermission> api_permissions = 1 [(gogoproto.moretags) = 'firestore:"permissions,omitempty"'];
     repeated string administrative_permissions = 2 [(gogoproto.moretags) = 'firestore:"administrative_permissions,omitempty"'];
