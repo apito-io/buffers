@@ -160,6 +160,8 @@ message Project {
     map<string, Role> roles = 12 [(gogoproto.moretags) = 'firestore:"roles,omitempty"'];
     DriverCredentials driver = 13 [(gogoproto.moretags) = 'firestore:"driver,omitempty"'];
     bool temp_banned = 14 [(gogoproto.moretags) = 'firestore:"temp_banned,omitempty"'];
+    string plan = 15 [(gogoproto.moretags) = 'firestore:"limits,omitempty"'];
+    string trial_ends = 16 [(gogoproto.moretags) = 'firestore:"limits,omitempty"'];
 }
 
 message SupportAndTicket {
@@ -204,8 +206,6 @@ message ProjectUsages {
     string type = 3 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
     UsagesTracking usage = 4 [(gogoproto.moretags) = 'firestore:"usage,omitempty"'];
     UsagesTracking limits = 5 [(gogoproto.moretags) = 'firestore:"limits,omitempty"'];
-    string plan = 6 [(gogoproto.moretags) = 'firestore:"limits,omitempty"'];
-    string trial_ends = 7 [(gogoproto.moretags) = 'firestore:"limits,omitempty"'];
 }
 
 message DriverCredentials {
