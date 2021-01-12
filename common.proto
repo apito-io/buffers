@@ -82,6 +82,14 @@ message LoginRequest {
     string secret = 3 [(gogoproto.moretags) = 'firestore:"secret,omitempty"'];
 }
 
+message RegisterRequest {
+    string username = 1 [(gogoproto.moretags) = 'firestore:"username,omitempty"'];
+    string email = 2 [(gogoproto.moretags) = 'firestore:"email,omitempty"'];
+    string secret = 3 [(gogoproto.moretags) = 'firestore:"secret,omitempty"'];
+    string full_name = 4 [(gogoproto.moretags) = 'firestore:"full_name,omitempty"'];
+    string profession = 5 [(gogoproto.moretags) = 'firestore:"profession,omitempty"'];
+}
+
 message Role {
     map<string, APIPermission> api_permissions = 1 [(gogoproto.moretags) = 'firestore:"permissions,omitempty"'];
     repeated string administrative_permissions = 2 [(gogoproto.moretags) = 'firestore:"administrative_permissions,omitempty"'];
