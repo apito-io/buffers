@@ -273,11 +273,14 @@ message AccountUsage {
 }
 
 message MonthlySubscription {
-    string start_date = 1 [(gogoproto.moretags) = 'firestore:"start_date,omitempty"'];
-    string end_date = 2 [(gogoproto.moretags) = 'firestore:"end_date,omitempty"'];
-    string subscription_status = 3 [(gogoproto.moretags) = 'firestore:"subscription_status,omitempty"'];
-    string payment_status = 4 [(gogoproto.moretags) = 'firestore:"payment_status,omitempty"'];
-    CommonPaymentData subs_data = 5 [(gogoproto.moretags) = 'firestore:"subs_data,omitempty"'];
+    string id = 1;
+    string _key = 2;
+    string type = 3;
+    string start_date = 4 [(gogoproto.moretags) = 'firestore:"start_date,omitempty"'];
+    string end_date = 5 [(gogoproto.moretags) = 'firestore:"end_date,omitempty"'];
+    string subscription_status = 6 [(gogoproto.moretags) = 'firestore:"subscription_status,omitempty"'];
+    string payment_status = 7 [(gogoproto.moretags) = 'firestore:"payment_status,omitempty"'];
+    CommonPaymentData subs_data = 8 [(gogoproto.moretags) = 'firestore:"subs_data,omitempty"'];
 }
 
 message CommonPaymentData {
