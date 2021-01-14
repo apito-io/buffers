@@ -275,8 +275,9 @@ message AccountUsage {
 message MonthlySubscription {
     string start_date = 1 [(gogoproto.moretags) = 'firestore:"start_date,omitempty"'];
     string end_date = 2 [(gogoproto.moretags) = 'firestore:"end_date,omitempty"'];
-    string status = 3 [(gogoproto.moretags) = 'firestore:"status,omitempty"'];
-    CommonCheckoutData checkout_data = 4 [(gogoproto.moretags) = 'firestore:"checkout_data,omitempty"'];
+    string subscription_status = 3 [(gogoproto.moretags) = 'firestore:"status,omitempty"'];
+    string payment_status = 4;
+    CommonCheckoutData checkout_data = 5 [(gogoproto.moretags) = 'firestore:"checkout_data,omitempty"'];
 }
 
 message CommonCheckoutData {
