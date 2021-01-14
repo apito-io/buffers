@@ -275,9 +275,22 @@ message AccountUsage {
 message MonthlySubscription {
     string start_date = 1 [(gogoproto.moretags) = 'firestore:"start_date,omitempty"'];
     string end_date = 2 [(gogoproto.moretags) = 'firestore:"end_date,omitempty"'];
+    string status = 3 [(gogoproto.moretags) = 'firestore:"status,omitempty"'];
+    CommonCheckoutData checkout_data = 4 [(gogoproto.moretags) = 'firestore:"checkout_data,omitempty"'];
+}
+
+message CommonCheckoutData {
+    string checkout_id = 1 [(gogoproto.moretags) = 'firestore:"checkout_id,omitempty"'];
+    string checkout_system = 2 [(gogoproto.moretags) = 'firestore:"checkout_system,omitempty"'];
     string plan_code = 3 [(gogoproto.moretags) = 'firestore:"plan_code,omitempty"'];
-    double amount = 4 [(gogoproto.moretags) = 'firestore:"amount,omitempty"'];
-    string promo_code = 5 [(gogoproto.moretags) = 'firestore:"promo_code,omitempty"'];
+    double product_amount = 4 [(gogoproto.moretags) = 'firestore:"product_amount,omitempty"'];
+    string discount_code = 5 [(gogoproto.moretags) = 'firestore:"discount_code,omitempty"'];
+    string product_code = 6 [(gogoproto.moretags) = 'firestore:"product_code,omitempty"'];
+    string quantity = 7 [(gogoproto.moretags) = 'firestore:"quantity,omitempty"'];
+    string payment_method = 8 [(gogoproto.moretags) = 'firestore:"payment_method,omitempty"'];
+    double earning = 9 [(gogoproto.moretags) = 'firestore:"earning,omitempty"'];
+    double fee = 10 [(gogoproto.moretags) = 'firestore:"fee,omitempty"'];
+    double tax = 11 [(gogoproto.moretags) = 'firestore:"tax,omitempty"'];
 }
 
 message UsagesTracking {
