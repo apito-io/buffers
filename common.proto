@@ -216,12 +216,8 @@ message ProjectUsages {
     string project_id = 4 [(gogoproto.moretags) = 'firestore:"project_id,omitempty"'];
     uint32 year = 5 [(gogoproto.moretags) = 'firestore:"year,omitempty"'];
     uint32 month = 6 [(gogoproto.moretags) = 'firestore:"month,omitempty"'];
-    UsagesTracking usage = 7 [(gogoproto.moretags) = 'firestore:"usage,omitempty"'];
+    UsagesTracking usages = 7 [(gogoproto.moretags) = 'firestore:"usage,omitempty"'];
     UsagesTracking limits = 8 [(gogoproto.moretags) = 'firestore:"limits,omitempty"'];
-    uint32 used_media = 9 [(gogoproto.moretags) = 'firestore:"number_of_used_media,omitempty"'];
-    uint32 used_records = 10 [(gogoproto.moretags) = 'firestore:"number_of_used_records,omitempty"'];
-    uint32 limit_on_media = 11 [(gogoproto.moretags) = 'firestore:"limit_of_used_media,omitempty"'];
-    uint32 limit_on_records = 12 [(gogoproto.moretags) = 'firestore:"limit_of_user_records,omitempty"'];
 }
 
 message DriverCredentials {
@@ -305,10 +301,12 @@ message CommonPaymentData {
 }
 
 message UsagesTracking {
-    uint32 api_calls = 4 [(gogoproto.moretags) = 'firestore:"api_calls,omitempty"'];
-    double api_bandwidth = 5 [(gogoproto.moretags) = 'firestore:"api_bandwidth,omitempty"'];
-    double media_storage = 6 [(gogoproto.moretags) = 'firestore:"media_storage,omitempty"'];
-    double media_bandwidth = 7 [(gogoproto.moretags) = 'firestore:"media_bandwidth,omitempty"'];
+    uint32 api_calls = 1 [(gogoproto.moretags) = 'firestore:"api_calls,omitempty"'];
+    double api_bandwidth = 2 [(gogoproto.moretags) = 'firestore:"api_bandwidth,omitempty"'];
+    double media_storage = 3 [(gogoproto.moretags) = 'firestore:"media_storage,omitempty"'];
+    double media_bandwidth = 4 [(gogoproto.moretags) = 'firestore:"media_bandwidth,omitempty"'];
+    double number_of_media = 5 [(gogoproto.moretags) = 'firestore:"number_of_media,omitempty"'];
+    double number_of_records = 6 [(gogoproto.moretags) = 'firestore:"number_of_records,omitempty"'];
 }
 
 message UserDefinedSchema {
