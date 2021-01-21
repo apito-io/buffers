@@ -213,8 +213,10 @@ message ProjectUsages {
     string id = 1 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
     string _key = 2 [(gogoproto.moretags) = 'firestore:"_key,omitempty"'];
     string type = 3 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
-    UsagesTracking usage = 4 [(gogoproto.moretags) = 'firestore:"usage,omitempty"'];
-    UsagesTracking limits = 5 [(gogoproto.moretags) = 'firestore:"limits,omitempty"'];
+    uint32 year = 4 [(gogoproto.moretags) = 'firestore:"year,omitempty"'];
+    uint32 month = 5 [(gogoproto.moretags) = 'firestore:"month,omitempty"'];
+    UsagesTracking usage = 6 [(gogoproto.moretags) = 'firestore:"usage,omitempty"'];
+    UsagesTracking limits = 7 [(gogoproto.moretags) = 'firestore:"limits,omitempty"'];
 }
 
 message DriverCredentials {
