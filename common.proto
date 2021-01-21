@@ -217,8 +217,11 @@ message ProjectUsages {
     uint32 month = 5 [(gogoproto.moretags) = 'firestore:"month,omitempty"'];
     UsagesTracking usage = 6 [(gogoproto.moretags) = 'firestore:"usage,omitempty"'];
     UsagesTracking limits = 7 [(gogoproto.moretags) = 'firestore:"limits,omitempty"'];
-    uint32 number_of_media = 8 [(gogoproto.moretags) = 'firestore:"number_of_media,omitempty"'];
-    uint32 number_of_records = 9 [(gogoproto.moretags) = 'firestore:"number_of_records,omitempty"'];
+    uint32 used_media = 8 [(gogoproto.moretags) = 'firestore:"number_of_used_media,omitempty"'];
+    uint32 used_records = 9 [(gogoproto.moretags) = 'firestore:"number_of_used_records,omitempty"'];
+    uint32 limit_on_media = 10 [(gogoproto.moretags) = 'firestore:"limit_of_used_media,omitempty"'];
+    uint32 limit_on_records = 11 [(gogoproto.moretags) = 'firestore:"limit_of_user_records,omitempty"'];
+    string project_id = 12 [(gogoproto.moretags) = 'firestore:"project_id,omitempty"'];
 }
 
 message DriverCredentials {
