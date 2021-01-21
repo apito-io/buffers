@@ -213,15 +213,15 @@ message ProjectUsages {
     string id = 1 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
     string _key = 2 [(gogoproto.moretags) = 'firestore:"_key,omitempty"'];
     string type = 3 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
-    uint32 year = 4 [(gogoproto.moretags) = 'firestore:"year,omitempty"'];
-    uint32 month = 5 [(gogoproto.moretags) = 'firestore:"month,omitempty"'];
-    UsagesTracking usage = 6 [(gogoproto.moretags) = 'firestore:"usage,omitempty"'];
-    UsagesTracking limits = 7 [(gogoproto.moretags) = 'firestore:"limits,omitempty"'];
-    uint32 used_media = 8 [(gogoproto.moretags) = 'firestore:"number_of_used_media,omitempty"'];
-    uint32 used_records = 9 [(gogoproto.moretags) = 'firestore:"number_of_used_records,omitempty"'];
-    uint32 limit_on_media = 10 [(gogoproto.moretags) = 'firestore:"limit_of_used_media,omitempty"'];
-    uint32 limit_on_records = 11 [(gogoproto.moretags) = 'firestore:"limit_of_user_records,omitempty"'];
-    string project_id = 12 [(gogoproto.moretags) = 'firestore:"project_id,omitempty"'];
+    string project_id = 4 [(gogoproto.moretags) = 'firestore:"project_id,omitempty"'];
+    uint32 year = 5 [(gogoproto.moretags) = 'firestore:"year,omitempty"'];
+    uint32 month = 6 [(gogoproto.moretags) = 'firestore:"month,omitempty"'];
+    UsagesTracking usage = 7 [(gogoproto.moretags) = 'firestore:"usage,omitempty"'];
+    UsagesTracking limits = 8 [(gogoproto.moretags) = 'firestore:"limits,omitempty"'];
+    uint32 used_media = 9 [(gogoproto.moretags) = 'firestore:"number_of_used_media,omitempty"'];
+    uint32 used_records = 10 [(gogoproto.moretags) = 'firestore:"number_of_used_records,omitempty"'];
+    uint32 limit_on_media = 11 [(gogoproto.moretags) = 'firestore:"limit_of_used_media,omitempty"'];
+    uint32 limit_on_records = 12 [(gogoproto.moretags) = 'firestore:"limit_of_user_records,omitempty"'];
 }
 
 message DriverCredentials {
