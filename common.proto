@@ -408,7 +408,7 @@ message ConnectionType {
     string model = 1 [(gogoproto.moretags) = 'firestore:"model,omitempty"'];
     string relation = 2 [(gogoproto.moretags) = 'firestore:"relation,omitempty"'];
     string type = 3 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
-    bool relation_as = 4 [(gogoproto.moretags) = 'firestore:"multi_tenant_relation,omitempty"'];
+    string known_as = 4 [(gogoproto.moretags) = 'firestore:"known_as,omitempty"'];
 }
 
 message Webhook {
