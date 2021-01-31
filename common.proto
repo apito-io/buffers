@@ -197,18 +197,20 @@ message ProjectInvoices {
     string _key = 1 [(gogoproto.moretags) = 'firestore:"_key,omitempty"'];
     string id = 2 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
     string type = 3 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
-    string project_id = 4 [(gogoproto.moretags) = 'firestore:"project_id,omitempty"'];
-    string subscription_start = 5 [(gogoproto.moretags) = 'firestore:"subscription_start,omitempty"'];
-    string subscription_end = 6 [(gogoproto.moretags) = 'firestore:"subscription_end,omitempty"'];
-    string coupon_code = 7 [(gogoproto.moretags) = 'firestore:"coupon_code,omitempty"'];
-    double discount_amount = 8 [(gogoproto.moretags) = 'firestore:"discount_amount,omitempty"'];
-    int64 discount_percentage = 9 [(gogoproto.moretags) = 'firestore:"discount_percentage,omitempty"'];
-    string payment_method = 10 [(gogoproto.moretags) = 'firestore:"payment_method,omitempty"'];
-    double amount = 11 [(gogoproto.moretags) = 'firestore:"amount,omitempty"'];
-    double tax = 12 [(gogoproto.moretags) = 'firestore:"tax,omitempty"'];
-    double payment_gateway = 13 [(gogoproto.moretags) = 'firestore:"payment_gateway,omitempty"'];
-    string user_id = 14 [(gogoproto.moretags) = 'firestore:"user_id,omitempty"'];
-    string receipt_url = 15 [(gogoproto.moretags) = 'firestore:"user_id,omitempty"'];
+    string subscription_id = 4 [(gogoproto.moretags) = 'firestore:"subscription_start,omitempty"'];
+    string coupon_code = 5 [(gogoproto.moretags) = 'firestore:"coupon_code,omitempty"'];
+    double discount_amount = 6 [(gogoproto.moretags) = 'firestore:"discount_amount,omitempty"'];
+    double payment_gateway = 7 [(gogoproto.moretags) = 'firestore:"payment_gateway,omitempty"'];
+    string receipt_url = 8 [(gogoproto.moretags) = 'firestore:"user_id,omitempty"'];
+    string checkout_system = 9 [(gogoproto.moretags) = 'firestore:"checkout_system,omitempty"'];
+    double product_amount = 10 [(gogoproto.moretags) = 'firestore:"product_amount,omitempty"'];
+    string discount_code = 11 [(gogoproto.moretags) = 'firestore:"discount_code,omitempty"'];
+    int64 discount_percentage = 12 [(gogoproto.moretags) = 'firestore:"discount_percentage,omitempty"'];
+    uint32 quantity = 13 [(gogoproto.moretags) = 'firestore:"quantity,omitempty"'];
+    string payment_method = 14 [(gogoproto.moretags) = 'firestore:"payment_method,omitempty"'];
+    double earning = 15 [(gogoproto.moretags) = 'firestore:"earning,omitempty"'];
+    double fee = 16 [(gogoproto.moretags) = 'firestore:"fee,omitempty"'];
+    double tax = 17 [(gogoproto.moretags) = 'firestore:"tax,omitempty"'];
 }
 
 message ProjectUsages {
@@ -279,28 +281,18 @@ message AccountUsage {
 }
 
 message MonthlySubscription {
-    string id = 1;
-    string _key = 2;
-    string type = 3;
-    string start_date = 4 [(gogoproto.moretags) = 'firestore:"start_date,omitempty"'];
-    string end_date = 5 [(gogoproto.moretags) = 'firestore:"end_date,omitempty"'];
-    string subscription_status = 6 [(gogoproto.moretags) = 'firestore:"subscription_status,omitempty"'];
-    string payment_status = 7 [(gogoproto.moretags) = 'firestore:"payment_status,omitempty"'];
-    CommonPaymentData subs_data = 8 [(gogoproto.moretags) = 'firestore:"subs_data,omitempty"'];
+    string id = 1 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
+    string _key = 2 [(gogoproto.moretags) = 'firestore:"_key,omitempty"'];
+    string type = 3 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
+    string user_id = 4 [(gogoproto.moretags) = 'firestore:"user_id,omitempty"'];
+    string subscription_code = 5 [(gogoproto.moretags) = 'firestore:"plan_code,omitempty"'];
+    string start_date = 6 [(gogoproto.moretags) = 'firestore:"start_date,omitempty"'];
+    string end_date = 7 [(gogoproto.moretags) = 'firestore:"end_date,omitempty"'];
+    string subscription_status = 8 [(gogoproto.moretags) = 'firestore:"subscription_status,omitempty"'];
+    string payment_status = 9 [(gogoproto.moretags) = 'firestore:"payment_status,omitempty"'];
+    repeated ProjectInvoices invoices = 10 [(gogoproto.moretags) = 'firestore:"invoices,omitempty"'];
 }
 
-message CommonPaymentData {
-    string id = 1 [(gogoproto.moretags) = 'firestore:"checkout_id,omitempty"'];
-    string checkout_system = 2 [(gogoproto.moretags) = 'firestore:"checkout_system,omitempty"'];
-    string plan_code = 3 [(gogoproto.moretags) = 'firestore:"plan_code,omitempty"'];
-    double product_amount = 4 [(gogoproto.moretags) = 'firestore:"product_amount,omitempty"'];
-    string discount_code = 5 [(gogoproto.moretags) = 'firestore:"discount_code,omitempty"'];
-    uint32 quantity = 6 [(gogoproto.moretags) = 'firestore:"quantity,omitempty"'];
-    string payment_method = 7 [(gogoproto.moretags) = 'firestore:"payment_method,omitempty"'];
-    double earning = 8 [(gogoproto.moretags) = 'firestore:"earning,omitempty"'];
-    double fee = 9 [(gogoproto.moretags) = 'firestore:"fee,omitempty"'];
-    double tax = 10 [(gogoproto.moretags) = 'firestore:"tax,omitempty"'];
-}
 
 message UsagesTracking {
     uint32 api_calls = 1 [(gogoproto.moretags) = 'firestore:"api_calls,omitempty"'];
