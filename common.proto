@@ -218,7 +218,6 @@ message ProjectInvoices {
 
     double charged_amount = 17 [(gogoproto.moretags) = 'firestore:"charged_amount,omitempty"'];
     double next_amount_to_be_charged = 18 [(gogoproto.moretags) = 'firestore:"next_amount_to_be_charged,omitempty"'];
-
 }
 
 message ProjectUsages {
@@ -302,6 +301,7 @@ message MonthlySubscription {
     string created_at = 11 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
     string updated_at = 12 [(gogoproto.moretags) = 'firestore:"updated_at,omitempty"'];
     string title = 13 [(gogoproto.moretags) = 'firestore:"title,omitempty"'];
+    string cancel_url = 14 [(gogoproto.moretags) = 'firestore:"cancel_url,omitempty"'];
 }
 
 
