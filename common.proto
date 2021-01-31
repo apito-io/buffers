@@ -298,6 +298,7 @@ message MonthlySubscription {
     repeated ProjectInvoices invoices = 10 [(gogoproto.moretags) = 'firestore:"invoices,omitempty"'];
     string created_at = 11 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
     string updated_at = 12 [(gogoproto.moretags) = 'firestore:"updated_at,omitempty"'];
+    string title = 13 [(gogoproto.moretags) = 'firestore:"title,omitempty"'];
 }
 
 
