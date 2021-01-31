@@ -130,7 +130,7 @@ message UserProjects {
 
 message UserSubscription {
     MonthlySubscription subscription = 1 [(gogoproto.moretags) = 'firestore:"subscription,omitempty"'];
-    repeated Project projects = 2 [(gogoproto.moretags) = 'firestore:"projects,omitempty"'];
+    repeated ProjectInvoices invoices = 2 [(gogoproto.moretags) = 'firestore:"invoices,omitempty"'];
 }
 
 message UserMeta {
