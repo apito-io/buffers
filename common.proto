@@ -216,6 +216,9 @@ message ProjectInvoices {
     double tax = 15 [(gogoproto.moretags) = 'firestore:"tax,omitempty"'];
     string created_at = 16 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
 
+    double charged_amount = 17 [(gogoproto.moretags) = 'firestore:"charged_amount,omitempty"'];
+    double next_amount_to_be_charged = 18 [(gogoproto.moretags) = 'firestore:"next_amount_to_be_charged,omitempty"'];
+
 }
 
 message ProjectUsages {
