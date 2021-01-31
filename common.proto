@@ -125,6 +125,11 @@ message SystemUser {
 
 message UserProjects {
     SystemUser user = 1 [(gogoproto.moretags) = 'firestore:"user,omitempty"'];
+    repeated ProjectInvoices invoices = 2 [(gogoproto.moretags) = 'firestore:"invoices,omitempty"'];
+}
+
+message UserSubscription {
+    MonthlySubscription subscription = 1 [(gogoproto.moretags) = 'firestore:"subscription,omitempty"'];
     repeated Project projects = 2 [(gogoproto.moretags) = 'firestore:"projects,omitempty"'];
 }
 
@@ -202,15 +207,14 @@ message ProjectInvoices {
     double discount_amount = 6 [(gogoproto.moretags) = 'firestore:"discount_amount,omitempty"'];
     string payment_gateway = 7 [(gogoproto.moretags) = 'firestore:"payment_gateway,omitempty"'];
     string receipt_url = 8 [(gogoproto.moretags) = 'firestore:"receipt_url,omitempty"'];
-    string checkout_system = 9 [(gogoproto.moretags) = 'firestore:"checkout_system,omitempty"'];
-    double product_amount = 10 [(gogoproto.moretags) = 'firestore:"product_amount,omitempty"'];
-    int64 discount_percentage = 11 [(gogoproto.moretags) = 'firestore:"discount_percentage,omitempty"'];
-    uint32 quantity = 12 [(gogoproto.moretags) = 'firestore:"quantity,omitempty"'];
-    string payment_method = 13 [(gogoproto.moretags) = 'firestore:"payment_method,omitempty"'];
-    double earning = 14 [(gogoproto.moretags) = 'firestore:"earning,omitempty"'];
-    double fee = 15 [(gogoproto.moretags) = 'firestore:"fee,omitempty"'];
-    double tax = 16 [(gogoproto.moretags) = 'firestore:"tax,omitempty"'];
-    string created_at = 17 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
+    double product_amount = 9 [(gogoproto.moretags) = 'firestore:"product_amount,omitempty"'];
+    int64 discount_percentage = 10 [(gogoproto.moretags) = 'firestore:"discount_percentage,omitempty"'];
+    uint32 quantity = 11 [(gogoproto.moretags) = 'firestore:"quantity,omitempty"'];
+    string payment_method = 12 [(gogoproto.moretags) = 'firestore:"payment_method,omitempty"'];
+    double earning = 13 [(gogoproto.moretags) = 'firestore:"earning,omitempty"'];
+    double fee = 14 [(gogoproto.moretags) = 'firestore:"fee,omitempty"'];
+    double tax = 15 [(gogoproto.moretags) = 'firestore:"tax,omitempty"'];
+    string created_at = 16 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
 
 }
 
