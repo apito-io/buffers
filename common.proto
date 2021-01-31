@@ -207,6 +207,8 @@ message ProjectInvoices {
     double amount = 11 [(gogoproto.moretags) = 'firestore:"amount,omitempty"'];
     double tax = 12 [(gogoproto.moretags) = 'firestore:"tax,omitempty"'];
     double payment_gateway = 13 [(gogoproto.moretags) = 'firestore:"payment_gateway,omitempty"'];
+    string user_id = 14 [(gogoproto.moretags) = 'firestore:"user_id,omitempty"'];
+    string receipt_url = 15 [(gogoproto.moretags) = 'firestore:"user_id,omitempty"'];
 }
 
 message ProjectUsages {
