@@ -125,7 +125,7 @@ message SystemUser {
 
 message UserProjects {
     SystemUser user = 1 [(gogoproto.moretags) = 'firestore:"user,omitempty"'];
-    repeated ProjectInvoices invoices = 2 [(gogoproto.moretags) = 'firestore:"invoices,omitempty"'];
+    repeated Project projects = 2 [(gogoproto.moretags) = 'firestore:"projects,omitempty"'];
 }
 
 message UserSubscription {
