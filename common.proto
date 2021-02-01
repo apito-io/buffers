@@ -121,6 +121,7 @@ message SystemUser {
     string refresh_token = 13 [(gogoproto.moretags) = 'firestore:"refresh_token,omitempty"'];
     string access_token = 14 [(gogoproto.moretags) = 'firestore:"access_token,omitempty"'];
     bool read_only_project = 15 [(gogoproto.moretags) = 'firestore:"read_only_project,omitempty"'];
+    string last_logged_in = 16 [(gogoproto.moretags) = 'firestore:"last_logged_in,omitempty"'];
 }
 
 message UserProjects {
