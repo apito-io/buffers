@@ -175,8 +175,8 @@ message Project {
     map<string, Role> roles = 12 [(gogoproto.moretags) = 'firestore:"roles,omitempty"'];
     DriverCredentials driver = 13 [(gogoproto.moretags) = 'firestore:"driver,omitempty"'];
     bool temp_banned = 14 [(gogoproto.moretags) = 'firestore:"temp_banned,omitempty"'];
-    string plan = 15 [(gogoproto.moretags) = 'firestore:"limits,omitempty"'];
-    string trial_ends = 16 [(gogoproto.moretags) = 'firestore:"limits,omitempty"'];
+    string plan = 15 [(gogoproto.moretags) = 'firestore:"plan,omitempty"'];
+    string trial_ends = 16 [(gogoproto.moretags) = 'firestore:"trial_ends,omitempty"'];
 }
 
 message SupportAndTicket {
@@ -219,6 +219,7 @@ message ProjectInvoices {
 
     double charged_amount = 17 [(gogoproto.moretags) = 'firestore:"charged_amount,omitempty"'];
     double next_amount_to_be_charged = 18 [(gogoproto.moretags) = 'firestore:"next_amount_to_be_charged,omitempty"'];
+    string subscription_plan_code = 19 [(gogoproto.moretags) = 'firestore:"subscription_plan_code,omitempty"'];
 }
 
 message ProjectUsages {
@@ -303,6 +304,7 @@ message MonthlySubscription {
     string updated_at = 12 [(gogoproto.moretags) = 'firestore:"updated_at,omitempty"'];
     string title = 13 [(gogoproto.moretags) = 'firestore:"title,omitempty"'];
     string cancel_url = 14 [(gogoproto.moretags) = 'firestore:"cancel_url,omitempty"'];
+    string project_id = 15 [(gogoproto.moretags) = 'firestore:"cancel_url,omitempty"'];
 }
 
 
