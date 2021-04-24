@@ -91,12 +91,14 @@ message RegisterRequest {
 }
 
 message Role {
-    string id = 6 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
-    map<string, APIPermission> api_permissions = 1 [(gogoproto.moretags) = 'firestore:"permissions,omitempty"'];
-    repeated string administrative_permissions = 2 [(gogoproto.moretags) = 'firestore:"administrative_permissions,omitempty"'];
-    repeated string logic_executions = 3 [(gogoproto.moretags) = 'firestore:"logic_executions,omitempty"'];
-    bool system_generated = 4 [(gogoproto.moretags) = 'firestore:"system_generated,omitempty"'];
-    bool is_admin = 5 [(gogoproto.moretags) = 'firestore:"is_admin,omitempty"'];
+    string id = 1 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
+    map<string, APIPermission> api_permissions = 2 [(gogoproto.moretags) = 'firestore:"permissions,omitempty"'];
+    repeated string administrative_permissions = 3 [(gogoproto.moretags) = 'firestore:"administrative_permissions,omitempty"'];
+    repeated string logic_executions = 4 [(gogoproto.moretags) = 'firestore:"logic_executions,omitempty"'];
+    bool system_generated = 5 [(gogoproto.moretags) = 'firestore:"system_generated,omitempty"'];
+    bool is_admin = 6 [(gogoproto.moretags) = 'firestore:"is_admin,omitempty"'];
+    bool is_project_user = 7 [(gogoproto.moretags) = 'firestore:"is_project_user,omitempty"'];
+    bool read_only_project = 8 [(gogoproto.moretags) = 'firestore:"read_only_project,omitempty"'];
 }
 
 message APIPermission {
