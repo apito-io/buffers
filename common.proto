@@ -145,6 +145,7 @@ message UserMeta {
     string role = 4 [(gogoproto.moretags) = 'firestore:"role,omitempty"'];
     string email = 5 [(gogoproto.moretags) = 'firestore:"email,omitempty"'];
     bool project_user = 6 [(gogoproto.moretags) = 'firestore:"email,omitempty"'];
+    repeated string administrative_permissions = 7 [(gogoproto.moretags) = 'firestore:"email,omitempty"'];
 }
 
 message MetaField {
