@@ -99,6 +99,7 @@ message Role {
     bool is_admin = 6 [(gogoproto.moretags) = 'firestore:"is_admin,omitempty"'];
     bool is_project_user = 7 [(gogoproto.moretags) = 'firestore:"is_project_user,omitempty"'];
     bool read_only_project = 8 [(gogoproto.moretags) = 'firestore:"read_only_project,omitempty"'];
+    bool is_super_admin = 9 [(gogoproto.moretags) = 'firestore:"read_only_project,omitempty"'];
 }
 
 message APIPermission {
