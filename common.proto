@@ -91,6 +91,7 @@ message RegisterRequest {
 }
 
 message Role {
+    string id = 6 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
     map<string, APIPermission> api_permissions = 1 [(gogoproto.moretags) = 'firestore:"permissions,omitempty"'];
     repeated string administrative_permissions = 2 [(gogoproto.moretags) = 'firestore:"administrative_permissions,omitempty"'];
     repeated string logic_executions = 3 [(gogoproto.moretags) = 'firestore:"logic_executions,omitempty"'];
