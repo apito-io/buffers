@@ -158,6 +158,7 @@ message MetaField {
     string root_revision_id = 7 [(gogoproto.moretags) = 'firestore:"root_revision_id,omitempty"'];
     string expire_at = 8 [(gogoproto.moretags) = 'firestore:"expire_at,omitempty"'];
     bool revision = 9 [(gogoproto.moretags) = 'firestore:"revision,omitempty"'];
+    string revision_at = 10 [(gogoproto.moretags) = 'firestore:"revision_at,omitempty"'];
 }
 
 message PreviewMode {
