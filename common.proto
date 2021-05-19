@@ -120,12 +120,20 @@ message SystemUser {
     string current_project_id = 8 [(gogoproto.moretags) = 'firestore:"current_project_id,omitempty"'];
     string created_at = 9 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
     string updated_at = 10 [(gogoproto.moretags) = 'firestore:"updated_at,omitempty"'];
-    uint32 project_limit = 11 [(gogoproto.moretags) = 'firestore:"project_limit,omitempty"'];
-    bool is_super_admin = 12 [(gogoproto.moretags) = 'firestore:"is_super_admin,omitempty"'];
-    string refresh_token = 13 [(gogoproto.moretags) = 'firestore:"refresh_token,omitempty"'];
-    string access_token = 14 [(gogoproto.moretags) = 'firestore:"access_token,omitempty"'];
-    bool read_only_project = 15 [(gogoproto.moretags) = 'firestore:"read_only_project,omitempty"'];
-    string last_logged_in = 16 [(gogoproto.moretags) = 'firestore:"last_logged_in,omitempty"'];
+    bool is_super_admin = 11 [(gogoproto.moretags) = 'firestore:"is_super_admin,omitempty"'];
+    string refresh_token = 12 [(gogoproto.moretags) = 'firestore:"refresh_token,omitempty"'];
+    string access_token = 13 [(gogoproto.moretags) = 'firestore:"access_token,omitempty"'];
+    bool read_only_project = 14 [(gogoproto.moretags) = 'firestore:"read_only_project,omitempty"'];
+    string last_logged_in = 15 [(gogoproto.moretags) = 'firestore:"last_logged_in,omitempty"'];
+    uint32 project_limit = 16 [(gogoproto.moretags) = 'firestore:"project_limit,omitempty"'];
+    uint32 project_limit_hobby = 17 [(gogoproto.moretags) = 'firestore:"project_limit_hobby,omitempty"'];
+    uint32 project_limit_pro = 18 [(gogoproto.moretags) = 'firestore:"project_limit_pro,omitempty"'];
+}
+
+message ProjectLimit {
+    uint32 free = 1 [(gogoproto.moretags) = 'firestore:"free,omitempty"'];
+    uint32 hobby = 2 [(gogoproto.moretags) = 'firestore:"hobby,omitempty"'];
+    uint32 pro = 3 [(gogoproto.moretags) = 'firestore:"pro,omitempty"'];
 }
 
 message UserProjects {
