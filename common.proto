@@ -402,6 +402,7 @@ message Validation {
     bool is_gallery = 14 [(gogoproto.moretags) = 'firestore:"is_gallery,omitempty"'];
     bool is_password = 15 [(gogoproto.moretags) = 'firestore:"is_gallery,omitempty"'];
     bool is_system_role = 16 [(gogoproto.moretags) = 'firestore:"is_gallery,omitempty"'];
+    bool is_url = 17 [(gogoproto.moretags) = 'firestore:"is_url,omitempty"'];
 }
 
 message FieldInfo {
