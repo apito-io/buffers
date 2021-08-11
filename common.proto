@@ -348,6 +348,7 @@ message ModelType {
     repeated string locals = 5 [(gogoproto.moretags) = 'firestore:"locals,omitempty"'];
     repeated string repeated_groups = 6 [(gogoproto.moretags) = 'firestore:"locals,omitempty"'];
     bool system_generated = 7 [(gogoproto.moretags) = 'firestore:"system_generated,omitempty"'];
+    bool single_page = 8 [(gogoproto.moretags) = 'firestore:"system_generated,omitempty"'];
 }
 
 message CloudFunction {
