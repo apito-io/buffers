@@ -282,6 +282,7 @@ message ThirdPartyCredential {
     string secret_key = 3 [(gogoproto.moretags) = 'firestore:"secret_key,omitempty"'];
     string api_key = 4 [(gogoproto.moretags) = 'firestore:"api_key,omitempty"'];
     string region = 5 [(gogoproto.moretags) = 'firestore:"region,omitempty"'];
+    string url = 6 [(gogoproto.moretags) = 'firestore:"url,omitempty"'];
 }
 
 message AddOnsDetails {
