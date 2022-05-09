@@ -33,6 +33,7 @@ message UploadParams {
     string model_name = 3 [(gogoproto.moretags) = 'firestore:"model_name,omitempty"'];
     string field_name = 4 [(gogoproto.moretags) = 'firestore:"field_name,omitempty"'];
     bool allow_multi = 5 [(gogoproto.moretags) = 'firestore:"allow_multi,omitempty"'];
+    string provider = 6 [(gogoproto.moretags) = 'firestore:"provider,omitempty"'];
 }
 
 message Filter {
