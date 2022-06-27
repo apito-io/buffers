@@ -253,14 +253,21 @@ message ProjectUsages {
 }
 
 message DriverCredentials {
+    // normal sql & nosql database
     string engine = 1;
     string host = 2;
     string port = 3;
     string user = 4;
-    string secret = 5;
+    string password = 5;
     string database = 6;
+
+    // for firebase
     string project_id = 7;
     string project_credential_json = 8;
+
+    // for dynamodb
+    string access_key = 9;
+    string secret_key = 10;
 }
 
 message APIToken {
