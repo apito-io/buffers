@@ -89,6 +89,8 @@ message RegisterRequest {
     string secret = 3 [(gogoproto.moretags) = 'firestore:"secret,omitempty"'];
     string full_name = 4 [(gogoproto.moretags) = 'firestore:"full_name,omitempty"'];
     string profession = 5 [(gogoproto.moretags) = 'firestore:"profession,omitempty"'];
+
+    string verification_code = 6 [(gogoproto.moretags) = 'firestore:"profession,omitempty"'];
 }
 
 message Role {
