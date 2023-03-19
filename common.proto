@@ -264,12 +264,18 @@ message DriverCredentials {
     string database = 6;
 
     // for firebase
-    string project_id = 7;
-    string project_credential_json = 8;
+    string firebase_project_id = 7;
+    string firebase_project_credential_json = 8;
 
     // for dynamodb
     string access_key = 9;
     string secret_key = 10;
+
+    // for embedded database
+    string database_dir = 11;
+
+    // for ORM migration
+    string project_id = 12;
 }
 
 message APIToken {
@@ -283,7 +289,10 @@ message ExtensionDetails {
     string name = 1 [(gogoproto.moretags) = 'firestore:"name,omitempty"'];
     string description = 2 [(gogoproto.moretags) = 'firestore:"description,omitempty"'];
     string type = 3 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
-    ThirdPartyCredential credentials = 4 [(gogoproto.moretags) = 'firestore:"credentials,omitempty"'];
+    string sub_type = 4 [(gogoproto.moretags) = 'firestore:"sub_type,omitempty"'];
+    string role = 5 [(gogoproto.moretags) = 'firestore:"role,omitempty"'];
+    ThirdPartyCredential credentials = 6 [(gogoproto.moretags) = 'firestore:"credentials,omitempty"'];
+    bool enable = 7 [(gogoproto.moretags) = 'firestore:"enable,omitempty"'];
 }
 
 message ThirdPartyCredential {
@@ -293,19 +302,14 @@ message ThirdPartyCredential {
     string api_key = 4 [(gogoproto.moretags) = 'firestore:"api_key,omitempty"'];
     string region = 5 [(gogoproto.moretags) = 'firestore:"region,omitempty"'];
     string url = 6 [(gogoproto.moretags) = 'firestore:"url,omitempty"'];
+    string env = 7 [(gogoproto.moretags) = 'firestore:"env,omitempty"'];
 }
 
 message AddOnsDetails {
     repeated string locals = 1 [(gogoproto.moretags) = 'firestore:"locals,omitempty"'];
     bool system_graphql_hooks = 2 [(gogoproto.moretags) = 'firestore:"system_graphql_hooks,omitempty"'];
     bool revision_history = 3 [(gogoproto.moretags) = 'firestore:"revision_history,omitempty"'];
-    AuthenticationAddOns auth = 4 [(gogoproto.moretags) = 'firestore:"auth,omitempty"'];
-}
-
-message AuthenticationAddOns {
-    string type = 1 [(gogoproto.moretags) = 'firestore:"type,omitempty"']; // phone or email
-    string auth_user_roles = 2 [(gogoproto.moretags) = 'firestore:"auth_user_roles,omitempty"'];
-    bool disabled = 3 [(gogoproto.moretags) = 'firestore:"disabled,omitempty"'];
+    bool enable_auth = 4 [(gogoproto.moretags) = 'firestore:"enable_auth,omitempty"'];
 }
 
 message AccountUsage {
