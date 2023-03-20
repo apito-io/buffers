@@ -308,8 +308,9 @@ message ThirdPartyCredential {
 message AddOnsDetails {
     repeated string locals = 1 [(gogoproto.moretags) = 'firestore:"locals,omitempty"'];
     bool system_graphql_hooks = 2 [(gogoproto.moretags) = 'firestore:"system_graphql_hooks,omitempty"'];
-    bool revision_history = 3 [(gogoproto.moretags) = 'firestore:"revision_history,omitempty"'];
+    bool enable_revision_history = 3 [(gogoproto.moretags) = 'firestore:"revision_history,omitempty"'];
     bool enable_auth = 4 [(gogoproto.moretags) = 'firestore:"enable_auth,omitempty"'];
+    string default_auth_role = 5 [(gogoproto.moretags) = 'firestore:"default_auth_role,omitempty"'];
 }
 
 message AccountUsage {
