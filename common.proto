@@ -285,13 +285,18 @@ message APIToken {
     string expire = 4 [(gogoproto.moretags) = 'firestore:"expire,omitempty"'];
 }
 
+message Response {
+    string message = 1;
+    string code = 2;
+}
+
 message ExtensionDetails {
     string name = 1 [(gogoproto.moretags) = 'firestore:"name,omitempty"'];
     string description = 2 [(gogoproto.moretags) = 'firestore:"description,omitempty"'];
     string type = 3 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
-    string sub_type = 4 [(gogoproto.moretags) = 'firestore:"sub_type,omitempty"'];
-    string role = 5 [(gogoproto.moretags) = 'firestore:"role,omitempty"'];
-    ThirdPartyCredential credentials = 6 [(gogoproto.moretags) = 'firestore:"credentials,omitempty"'];
+    string role = 4 [(gogoproto.moretags) = 'firestore:"role,omitempty"'];
+    ThirdPartyCredential credentials = 5 [(gogoproto.moretags) = 'firestore:"credentials,omitempty"'];
+    string exported_func_name = 6 [(gogoproto.moretags) = 'firestore:"exported_func_name,omitempty"'];
     bool enable = 7 [(gogoproto.moretags) = 'firestore:"enable,omitempty"'];
 }
 
