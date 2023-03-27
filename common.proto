@@ -184,7 +184,7 @@ message Project {
     string id = 2 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
     string project_name = 3 [(gogoproto.moretags) = 'firestore:"project_name,omitempty"'];
     string project_description = 4 [(gogoproto.moretags) = 'firestore:"project_description,omitempty"'];
-    UserDefinedSchema schema = 5 [(gogoproto.moretags) = 'firestore:"schema,omitempty"'];
+    ProjectSchema schema = 5 [(gogoproto.moretags) = 'firestore:"schema,omitempty"'];
     string created_at = 6 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
     string updated_at = 7 [(gogoproto.moretags) = 'firestore:"updated_at,omitempty"'];
     string expire_at = 8 [(gogoproto.moretags) = 'firestore:"expire_at,omitempty"'];
@@ -314,8 +314,6 @@ message AddOnsDetails {
     repeated string locals = 1 [(gogoproto.moretags) = 'firestore:"locals,omitempty"'];
     bool system_graphql_hooks = 2 [(gogoproto.moretags) = 'firestore:"system_graphql_hooks,omitempty"'];
     bool enable_revision_history = 3 [(gogoproto.moretags) = 'firestore:"revision_history,omitempty"'];
-    bool enable_auth = 4 [(gogoproto.moretags) = 'firestore:"enable_auth,omitempty"'];
-    string default_auth_role = 5 [(gogoproto.moretags) = 'firestore:"default_auth_role,omitempty"'];
 }
 
 message AccountUsage {
@@ -356,7 +354,7 @@ message UsagesTracking {
     double number_of_records = 6 [(gogoproto.moretags) = 'firestore:"number_of_records,omitempty"'];
 }
 
-message UserDefinedSchema {
+message ProjectSchema {
     repeated ModelType models = 1 [(gogoproto.moretags) = 'firestore:"models,omitempty"'];
     repeated CloudFunction functions = 2 [(gogoproto.moretags) = 'firestore:"functions,omitempty"'];
 }
