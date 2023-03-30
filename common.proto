@@ -291,9 +291,9 @@ message Response {
 }
 
 enum PluginType {
-    Extension = 0;
-    Function = 1;
-    Media = 2;
+    Extension = 0; // auth
+    Function = 1; // aws-lambda
+    Media = 2; // cloudinary
 }
 
 message PluginDetails {
@@ -379,7 +379,7 @@ message ModelType {
 }
 
 enum FunctionProvider {
-    ViaPlugin = 0; // plugin type
+    GoPlugin = 0; // plugin type, auth
     ViaExtension = 1; // aws, gcloud, apito, docker based etc..
     NoProvider = 2; // if function does not assigned any provider
 }
@@ -389,21 +389,19 @@ message CloudFunction {
     string name = 2 [(gogoproto.moretags) = 'firestore:"name,omitempty"'];
     string description = 3 [(gogoproto.moretags) = 'firestore:"description,omitempty"'];
     FunctionProviderConfig provider_config = 4 [(gogoproto.moretags) = 'firestore:"provider_config,omitempty"'];
-    CloudFunctionRequestResponseType request = 5 [(gogoproto.moretags) = 'firestore:"request,omitempty"'];
-    CloudFunctionRequestResponseType response = 6 [(gogoproto.moretags) = 'firestore:"response,omitempty"'];
-    string function_provider_name = 7 [(gogoproto.moretags) = 'firestore:"function_provider_name,omitempty"'];
-    FunctionProvider function_provider_type = 8 [(gogoproto.moretags) = 'firestore:"function_provider_type,omitempty"'];
-    bool function_connected = 9 [(gogoproto.moretags) = 'firestore:"function_connected,omitempty"'];
-    string updated_at = 10 [(gogoproto.moretags) = 'firestore:"updated_at,omitempty"'];
-    string created_at = 11 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
+    string function_path = 5 [(gogoproto.moretags) = 'firestore:"function_path,omitempty"'];
+    CloudFunctionRequestResponseType request = 6 [(gogoproto.moretags) = 'firestore:"request,omitempty"'];
+    CloudFunctionRequestResponseType response = 7 [(gogoproto.moretags) = 'firestore:"response,omitempty"'];
+    string function_provider_name = 8 [(gogoproto.moretags) = 'firestore:"function_provider_name,omitempty"'];
+    FunctionProvider function_provider_type = 9 [(gogoproto.moretags) = 'firestore:"function_provider_type,omitempty"'];
+    bool function_connected = 10 [(gogoproto.moretags) = 'firestore:"function_connected,omitempty"'];
+    string updated_at = 11 [(gogoproto.moretags) = 'firestore:"updated_at,omitempty"'];
+    string created_at = 12 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
 }
 
 message FunctionProviderConfig {
-    string remote_function_name = 1 [(gogoproto.moretags) = 'firestore:"remote_function_name,omitempty"'];
-    string region = 2 [(gogoproto.moretags) = 'firestore:"region,omitempty"'];
-    repeated FunctionEnvVariables env_vars = 3 [(gogoproto.moretags) = 'firestore:"env_vars,omitempty"'];
-    FunctionRuntimeConfig configs = 4 [(gogoproto.moretags) = 'firestore:"configs,omitempty"'];
-    string function_path = 5 [(gogoproto.moretags) = 'firestore:"function_path,omitempty"'];
+    repeated FunctionEnvVariables env_vars = 1 [(gogoproto.moretags) = 'firestore:"env_vars,omitempty"'];
+    FunctionRuntimeConfig configs = 2 [(gogoproto.moretags) = 'firestore:"configs,omitempty"'];
 }
 
 message FunctionEnvVariables {
