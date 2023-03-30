@@ -290,6 +290,7 @@ message Response {
     string code = 2;
 }
 
+
 message ExtensionDetails {
     string name = 1 [(gogoproto.moretags) = 'firestore:"name,omitempty"'];
     string description = 2 [(gogoproto.moretags) = 'firestore:"description,omitempty"'];
@@ -372,10 +373,7 @@ message ModelType {
     bool has_connections = 10 [(gogoproto.moretags) = 'firestore:"has_connections,omitempty"'];
 }
 
-enum FunctionProviderType {
-    Local = 0; // plugin type
-    Extension = 1; // aws, gcloud, apito, docker based etc..
-}
+
 
 message CloudFunction {
     string id = 1 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
@@ -385,7 +383,7 @@ message CloudFunction {
     CloudFunctionRequestResponseType request = 5 [(gogoproto.moretags) = 'firestore:"request,omitempty"'];
     CloudFunctionRequestResponseType response = 6 [(gogoproto.moretags) = 'firestore:"response,omitempty"'];
     string function_provider_name = 7 [(gogoproto.moretags) = 'firestore:"function_provider_name,omitempty"'];
-    FunctionProviderType function_provider_type = 8 [(gogoproto.moretags) = 'firestore:"function_provider_type,omitempty"'];
+    string function_provider_type = 8 [(gogoproto.moretags) = 'firestore:"function_provider_type,omitempty"'];
     bool function_connected = 9 [(gogoproto.moretags) = 'firestore:"function_connected,omitempty"'];
     string updated_at = 10 [(gogoproto.moretags) = 'firestore:"updated_at,omitempty"'];
     string created_at = 11 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
