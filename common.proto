@@ -302,7 +302,7 @@ message PluginDetails {
     PluginType type = 3 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
     string role = 4 [(gogoproto.moretags) = 'firestore:"role,omitempty"'];
     ThirdPartyCredential credentials = 5 [(gogoproto.moretags) = 'firestore:"credentials,omitempty"'];
-    string exported_func_name = 6 [(gogoproto.moretags) = 'firestore:"exported_func_name,omitempty"'];
+    string exported_variable = 6 [(gogoproto.moretags) = 'firestore:"exported_variable,omitempty"'];
     bool enable = 7 [(gogoproto.moretags) = 'firestore:"enable,omitempty"'];
 }
 
@@ -397,6 +397,8 @@ message CloudFunction {
     bool function_connected = 10 [(gogoproto.moretags) = 'firestore:"function_connected,omitempty"'];
     string updated_at = 11 [(gogoproto.moretags) = 'firestore:"updated_at,omitempty"'];
     string created_at = 12 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
+
+    string exported_variable = 13 [(gogoproto.moretags) = 'firestore:"exported_func_to_call,omitempty"'];
 }
 
 message FunctionProviderConfig {
