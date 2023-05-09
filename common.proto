@@ -178,10 +178,19 @@ message PreviewMode {
     string id = 4 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
 }
 
+message TeamMembers {
+    // for sql migration purposes
+    string project_id = 1 [(gogoproto.moretags) = 'firestore:"project_id,omitempty"'];
+
+    string user_id = 2;
+    string assigned_role = 3;
+    repeated string access_permissions = 4;
+}
+
 // user project
 message Project {
     string _key = 1 [(gogoproto.moretags) = 'firestore:"_key,omitempty"']; //exclude:"true"`
-    string id = 2 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
+    string id = 2 [(gogoproto.moretags) = 'gorm:"primaryKey;autoIncrement:false" firestore:"id,omitempty"'];
     string project_name = 3 [(gogoproto.moretags) = 'firestore:"project_name,omitempty"'];
     string project_description = 4 [(gogoproto.moretags) = 'firestore:"project_description,omitempty"'];
     ProjectSchema schema = 5 [(gogoproto.moretags) = 'firestore:"schema,omitempty"'];
@@ -189,16 +198,19 @@ message Project {
     string updated_at = 7 [(gogoproto.moretags) = 'firestore:"updated_at,omitempty"'];
     string expire_at = 8 [(gogoproto.moretags) = 'firestore:"expire_at,omitempty"'];
     map<string, PluginDetails> plugins = 9 [(gogoproto.moretags) = 'firestore:"plugins,omitempty"'];
-    AddOnsDetails addons = 10 [(gogoproto.moretags) = 'firestore:"addons,omitempty"'];
-    repeated APIToken tokens = 11 [(gogoproto.moretags) = 'firestore:"tokens,omitempty"'];
+    AddOnsDetails addons = 10 [(gogoproto.moretags) = 'gorm:"foreignKey:ProjectID" firestore:"addons,omitempty"'];
+    repeated APIToken tokens = 11 [(gogoproto.moretags) = 'gorm:"foreignKey:ProjectID" firestore:"tokens,omitempty"'];
     map<string, Role> roles = 12 [(gogoproto.moretags) = 'firestore:"roles,omitempty"'];
-    DriverCredentials driver = 13 [(gogoproto.moretags) = 'firestore:"driver,omitempty"'];
+    DriverCredentials driver = 13 [(gogoproto.moretags) = 'gorm:"foreignKey:ProjectID" firestore:"driver,omitempty"'];
     bool temp_banned = 14 [(gogoproto.moretags) = 'firestore:"temp_banned,omitempty"'];
     string plan = 15 [(gogoproto.moretags) = 'firestore:"plan,omitempty"'];
     string trial_ends = 16 [(gogoproto.moretags) = 'firestore:"trial_ends,omitempty"'];
     string from_example = 17 [(gogoproto.moretags) = 'firestore:"from_example,omitempty"'];
 
-    UsagesTracking limits = 18 [(gogoproto.moretags) = 'firestore:"limits,omitempty"'];
+    UsagesTracking limits = 18 [(gogoproto.moretags) = 'gorm:"foreignKey:ProjectID" firestore:"limits,omitempty"'];
+
+    string owner_id = 19 [(gogoproto.moretags) = 'firestore:"owner_id,omitempty"'];
+    repeated TeamMembers teams = 20 [(gogoproto.moretags) = 'gorm:"foreignKey:ProjectID" firestore:"teams,omitempty"'];
 }
 
 message SupportAndTicket {
@@ -255,34 +267,37 @@ message ProjectUsages {
 }
 
 message DriverCredentials {
+    // for sql migration purposes
+    string project_id = 1 [(gogoproto.moretags) = 'firestore:"project_id,omitempty"'];
+
     // normal sql & nosql database
-    string engine = 1;
-    string host = 2;
-    string port = 3;
-    string user = 4;
-    string password = 5;
-    string database = 6;
+    string engine = 2;
+    string host = 3;
+    string port = 4;
+    string user = 5;
+    string password = 6;
+    string database = 7;
 
     // for firebase
-    string firebase_project_id = 7;
-    string firebase_project_credential_json = 8;
+    string firebase_project_id = 8;
+    string firebase_project_credential_json = 9;
 
     // for dynamodb
-    string access_key = 9;
-    string secret_key = 10;
+    string access_key = 10;
+    string secret_key = 11;
 
     // for embedded database
-    string database_dir = 11;
-
-    // for ORM migration
-    string project_id = 12;
+    string database_dir = 12;
 }
 
 message APIToken {
-    string name = 1 [(gogoproto.moretags) = 'firestore:"name,omitempty"'];
-    string token = 2 [(gogoproto.moretags) = 'firestore:"token,omitempty"'];
-    string role = 3 [(gogoproto.moretags) = 'firestore:"role,omitempty"'];
-    string expire = 4 [(gogoproto.moretags) = 'firestore:"expire,omitempty"'];
+    // for sql migration purposes
+    string project_id = 1 [(gogoproto.moretags) = 'firestore:"project_id,omitempty"'];
+
+    string name = 2 [(gogoproto.moretags) = 'firestore:"name,omitempty"'];
+    string token = 3 [(gogoproto.moretags) = 'firestore:"token,omitempty"'];
+    string role = 4 [(gogoproto.moretags) = 'firestore:"role,omitempty"'];
+    string expire = 5 [(gogoproto.moretags) = 'firestore:"expire,omitempty"'];
 }
 
 message Response {
@@ -317,9 +332,12 @@ message ThirdPartyCredential {
 }
 
 message AddOnsDetails {
-    repeated string locals = 1 [(gogoproto.moretags) = 'firestore:"locals,omitempty"'];
-    bool system_graphql_hooks = 2 [(gogoproto.moretags) = 'firestore:"system_graphql_hooks,omitempty"'];
-    bool enable_revision_history = 3 [(gogoproto.moretags) = 'firestore:"revision_history,omitempty"'];
+    // for sql migration purposes
+    string project_id = 1 [(gogoproto.moretags) = 'firestore:"project_id,omitempty"'];
+
+    repeated string locals = 2 [(gogoproto.moretags) = 'firestore:"locals,omitempty"'];
+    bool system_graphql_hooks = 3 [(gogoproto.moretags) = 'firestore:"system_graphql_hooks,omitempty"'];
+    bool enable_revision_history = 4 [(gogoproto.moretags) = 'firestore:"revision_history,omitempty"'];
 }
 
 message AccountUsage {
@@ -352,12 +370,15 @@ message MonthlySubscription {
 
 
 message UsagesTracking {
-    uint32 api_calls = 1 [(gogoproto.moretags) = 'firestore:"api_calls,omitempty"'];
-    double api_bandwidth = 2 [(gogoproto.moretags) = 'firestore:"api_bandwidth,omitempty"'];
-    double media_storage = 3 [(gogoproto.moretags) = 'firestore:"media_storage,omitempty"'];
-    double media_bandwidth = 4 [(gogoproto.moretags) = 'firestore:"media_bandwidth,omitempty"'];
-    double number_of_media = 5 [(gogoproto.moretags) = 'firestore:"number_of_media,omitempty"'];
-    double number_of_records = 6 [(gogoproto.moretags) = 'firestore:"number_of_records,omitempty"'];
+    // for sql migration purposes
+    string project_id = 1 [(gogoproto.moretags) = 'firestore:"project_id,omitempty"'];
+
+    uint32 api_calls = 2 [(gogoproto.moretags) = 'firestore:"api_calls,omitempty"'];
+    double api_bandwidth = 3 [(gogoproto.moretags) = 'firestore:"api_bandwidth,omitempty"'];
+    double media_storage = 4 [(gogoproto.moretags) = 'firestore:"media_storage,omitempty"'];
+    double media_bandwidth = 5 [(gogoproto.moretags) = 'firestore:"media_bandwidth,omitempty"'];
+    double number_of_media = 6 [(gogoproto.moretags) = 'firestore:"number_of_media,omitempty"'];
+    double number_of_records = 7 [(gogoproto.moretags) = 'firestore:"number_of_records,omitempty"'];
 }
 
 message ProjectSchema {
