@@ -316,7 +316,7 @@ message PluginDetails {
     string description = 2 [(gogoproto.moretags) = 'firestore:"description,omitempty"'];
     PluginType type = 3 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
     string role = 4 [(gogoproto.moretags) = 'firestore:"role,omitempty"'];
-    ThirdPartyCredential credentials = 5 [(gogoproto.moretags) = 'firestore:"credentials,omitempty"'];
+    PluginConfiguration configs = 5 [(gogoproto.moretags) = 'firestore:"credentials,omitempty"'];
     string exported_variable = 6 [(gogoproto.moretags) = 'firestore:"exported_variable,omitempty"'];
     bool enable = 7 [(gogoproto.moretags) = 'firestore:"enable,omitempty"'];
 }
