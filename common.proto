@@ -321,6 +321,11 @@ message PluginDetails {
     bool enable = 7 [(gogoproto.moretags) = 'firestore:"enable,omitempty"'];
 }
 
+message PluginConfiguration {
+    ThirdPartyCredential credentials = 1;
+    FunctionProviderConfig function_config = 2;
+}
+
 message ThirdPartyCredential {
     string account_id = 1 [(gogoproto.moretags) = 'firestore:"account_id,omitempty"'];
     string access_key = 2 [(gogoproto.moretags) = 'firestore:"access_key,omitempty"'];
