@@ -197,7 +197,7 @@ message Project {
     string created_at = 6 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
     string updated_at = 7 [(gogoproto.moretags) = 'firestore:"updated_at,omitempty"'];
     string expire_at = 8 [(gogoproto.moretags) = 'firestore:"expire_at,omitempty"'];
-    map<string, PluginDetails> plugins = 9 [(gogoproto.moretags) = 'firestore:"plugins,omitempty"'];
+    repeated PluginDetails plugins = 9 [(gogoproto.moretags) = 'firestore:"plugins,omitempty"'];
     AddOnsDetails addons = 10 [(gogoproto.moretags) = 'gorm:"foreignKey:ProjectID" firestore:"addons,omitempty"'];
     repeated APIToken tokens = 11 [(gogoproto.moretags) = 'gorm:"foreignKey:ProjectID" firestore:"tokens,omitempty"'];
     map<string, Role> roles = 12 [(gogoproto.moretags) = 'firestore:"roles,omitempty"'];
