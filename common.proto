@@ -311,6 +311,13 @@ enum PluginType {
     Media = 2; // cloudinary
 }
 
+enum PluginLoadStatus {
+    Loading = 0;
+    Loaded = 1;
+    Building = 2;
+    Built = 3;
+}
+
 message PluginDetails {
     string name = 1 [(gogoproto.moretags) = 'firestore:"name,omitempty"'];
     string description = 2 [(gogoproto.moretags) = 'firestore:"description,omitempty"'];
@@ -319,6 +326,7 @@ message PluginDetails {
     PluginConfiguration configs = 5 [(gogoproto.moretags) = 'firestore:"credentials,omitempty"'];
     string exported_variable = 6 [(gogoproto.moretags) = 'firestore:"exported_variable,omitempty"'];
     bool enable = 7 [(gogoproto.moretags) = 'firestore:"enable,omitempty"'];
+    string icon = 8 [(gogoproto.moretags) = 'firestore:"icon,omitempty"'];
 }
 
 message PluginConfiguration {
