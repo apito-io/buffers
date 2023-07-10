@@ -419,7 +419,7 @@ message CloudFunction {
     bool function_connected = 10 [(gogoproto.moretags) = 'firestore:"function_connected,omitempty"'];
 
     string exported_variable = 11 [(gogoproto.moretags) = 'firestore:"exported_func_to_call,omitempty"'];
-    FunctionRuntimeConfig configs = 12 [(gogoproto.moretags) = 'firestore:"configs,omitempty"'];
+    FunctionRuntimeConfig runtime_config = 12 [(gogoproto.moretags) = 'firestore:"runtime_config,omitempty"'];
 
     string updated_at = 13 [(gogoproto.moretags) = 'firestore:"updated_at,omitempty"'];
     string created_at = 14 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
