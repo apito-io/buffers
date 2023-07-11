@@ -312,10 +312,13 @@ enum PluginType {
 }
 
 enum PluginLoadStatus {
-    Loading = 0;
-    Loaded = 1;
-    Building = 2;
-    Built = 3;
+    NotInstalled = 0;
+    Building = 1;
+    Built = 2;
+    BuildFailed = 3;
+    Loading = 4;
+    Loaded = 5;
+    LoadFailed = 6;
 }
 
 message PluginDetails {
