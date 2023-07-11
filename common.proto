@@ -323,18 +323,22 @@ enum PluginLoadStatus {
 
 message PluginDetails {
     string icon = 1 [(gogoproto.moretags) = 'firestore:"icon,omitempty"'];
-    string name = 2 [(gogoproto.moretags) = 'firestore:"name,omitempty"'];
-    string description = 3 [(gogoproto.moretags) = 'firestore:"description,omitempty"'];
-    PluginType type = 4 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
-    string role = 5 [(gogoproto.moretags) = 'firestore:"role,omitempty"'];
+    string id = 2 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
+    string title = 3 [(gogoproto.moretags) = 'firestore:"title,omitempty"'];
+    string version = 4 [(gogoproto.moretags) = 'firestore:"version,omitempty"'];
+    string description = 5 [(gogoproto.moretags) = 'firestore:"description,omitempty"'];
+    PluginType type = 6 [(gogoproto.moretags) = 'firestore:"type,omitempty"'];
+    string role = 7 [(gogoproto.moretags) = 'firestore:"role,omitempty"'];
 
-    string exported_variable = 6 [(gogoproto.moretags) = 'firestore:"exported_variable,omitempty"'];
-    bool enable = 7 [(gogoproto.moretags) = 'firestore:"enable,omitempty"'];
+    repeated FunctionEnvVariables env_vars = 10 [(gogoproto.moretags) = 'firestore:"env_vars,omitempty"'];
+    string exported_variable = 8 [(gogoproto.moretags) = 'firestore:"exported_variable,omitempty"'];
+    bool enable = 9 [(gogoproto.moretags) = 'firestore:"enable,omitempty"'];
 
-    repeated FunctionEnvVariables env_vars = 8 [(gogoproto.moretags) = 'firestore:"env_vars,omitempty"'];
-    string repository_url = 9 [(gogoproto.moretags) = 'firestore:"repository_url,omitempty"'];
+    string repository_url = 11 [(gogoproto.moretags) = 'firestore:"repository_url,omitempty"'];
+    string branch = 12 [(gogoproto.moretags) = 'firestore:"branch,omitempty"'];
+    string author = 13 [(gogoproto.moretags) = 'firestore:"author,omitempty"'];
 
-    PluginLoadStatus load_status = 10 [(gogoproto.moretags) = 'firestore:"load_status,omitempty"'];
+    PluginLoadStatus load_status = 14 [(gogoproto.moretags) = 'firestore:"load_status,omitempty"'];
 }
 
 message AddOnsDetails {
