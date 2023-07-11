@@ -330,6 +330,8 @@ message PluginDetails {
 
     repeated FunctionEnvVariables env_vars = 8 [(gogoproto.moretags) = 'firestore:"env_vars,omitempty"'];
     string repository_url = 9 [(gogoproto.moretags) = 'firestore:"repository_url,omitempty"'];
+
+    PluginLoadStatus load_status = 10 [(gogoproto.moretags) = 'firestore:"load_status,omitempty"'];
 }
 
 message AddOnsDetails {
