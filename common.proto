@@ -409,29 +409,24 @@ message ModelType {
     bool has_connections = 10 [(gogoproto.moretags) = 'firestore:"has_connections,omitempty"'];
 }
 
-enum FunctionProvider {
-    GoPlugin = 0; // plugin type, auth
-    ViaExtension = 1; // aws, gcloud, apito, docker based etc..
-    NoProvider = 2; // if function does not assigned any provider
-}
-
 message CloudFunction {
     string id = 1 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
     string name = 2 [(gogoproto.moretags) = 'firestore:"name,omitempty"'];
     string description = 3 [(gogoproto.moretags) = 'firestore:"description,omitempty"'];
     repeated FunctionEnvVariables env_vars = 4 [(gogoproto.moretags) = 'firestore:"env_vars,omitempty"'];
     string function_path = 5 [(gogoproto.moretags) = 'firestore:"function_path,omitempty"'];
+
     CloudFunctionRequestResponseType request = 6 [(gogoproto.moretags) = 'firestore:"request,omitempty"'];
     CloudFunctionRequestResponseType response = 7 [(gogoproto.moretags) = 'firestore:"response,omitempty"'];
-    string function_provider_name = 8 [(gogoproto.moretags) = 'firestore:"function_provider_name,omitempty"'];
-    FunctionProvider function_provider_type = 9 [(gogoproto.moretags) = 'firestore:"function_provider_type,omitempty"'];
-    bool function_connected = 10 [(gogoproto.moretags) = 'firestore:"function_connected,omitempty"'];
 
-    string exported_variable = 11 [(gogoproto.moretags) = 'firestore:"exported_func_to_call,omitempty"'];
-    FunctionRuntimeConfig runtime_config = 12 [(gogoproto.moretags) = 'firestore:"runtime_config,omitempty"'];
+    string function_provider_id = 8 [(gogoproto.moretags) = 'firestore:"function_provider_id,omitempty"'];
+    bool function_connected = 9 [(gogoproto.moretags) = 'firestore:"function_connected,omitempty"'];
 
-    string updated_at = 13 [(gogoproto.moretags) = 'firestore:"updated_at,omitempty"'];
-    string created_at = 14 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
+    string exported_variable = 10 [(gogoproto.moretags) = 'firestore:"exported_func_to_call,omitempty"'];
+    FunctionRuntimeConfig runtime_config = 11 [(gogoproto.moretags) = 'firestore:"runtime_config,omitempty"'];
+
+    string updated_at = 12 [(gogoproto.moretags) = 'firestore:"updated_at,omitempty"'];
+    string created_at = 13 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
 }
 
 message FunctionEnvVariables {
