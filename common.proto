@@ -422,11 +422,12 @@ message CloudFunction {
     string function_provider_id = 8 [(gogoproto.moretags) = 'firestore:"function_provider_id,omitempty"'];
     bool function_connected = 9 [(gogoproto.moretags) = 'firestore:"function_connected,omitempty"'];
 
-    string exported_variable = 10 [(gogoproto.moretags) = 'firestore:"exported_func_to_call,omitempty"'];
-    FunctionRuntimeConfig runtime_config = 11 [(gogoproto.moretags) = 'firestore:"runtime_config,omitempty"'];
+    string provider_exported_variable = 10 [(gogoproto.moretags) = 'firestore:"provider_exported_variable,omitempty"'];
+    string function_exported_variable = 11 [(gogoproto.moretags) = 'firestore:"function_exported_variable,omitempty"'];
+    FunctionRuntimeConfig runtime_config = 12 [(gogoproto.moretags) = 'firestore:"runtime_config,omitempty"'];
 
-    string updated_at = 12 [(gogoproto.moretags) = 'firestore:"updated_at,omitempty"'];
-    string created_at = 13 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
+    string updated_at = 13 [(gogoproto.moretags) = 'firestore:"updated_at,omitempty"'];
+    string created_at = 14 [(gogoproto.moretags) = 'firestore:"created_at,omitempty"'];
 }
 
 message FunctionEnvVariables {
