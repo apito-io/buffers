@@ -478,6 +478,7 @@ message FieldInfo {
     string label = 8 [(gogoproto.moretags) = 'firestore:"label,omitempty"'];
     bool system_generated = 9 [(gogoproto.moretags) = 'firestore:"system_generated,omitempty"'];
     string repeated_group_identifier = 10 [(gogoproto.moretags) = 'firestore:"repeated_group_identifier,omitempty"'];
+    bool is_object_field = 11 [(gogoproto.moretags) = 'firestore:"is_object_field,omitempty"'];
 }
 
 message ConnectionType {
