@@ -211,6 +211,23 @@ message Project {
 
     string owner_id = 19 [(gogoproto.moretags) = 'firestore:"owner_id,omitempty"'];
     repeated TeamMembers teams = 20 [(gogoproto.moretags) = 'gorm:"foreignKey:ProjectID" firestore:"teams,omitempty"'];
+
+    repeated SystemMessage system_messages = 21 [(gogoproto.moretags) = 'firestore:"system_messages,omitempty"'];
+    repeated Workspace workspaces = 22 [(gogoproto.moretags) = 'firestore:"workspaces,omitempty"'];
+}
+
+message Workspace {
+    string name = 1 [(gogoproto.moretags) = 'firestore:"name,omitempty"'];
+    bool active = 2 [(gogoproto.moretags) = 'firestore:"active,omitempty"'];
+    bool is_production = 3 [(gogoproto.moretags) = 'firestore:"is_production,omitempty"'];
+    bool is_default = 4 [(gogoproto.moretags) = 'firestore:"is_default,omitempty"'];
+}
+
+message SystemMessage {
+    string message = 1 [(gogoproto.moretags) = 'firestore:"message,omitempty"'];
+    string code = 2 [(gogoproto.moretags) = 'firestore:"code,omitempty"'];
+    string redirection = 3 [(gogoproto.moretags) = 'firestore:"redirection,omitempty"'];
+    bool hide = 4 [(gogoproto.moretags) = 'firestore:"hide,omitempty"'];
 }
 
 message SupportAndTicket {
@@ -479,6 +496,8 @@ message FieldInfo {
     bool system_generated = 9 [(gogoproto.moretags) = 'firestore:"system_generated,omitempty"'];
     string repeated_group_identifier = 10 [(gogoproto.moretags) = 'firestore:"repeated_group_identifier,omitempty"'];
     bool is_object_field = 11 [(gogoproto.moretags) = 'firestore:"is_object_field,omitempty"'];
+
+    string parent_field = 12 [(gogoproto.moretags) = 'firestore:"parent_field,omitempty"'];
 }
 
 message ConnectionType {
