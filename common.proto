@@ -214,6 +214,13 @@ message Project {
 
     repeated SystemMessage system_messages = 21 [(gogoproto.moretags) = 'firestore:"system_messages,omitempty"'];
     repeated Workspace workspaces = 22 [(gogoproto.moretags) = 'firestore:"workspaces,omitempty"'];
+
+    ActivatedPlugins activated_plugins_ids = 23 [(gogoproto.moretags) = 'firestore:"activated_plugins_ids,omitempty"'];
+}
+
+message ActivatedPlugins {
+    string storage = 1;
+    string function = 2;
 }
 
 message Workspace {
@@ -323,9 +330,9 @@ message Response {
 }
 
 enum PluginType {
-    Extension = 0; // auth
-    Function = 1; // aws-lambda
-    Media = 2; // cloudinary
+    NormalPlugin = 0; // auth, customFunction etc
+    Function = 1; // go-plugin, aws-lambda etc
+    Storage = 2; // s3, cloudinary etc
 }
 
 enum PluginLoadStatus {
