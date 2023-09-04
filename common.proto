@@ -344,6 +344,11 @@ enum PluginLoadStatus {
     LoadFailed = 5;
 }
 
+enum PluginActivateStatus {
+    deactivated = 0;
+    activated = 1;
+}
+
 message PluginDetails {
     string icon = 1 [(gogoproto.moretags) = 'firestore:"icon,omitempty"'];
     string id = 2 [(gogoproto.moretags) = 'firestore:"id,omitempty"'];
@@ -362,6 +367,7 @@ message PluginDetails {
     string author = 13 [(gogoproto.moretags) = 'firestore:"author,omitempty"'];
 
     PluginLoadStatus load_status = 14 [(gogoproto.moretags) = 'firestore:"load_status,omitempty"'];
+    PluginActivateStatus activate_status = 15 [(gogoproto.moretags) = 'firestore:"activate_status,omitempty"'];
 }
 
 message AddOnsDetails {
