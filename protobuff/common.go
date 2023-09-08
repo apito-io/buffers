@@ -98,6 +98,15 @@ type ImageMetaInfo struct {
 	Type       string `protobuf:"bytes,5,opt,name=type,proto3" json:"type,omitempty" firestore:"type,omitempty"`                   // @gotags: firestore:"type,omitempty"
 }
 
+type RegisterRequest struct {
+	Username         string `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty" firestore:"username,omitempty"`                                           // @gotags: firestore:"username,omitempty"
+	Email            string `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty" firestore:"email,omitempty"`                                                    // @gotags: firestore:"email,omitempty"
+	Secret           string `protobuf:"bytes,3,opt,name=secret,proto3" json:"secret,omitempty" firestore:"secret,omitempty"`                                                 // @gotags: firestore:"secret,omitempty"
+	FullName         string `protobuf:"bytes,4,opt,name=full_name,json=fullName,proto3" json:"full_name,omitempty" firestore:"full_name,omitempty"`                          // @gotags: firestore:"full_name,omitempty"
+	Profession       string `protobuf:"bytes,5,opt,name=profession,proto3" json:"profession,omitempty" firestore:"profession,omitempty"`                                     // @gotags: firestore:"profession,omitempty"
+	VerificationCode string `protobuf:"bytes,6,opt,name=verification_code,json=verificationCode,proto3" json:"verification_code,omitempty" firestore:"profession,omitempty"` // @gotags: firestore:"profession,omitempty"
+}
+
 type LoginRequest struct {
 	Username string `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty" firestore:"username,omitempty"` // @gotags: firestore:"username,omitempty"
 	Email    string `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty" firestore:"email,omitempty"`          // @gotags: firestore:"email,omitempty"
