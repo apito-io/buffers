@@ -1,8 +1,8 @@
 package extensions
 
 import (
-	"github.com/graphql-go/graphql"
 	echo "github.com/labstack/echo/v4"
+	"github.com/tailor-inc/graphql"
 )
 
 type ThirdPartyGraphQLSchemas struct {

@@ -34,95 +34,95 @@ type PictureDeleteRequest struct {
 }
 
 type FileDetails struct {
-	Id            string        `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty" firestore:"id,omitempty"`                                                        // @gotags: firestore:"id,omitempty"
-	XKey          string        `protobuf:"bytes,2,opt,name=_key,json=Key,proto3" json:"_key,omitempty" firestore:"_key,omitempty"`                                         // @gotags: firestore:"_key,omitempty"
-	Type          string        `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty" firestore:"type,omitempty"`                                                  // @gotags: firestore:"type,omitempty"
-	FileExtension string        `protobuf:"bytes,4,opt,name=file_extension,json=fileExtension,proto3" json:"file_extension,omitempty" firestore:"file_extension,omitempty"` // @gotags: firestore:"file_extension,omitempty"
-	FileName      string        `protobuf:"bytes,5,opt,name=file_name,json=fileName,proto3" json:"file_name,omitempty" firestore:"file_name,omitempty"`                     // @gotags: firestore:"file_name,omitempty"
-	ContentType   string        `protobuf:"bytes,6,opt,name=content_type,json=contentType,proto3" json:"content_type,omitempty" firestore:"content_type,omitempty"`         // @gotags: firestore:"content_type,omitempty"
-	Size          int64         `protobuf:"varint,7,opt,name=size,proto3" json:"size,omitempty" firestore:"size,omitempty"`                                                 // @gotags: firestore:"size,omitempty"
-	S3Key         string        `protobuf:"bytes,8,opt,name=s3_key,json=s3Key,proto3" json:"s3_key,omitempty" firestore:"s3_key,omitempty"`                                 // @gotags: firestore:"s3_key,omitempty"
-	Url           string        `protobuf:"bytes,9,opt,name=url,proto3" json:"url,omitempty" firestore:"url,omitempty"`                                                     // @gotags: firestore:"url,omitempty"
-	CreatedAt     string        `protobuf:"bytes,10,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty" firestore:"created_at,omitempty"`                // @gotags: firestore:"created_at,omitempty"
-	UploadParam   *UploadParams `protobuf:"bytes,11,opt,name=upload_param,json=uploadParam,proto3" json:"upload_param,omitempty" firestore:"upload_param,omitempty"`        // @gotags: firestore:"upload_param,omitempty"
-	Buffer        []byte        `protobuf:"bytes,12,opt,name=buffer,proto3" json:"buffer,omitempty" firestore:"upload_param,omitempty"`                                     // @gotags: firestore:"upload_param,omitempty"
+	Id            string        `json:"id,omitempty" firestore:"id,omitempty"`                         // @gotags: firestore:"id,omitempty"
+	XKey          string        `json:"_key,omitempty" firestore:"_key,omitempty"`                     // @gotags: firestore:"_key,omitempty"
+	Type          string        `json:"type,omitempty" firestore:"type,omitempty"`                     // @gotags: firestore:"type,omitempty"
+	FileExtension string        `json:"file_extension,omitempty" firestore:"file_extension,omitempty"` // @gotags: firestore:"file_extension,omitempty"
+	FileName      string        `json:"file_name,omitempty" firestore:"file_name,omitempty"`           // @gotags: firestore:"file_name,omitempty"
+	ContentType   string        `json:"content_type,omitempty" firestore:"content_type,omitempty"`     // @gotags: firestore:"content_type,omitempty"
+	Size          int64         `json:"size,omitempty" firestore:"size,omitempty"`                     // @gotags: firestore:"size,omitempty"
+	S3Key         string        `json:"s3_key,omitempty" firestore:"s3_key,omitempty"`                 // @gotags: firestore:"s3_key,omitempty"
+	Url           string        `json:"url,omitempty" firestore:"url,omitempty"`                       // @gotags: firestore:"url,omitempty"
+	CreatedAt     string        `json:"created_at,omitempty" firestore:"created_at,omitempty"`         // @gotags: firestore:"created_at,omitempty"
+	UploadParam   *UploadParams `json:"upload_param,omitempty" firestore:"upload_param,omitempty"`     // @gotags: firestore:"upload_param,omitempty"
+	Buffer        []byte        `json:"buffer,omitempty" firestore:"upload_param,omitempty"`           // @gotags: firestore:"upload_param,omitempty"
 }
 
 type UploadParams struct {
-	DocId      string `protobuf:"bytes,1,opt,name=doc_id,json=docId,proto3" json:"doc_id,omitempty" firestore:"doc_id,omitempty"`                      // @gotags: firestore:"doc_id,omitempty"
-	ProjectId  string `protobuf:"bytes,2,opt,name=project_id,json=projectId,proto3" json:"project_id,omitempty" firestore:"project_id,omitempty"`      // @gotags: firestore:"project_id,omitempty"
-	ModelName  string `protobuf:"bytes,3,opt,name=model_name,json=modelName,proto3" json:"model_name,omitempty" firestore:"model_name,omitempty"`      // @gotags: firestore:"model_name,omitempty"
-	FieldName  string `protobuf:"bytes,4,opt,name=field_name,json=fieldName,proto3" json:"field_name,omitempty" firestore:"field_name,omitempty"`      // @gotags: firestore:"field_name,omitempty"
-	AllowMulti bool   `protobuf:"varint,5,opt,name=allow_multi,json=allowMulti,proto3" json:"allow_multi,omitempty" firestore:"allow_multi,omitempty"` // @gotags: firestore:"allow_multi,omitempty"
-	Provider   string `protobuf:"bytes,6,opt,name=provider,proto3" json:"provider,omitempty" firestore:"provider,omitempty"`                           // @gotags: firestore:"provider,omitempty"
+	DocId      string `json:"doc_id,omitempty" firestore:"doc_id,omitempty"`           // @gotags: firestore:"doc_id,omitempty"
+	ProjectId  string `json:"project_id,omitempty" firestore:"project_id,omitempty"`   // @gotags: firestore:"project_id,omitempty"
+	ModelName  string `json:"model_name,omitempty" firestore:"model_name,omitempty"`   // @gotags: firestore:"model_name,omitempty"
+	FieldName  string `json:"field_name,omitempty" firestore:"field_name,omitempty"`   // @gotags: firestore:"field_name,omitempty"
+	AllowMulti bool   `json:"allow_multi,omitempty" firestore:"allow_multi,omitempty"` // @gotags: firestore:"allow_multi,omitempty"
+	Provider   string `json:"provider,omitempty" firestore:"provider,omitempty"`       // @gotags: firestore:"provider,omitempty"
 }
 
 type Filter struct {
-	Page     uint32 `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty" firestore:"page,omitempty"`            // @gotags: firestore:"page,omitempty"
-	Offset   uint32 `protobuf:"varint,2,opt,name=offset,proto3" json:"offset,omitempty" firestore:"offset,omitempty"`      // @gotags: firestore:"offset,omitempty"
-	Limit    uint32 `protobuf:"varint,3,opt,name=limit,proto3" json:"limit,omitempty" firestore:"limit,omitempty"`         // @gotags: firestore:"limit,omitempty"
-	Order    string `protobuf:"bytes,4,opt,name=order,proto3" json:"order,omitempty" firestore:"order,omitempty"`          // @gotags: firestore:"order,omitempty"
-	Min      uint32 `protobuf:"varint,5,opt,name=min,proto3" json:"min,omitempty" firestore:"min,omitempty"`               // @gotags: firestore:"min,omitempty"
-	Max      uint32 `protobuf:"varint,6,opt,name=max,proto3" json:"max,omitempty" firestore:"max,omitempty"`               // @gotags: firestore:"max,omitempty"
-	Category string `protobuf:"bytes,7,opt,name=category,proto3" json:"category,omitempty" firestore:"category,omitempty"` // @gotags: firestore:"category,omitempty"
+	Page     uint32 `json:"page,omitempty" firestore:"page,omitempty"`         // @gotags: firestore:"page,omitempty"
+	Offset   uint32 `json:"offset,omitempty" firestore:"offset,omitempty"`     // @gotags: firestore:"offset,omitempty"
+	Limit    uint32 `json:"limit,omitempty" firestore:"limit,omitempty"`       // @gotags: firestore:"limit,omitempty"
+	Order    string `json:"order,omitempty" firestore:"order,omitempty"`       // @gotags: firestore:"order,omitempty"
+	Min      uint32 `json:"min,omitempty" firestore:"min,omitempty"`           // @gotags: firestore:"min,omitempty"
+	Max      uint32 `json:"max,omitempty" firestore:"max,omitempty"`           // @gotags: firestore:"max,omitempty"
+	Category string `json:"category,omitempty" firestore:"category,omitempty"` // @gotags: firestore:"category,omitempty"
 }
 
 type Request struct {
-	Id           string  `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty" firestore:"id,omitempty"`                                                    // @gotags: firestore:"id,omitempty"
-	Type         string  `protobuf:"bytes,2,opt,name=type,proto3" json:"type,omitempty" firestore:"type,omitempty"`                                              // @gotags: firestore:"type,omitempty"
-	Filter       *Filter `protobuf:"bytes,4,opt,name=filter,proto3" json:"filter,omitempty" firestore:"filter,omitempty"`                                        // @gotags: firestore:"filter,omitempty"
-	SearchString string  `protobuf:"bytes,5,opt,name=search_string,json=searchString,proto3" json:"search_string,omitempty" firestore:"search_string,omitempty"` // @gotags: firestore:"search_string,omitempty"
-	Retry        bool    `protobuf:"varint,6,opt,name=retry,proto3" json:"retry,omitempty" firestore:"retry,omitempty"`                                          // @gotags: firestore:"retry,omitempty"
+	Id           string  `json:"id,omitempty" firestore:"id,omitempty"`                       // @gotags: firestore:"id,omitempty"
+	Type         string  `json:"type,omitempty" firestore:"type,omitempty"`                   // @gotags: firestore:"type,omitempty"
+	Filter       *Filter `json:"filter,omitempty" firestore:"filter,omitempty"`               // @gotags: firestore:"filter,omitempty"
+	SearchString string  `json:"search_string,omitempty" firestore:"search_string,omitempty"` // @gotags: firestore:"search_string,omitempty"
+	Retry        bool    `json:"retry,omitempty" firestore:"retry,omitempty"`                 // @gotags: firestore:"retry,omitempty"
 }
 
 // File Picker
 type FileLink struct {
-	Link      string `protobuf:"bytes,1,opt,name=link,proto3" json:"link,omitempty" firestore:"link,omitempty"`                                  // @gotags: firestore:"link,omitempty"
-	Title     string `protobuf:"bytes,2,opt,name=title,proto3" json:"title,omitempty" firestore:"title,omitempty"`                               // @gotags: firestore:"title,omitempty"
-	CreatedAt string `protobuf:"bytes,3,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty" firestore:"created_at,omitempty"` // @gotags: firestore:"created_at,omitempty"
-	UpdatedAt string `protobuf:"bytes,4,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty" firestore:"updated_at,omitempty"` // @gotags: firestore:"updated_at,omitempty"
+	Link      string `json:"link,omitempty" firestore:"link,omitempty"`             // @gotags: firestore:"link,omitempty"
+	Title     string `json:"title,omitempty" firestore:"title,omitempty"`           // @gotags: firestore:"title,omitempty"
+	CreatedAt string `json:"created_at,omitempty" firestore:"created_at,omitempty"` // @gotags: firestore:"created_at,omitempty"
+	UpdatedAt string `json:"updated_at,omitempty" firestore:"updated_at,omitempty"` // @gotags: firestore:"updated_at,omitempty"
 }
 
 type FilePickParameter struct {
-	NumberOfImages uint32      `protobuf:"varint,1,opt,name=number_of_images,json=numberOfImages,proto3" json:"number_of_images,omitempty" firestore:"number_of_images,omitempty"` // @gotags: firestore:"number_of_images,omitempty"
-	S3Folder       string      `protobuf:"bytes,2,opt,name=s3_folder,json=s3Folder,proto3" json:"s3_folder,omitempty" firestore:"s3_folder,omitempty"`                             // @gotags: firestore:"s3_folder,omitempty"
-	PickerTitle    string      `protobuf:"bytes,3,opt,name=picker_title,json=pickerTitle,proto3" json:"picker_title,omitempty" firestore:"picker_title,omitempty"`                 // @gotags: firestore:"picker_title,omitempty"
-	Origin         *SystemUser `protobuf:"bytes,4,opt,name=origin,proto3" json:"origin,omitempty" firestore:"origin,omitempty"`                                                    // @gotags: firestore:"origin,omitempty"
+	NumberOfImages uint32      `json:"number_of_images,omitempty" firestore:"number_of_images,omitempty"` // @gotags: firestore:"number_of_images,omitempty"
+	S3Folder       string      `json:"s3_folder,omitempty" firestore:"s3_folder,omitempty"`               // @gotags: firestore:"s3_folder,omitempty"
+	PickerTitle    string      `json:"picker_title,omitempty" firestore:"picker_title,omitempty"`         // @gotags: firestore:"picker_title,omitempty"
+	Origin         *SystemUser `json:"origin,omitempty" firestore:"origin,omitempty"`                     // @gotags: firestore:"origin,omitempty"
 }
 
 type ImageMetaInfo struct {
-	Identifier string `protobuf:"bytes,1,opt,name=identifier,proto3" json:"identifier,omitempty" firestore:"identifier,omitempty"` // @gotags: firestore:"identifier,omitempty"
-	Name       string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty" firestore:"name,omitempty"`                   // @gotags: firestore:"name,omitempty"
-	Width      uint32 `protobuf:"varint,3,opt,name=width,proto3" json:"width,omitempty" firestore:"width,omitempty"`               // @gotags: firestore:"width,omitempty"
-	Height     uint32 `protobuf:"varint,4,opt,name=height,proto3" json:"height,omitempty" firestore:"height,omitempty"`            // @gotags: firestore:"height,omitempty"
-	Type       string `protobuf:"bytes,5,opt,name=type,proto3" json:"type,omitempty" firestore:"type,omitempty"`                   // @gotags: firestore:"type,omitempty"
+	Identifier string `json:"identifier,omitempty" firestore:"identifier,omitempty"` // @gotags: firestore:"identifier,omitempty"
+	Name       string `json:"name,omitempty" firestore:"name,omitempty"`             // @gotags: firestore:"name,omitempty"
+	Width      uint32 `json:"width,omitempty" firestore:"width,omitempty"`           // @gotags: firestore:"width,omitempty"
+	Height     uint32 `json:"height,omitempty" firestore:"height,omitempty"`         // @gotags: firestore:"height,omitempty"
+	Type       string `json:"type,omitempty" firestore:"type,omitempty"`             // @gotags: firestore:"type,omitempty"
 }
 
 type RegisterRequest struct {
-	Username         string `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty" firestore:"username,omitempty"`                                           // @gotags: firestore:"username,omitempty"
-	Email            string `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty" firestore:"email,omitempty"`                                                    // @gotags: firestore:"email,omitempty"
-	Secret           string `protobuf:"bytes,3,opt,name=secret,proto3" json:"secret,omitempty" firestore:"secret,omitempty"`                                                 // @gotags: firestore:"secret,omitempty"
-	FullName         string `protobuf:"bytes,4,opt,name=full_name,json=fullName,proto3" json:"full_name,omitempty" firestore:"full_name,omitempty"`                          // @gotags: firestore:"full_name,omitempty"
-	Profession       string `protobuf:"bytes,5,opt,name=profession,proto3" json:"profession,omitempty" firestore:"profession,omitempty"`                                     // @gotags: firestore:"profession,omitempty"
-	VerificationCode string `protobuf:"bytes,6,opt,name=verification_code,json=verificationCode,proto3" json:"verification_code,omitempty" firestore:"profession,omitempty"` // @gotags: firestore:"profession,omitempty"
+	Username         string `json:"username,omitempty" firestore:"username,omitempty"`            // @gotags: firestore:"username,omitempty"
+	Email            string `json:"email,omitempty" firestore:"email,omitempty"`                  // @gotags: firestore:"email,omitempty"
+	Secret           string `json:"secret,omitempty" firestore:"secret,omitempty"`                // @gotags: firestore:"secret,omitempty"
+	FullName         string `json:"full_name,omitempty" firestore:"full_name,omitempty"`          // @gotags: firestore:"full_name,omitempty"
+	Profession       string `json:"profession,omitempty" firestore:"profession,omitempty"`        // @gotags: firestore:"profession,omitempty"
+	VerificationCode string `json:"verification_code,omitempty" firestore:"profession,omitempty"` // @gotags: firestore:"profession,omitempty"
 }
 
 type LoginRequest struct {
-	Username string `protobuf:"bytes,1,opt,name=username,proto3" json:"username,omitempty" firestore:"username,omitempty"` // @gotags: firestore:"username,omitempty"
-	Email    string `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty" firestore:"email,omitempty"`          // @gotags: firestore:"email,omitempty"
-	Secret   string `protobuf:"bytes,3,opt,name=secret,proto3" json:"secret,omitempty" firestore:"secret,omitempty"`       // @gotags: firestore:"secret,omitempty"
+	Username string `json:"username,omitempty" firestore:"username,omitempty"` // @gotags: firestore:"username,omitempty"
+	Email    string `json:"email,omitempty" firestore:"email,omitempty"`       // @gotags: firestore:"email,omitempty"
+	Secret   string `json:"secret,omitempty" firestore:"secret,omitempty"`     // @gotags: firestore:"secret,omitempty"
 }
 
 type Role struct {
-	Id                        string                    `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty" firestore:"id,omitempty"`                                                                                                                                                // @gotags: firestore:"id,omitempty"
-	ApiPermissions            map[string]*APIPermission `protobuf:"bytes,2,rep,name=api_permissions,json=apiPermissions,proto3" json:"api_permissions,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" firestore:"permissions,omitempty"` // @gotags: firestore:"permissions,omitempty"
-	AdministrativePermissions []string                  `protobuf:"bytes,3,rep,name=administrative_permissions,json=administrativePermissions,proto3" json:"administrative_permissions,omitempty" firestore:"administrative_permissions,omitempty"`                                         // @gotags: firestore:"administrative_permissions,omitempty"
-	LogicExecutions           []string                  `protobuf:"bytes,4,rep,name=logic_executions,json=logicExecutions,proto3" json:"logic_executions,omitempty" firestore:"logic_executions,omitempty"`                                                                                 // @gotags: firestore:"logic_executions,omitempty"
-	SystemGenerated           bool                      `protobuf:"varint,5,opt,name=system_generated,json=systemGenerated,proto3" json:"system_generated,omitempty" firestore:"system_generated,omitempty"`                                                                                // @gotags: firestore:"system_generated,omitempty"
-	IsAdmin                   bool                      `protobuf:"varint,6,opt,name=is_admin,json=isAdmin,proto3" json:"is_admin,omitempty" firestore:"is_admin,omitempty"`                                                                                                                // @gotags: firestore:"is_admin,omitempty"
-	IsProjectUser             bool                      `protobuf:"varint,7,opt,name=is_project_user,json=isProjectUser,proto3" json:"is_project_user,omitempty" firestore:"is_project_user,omitempty"`                                                                                     // @gotags: firestore:"is_project_user,omitempty"
-	ReadOnlyProject           bool                      `protobuf:"varint,8,opt,name=read_only_project,json=readOnlyProject,proto3" json:"read_only_project,omitempty" firestore:"read_only_project,omitempty"`                                                                             // @gotags: firestore:"read_only_project,omitempty"
-	IsSuperAdmin              bool                      `protobuf:"varint,9,opt,name=is_super_admin,json=isSuperAdmin,proto3" json:"is_super_admin,omitempty" firestore:"read_only_project,omitempty"`                                                                                      // @gotags: firestore:"read_only_project,omitempty"
+	Id                        string                    `json:"id,omitempty" firestore:"id,omitempty"`                                                 // @gotags: firestore:"id,omitempty"
+	ApiPermissions            map[string]*APIPermission `json:"api_permissions,omitempty" firestore:"permissions,omitempty"`                           // @gotags: firestore:"permissions,omitempty"
+	AdministrativePermissions []string                  `json:"administrative_permissions,omitempty" firestore:"administrative_permissions,omitempty"` // @gotags: firestore:"administrative_permissions,omitempty"
+	LogicExecutions           []string                  `json:"logic_executions,omitempty" firestore:"logic_executions,omitempty"`                     // @gotags: firestore:"logic_executions,omitempty"
+	SystemGenerated           bool                      `json:"system_generated,omitempty" firestore:"system_generated,omitempty"`                     // @gotags: firestore:"system_generated,omitempty"
+	IsAdmin                   bool                      `json:"is_admin,omitempty" firestore:"is_admin,omitempty"`                                     // @gotags: firestore:"is_admin,omitempty"
+	IsProjectUser             bool                      `json:"is_project_user,omitempty" firestore:"is_project_user,omitempty"`                       // @gotags: firestore:"is_project_user,omitempty"
+	ReadOnlyProject           bool                      `json:"read_only_project,omitempty" firestore:"read_only_project,omitempty"`                   // @gotags: firestore:"read_only_project,omitempty"
+	IsSuperAdmin              bool                      `json:"is_super_admin,omitempty" firestore:"read_only_project,omitempty"`                      // @gotags: firestore:"read_only_project,omitempty"
 }
 
 type APIPermission struct {
@@ -347,21 +347,22 @@ type Response struct {
 }
 
 type PluginDetails struct {
-	Icon             string                  `protobuf:"bytes,1,opt,name=icon,proto3" json:"icon,omitempty" firestore:"icon,omitempty"`                                                                                            // @gotags: firestore:"icon,omitempty"
-	Id               string                  `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty" firestore:"id,omitempty"`                                                                                                  // @gotags: firestore:"id,omitempty"
-	Title            string                  `protobuf:"bytes,3,opt,name=title,proto3" json:"title,omitempty" firestore:"title,omitempty"`                                                                                         // @gotags: firestore:"title,omitempty"
-	Version          string                  `protobuf:"bytes,4,opt,name=version,proto3" json:"version,omitempty" firestore:"version,omitempty"`                                                                                   // @gotags: firestore:"version,omitempty"
-	Description      string                  `protobuf:"bytes,5,opt,name=description,proto3" json:"description,omitempty" firestore:"description,omitempty"`                                                                       // @gotags: firestore:"description,omitempty"
-	Type             PluginType              `protobuf:"varint,6,opt,name=type,proto3,enum=protobuff.PluginType" json:"type,omitempty" firestore:"type,omitempty"`                                                                 // @gotags: firestore:"type,omitempty"
-	Role             string                  `protobuf:"bytes,7,opt,name=role,proto3" json:"role,omitempty" firestore:"role,omitempty"`                                                                                            // @gotags: firestore:"role,omitempty"
-	EnvVars          []*FunctionEnvVariables `protobuf:"bytes,10,rep,name=env_vars,json=envVars,proto3" json:"env_vars,omitempty" firestore:"env_vars,omitempty"`                                                                  // @gotags: firestore:"env_vars,omitempty"
-	ExportedVariable string                  `protobuf:"bytes,8,opt,name=exported_variable,json=exportedVariable,proto3" json:"exported_variable,omitempty" firestore:"exported_variable,omitempty"`                               // @gotags: firestore:"exported_variable,omitempty"
-	Enable           bool                    `protobuf:"varint,9,opt,name=enable,proto3" json:"enable,omitempty" firestore:"enable,omitempty"`                                                                                     // @gotags: firestore:"enable,omitempty"
-	RepositoryUrl    string                  `protobuf:"bytes,11,opt,name=repository_url,json=repositoryUrl,proto3" json:"repository_url,omitempty" firestore:"repository_url,omitempty"`                                          // @gotags: firestore:"repository_url,omitempty"
-	Branch           string                  `protobuf:"bytes,12,opt,name=branch,proto3" json:"branch,omitempty" firestore:"branch,omitempty"`                                                                                     // @gotags: firestore:"branch,omitempty"
-	Author           string                  `protobuf:"bytes,13,opt,name=author,proto3" json:"author,omitempty" firestore:"author,omitempty"`                                                                                     // @gotags: firestore:"author,omitempty"
-	LoadStatus       PluginLoadStatus        `protobuf:"varint,14,opt,name=load_status,json=loadStatus,proto3,enum=protobuff.PluginLoadStatus" json:"load_status,omitempty" firestore:"load_status,omitempty"`                     // @gotags: firestore:"load_status,omitempty"
-	ActivateStatus   PluginActivateStatus    `protobuf:"varint,15,opt,name=activate_status,json=activateStatus,proto3,enum=protobuff.PluginActivateStatus" json:"activate_status,omitempty" firestore:"activate_status,omitempty"` // @gotags: firestore:"activate_status,omitempty"
+	Icon             string                  `json:"icon,omitempty" firestore:"icon,omitempty"`                           // @gotags: firestore:"icon,omitempty"
+	Id               string                  `json:"id,omitempty" firestore:"id,omitempty"`                               // @gotags: firestore:"id,omitempty"
+	Title            string                  `json:"title,omitempty" firestore:"title,omitempty"`                         // @gotags: firestore:"title,omitempty"
+	Serial           int64                   `json:"serial,omitempty" firestore:"serial,omitempty"`                       // @gotags: firestore:"serial,omitempty"
+	Version          string                  `json:"version,omitempty" firestore:"version,omitempty"`                     // @gotags: firestore:"version,omitempty"
+	Description      string                  `json:"description,omitempty" firestore:"description,omitempty"`             // @gotags: firestore:"description,omitempty"
+	Type             PluginType              `json:"type,omitempty" firestore:"type,omitempty"`                           // @gotags: firestore:"type,omitempty"
+	Role             string                  `json:"role,omitempty" firestore:"role,omitempty"`                           // @gotags: firestore:"role,omitempty"
+	EnvVars          []*FunctionEnvVariables `json:"env_vars,omitempty" firestore:"env_vars,omitempty"`                   // @gotags: firestore:"env_vars,omitempty"
+	ExportedVariable string                  `json:"exported_variable,omitempty" firestore:"exported_variable,omitempty"` // @gotags: firestore:"exported_variable,omitempty"
+	Enable           bool                    `json:"enable,omitempty" firestore:"enable,omitempty"`                       // @gotags: firestore:"enable,omitempty"
+	RepositoryUrl    string                  `json:"repository_url,omitempty" firestore:"repository_url,omitempty"`       // @gotags: firestore:"repository_url,omitempty"
+	Branch           string                  `json:"branch,omitempty" firestore:"branch,omitempty"`                       // @gotags: firestore:"branch,omitempty"
+	Author           string                  `json:"author,omitempty" firestore:"author,omitempty"`                       // @gotags: firestore:"author,omitempty"
+	LoadStatus       PluginLoadStatus        `json:"load_status,omitempty" firestore:"load_status,omitempty"`             // @gotags: firestore:"load_status,omitempty"
+	ActivateStatus   PluginActivateStatus    `json:"activate_status,omitempty" firestore:"activate_status,omitempty"`     // @gotags: firestore:"activate_status,omitempty"
 }
 
 type AddOnsDetails struct {
