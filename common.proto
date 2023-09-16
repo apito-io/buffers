@@ -425,6 +425,7 @@ message ProjectSchema {
 
 message ModelType {
     string name = 1; // @gotags: firestore:"name,omitempty"
+    string description = 2; // @gotags: firestore:"name,omitempty"
     repeated FieldInfo fields = 2; // @gotags: firestore:"fields,omitempty"
     repeated ConnectionType connections = 3; // @gotags: firestore:"connections,omitempty"
     repeated string hook_ids = 4; // @gotags: firestore:"hook_ids,omitempty"

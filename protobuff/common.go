@@ -415,16 +415,17 @@ type UsagesTracking struct {
 }
 
 type ModelType struct {
-	Name            string            `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty" firestore:"name,omitempty"`                                                           // @gotags: firestore:"name,omitempty"
-	Fields          []*FieldInfo      `protobuf:"bytes,2,rep,name=fields,proto3" json:"fields,omitempty" firestore:"fields,omitempty"`                                                     // @gotags: firestore:"fields,omitempty"
-	Connections     []*ConnectionType `protobuf:"bytes,3,rep,name=connections,proto3" json:"connections,omitempty" firestore:"connections,omitempty"`                                      // @gotags: firestore:"connections,omitempty"
-	HookIds         []string          `protobuf:"bytes,4,rep,name=hook_ids,json=hookIds,proto3" json:"hook_ids,omitempty" firestore:"hook_ids,omitempty"`                                  // @gotags: firestore:"hook_ids,omitempty"
-	Locals          []string          `protobuf:"bytes,5,rep,name=locals,proto3" json:"locals,omitempty" firestore:"locals,omitempty"`                                                     // @gotags: firestore:"locals,omitempty"
-	RepeatedGroups  []string          `protobuf:"bytes,6,rep,name=repeated_groups,json=repeatedGroups,proto3" json:"repeated_groups,omitempty" firestore:"locals,omitempty"`               // @gotags: firestore:"locals,omitempty"
-	SystemGenerated bool              `protobuf:"varint,7,opt,name=system_generated,json=systemGenerated,proto3" json:"system_generated,omitempty" firestore:"system_generated,omitempty"` // @gotags: firestore:"system_generated,omitempty"
-	SinglePage      bool              `protobuf:"varint,8,opt,name=single_page,json=singlePage,proto3" json:"single_page,omitempty" firestore:"system_generated,omitempty"`                // @gotags: firestore:"system_generated,omitempty"
-	SinglePageUuid  string            `protobuf:"bytes,9,opt,name=single_page_uuid,json=singlePageUuid,proto3" json:"single_page_uuid,omitempty" firestore:"system_generated,omitempty"`   // @gotags: firestore:"system_generated,omitempty"
-	HasConnections  bool              `protobuf:"varint,10,opt,name=has_connections,json=hasConnections,proto3" json:"has_connections,omitempty" firestore:"has_connections,omitempty"`    // @gotags: firestore:"has_connections,omitempty"
+	Name            string            `json:"name,omitempty" firestore:"name,omitempty"` // @gotags: firestore:"name,omitempty"
+	Description     string            `json:"description,omitempty"`
+	Fields          []*FieldInfo      `json:"fields,omitempty" firestore:"fields,omitempty"`                     // @gotags: firestore:"fields,omitempty"
+	Connections     []*ConnectionType `json:"connections,omitempty" firestore:"connections,omitempty"`           // @gotags: firestore:"connections,omitempty"
+	HookIds         []string          `json:"hook_ids,omitempty" firestore:"hook_ids,omitempty"`                 // @gotags: firestore:"hook_ids,omitempty"
+	Locals          []string          `json:"locals,omitempty" firestore:"locals,omitempty"`                     // @gotags: firestore:"locals,omitempty"
+	RepeatedGroups  []string          `json:"repeated_groups,omitempty" firestore:"locals,omitempty"`            // @gotags: firestore:"locals,omitempty"
+	SystemGenerated bool              `json:"system_generated,omitempty" firestore:"system_generated,omitempty"` // @gotags: firestore:"system_generated,omitempty"
+	SinglePage      bool              `json:"single_page,omitempty" firestore:"system_generated,omitempty"`      // @gotags: firestore:"system_generated,omitempty"
+	SinglePageUuid  string            `json:"single_page_uuid,omitempty" firestore:"system_generated,omitempty"` // @gotags: firestore:"system_generated,omitempty"
+	HasConnections  bool              `json:"has_connections,omitempty" firestore:"has_connections,omitempty"`   // @gotags: firestore:"has_connections,omitempty"
 }
 
 type CloudFunction struct {
