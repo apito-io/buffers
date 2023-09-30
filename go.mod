@@ -1,4 +1,4 @@
-module gitlab.com/apito.io/buffers
+module github.com/apito-cms/buffers
 
 go 1.20
 
