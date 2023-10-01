@@ -3,18 +3,23 @@ package interfaces
 import (
 	"context"
 	"encoding/json"
+	"github.com/apito-cms/gqlgen/graphql"
 	"github.com/graph-gophers/dataloader/v7"
 	"github.com/labstack/echo/v4"
 	"github.com/vektah/gqlparser/v2/ast"
 )
 
-// Dynamic Dataloaders
+type SchemaLoaderInterface interface {
+	SwitchSchema(projectId string, server GqlServer) graphql.ExecutableSchema
+}
+
+// DataLoaders Dataloaders
 type DataLoaders struct {
 	MultiLoader  *dataloader.Loader[string, interface{}]
 	SingleLoader *dataloader.Loader[string, interface{}]
 }
 
-// Server to Gql connect functions
+// GqlServer to Gql connect functions
 type GqlServer interface {
 	SolvePublicQuery(ctx context.Context, model string, _args map[string]interface{}, selectionSet *ast.SelectionSet, router echo.Context) ([]byte, error)
 	SolvePublicQueryCount(ctx context.Context, model string, _args map[string]interface{}, router echo.Context) ([]byte, error)
