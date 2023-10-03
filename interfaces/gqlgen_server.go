@@ -11,6 +11,7 @@ import (
 
 type SchemaLoaderInterface interface {
 	SwitchSchema(projectId string, server GqlServer) graphql.ExecutableSchema
+	LoadedSchemaName() []string
 }
 
 // DataLoaders Dataloaders
