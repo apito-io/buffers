@@ -24,7 +24,7 @@ type DataLoaders struct {
 type GqlServer interface {
 	SolvePublicQuery(ctx context.Context, model string, _args interface{}, selectionSet *ast.SelectionSet, router echo.Context) ([]byte, error)
 	SolvePublicQueryCount(ctx context.Context, model string, _args interface{}, router echo.Context) ([]byte, error)
-	SolvePublicMutation(ctx context.Context, resolverName string, _id *string, _ids []string, status *string, local *string, userInputPayload interface{}, connect interface{}, disconnect interface{}, router echo.Context) ([]byte, error)
+	SolvePublicMutation(ctx context.Context, resolverName string, _id *string, _ids []*string, status *string, local *string, userInputPayload interface{}, connect interface{}, disconnect interface{}, router echo.Context) ([]byte, error)
 }
 
 // Marshal & Unmarshal []byte result
