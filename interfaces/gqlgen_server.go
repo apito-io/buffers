@@ -22,9 +22,9 @@ type DataLoaders struct {
 
 // GqlServer to Gql connect functions
 type GqlServer interface {
-	SolvePublicQuery(ctx context.Context, model string, _args map[string]interface{}, selectionSet *ast.SelectionSet, router echo.Context) ([]byte, error)
-	SolvePublicQueryCount(ctx context.Context, model string, _args map[string]interface{}, router echo.Context) ([]byte, error)
-	SolvePublicMutation(ctx context.Context, resolverName string, _id *string, _ids []string, status *string, local *string, userInputPayload map[string]interface{}, connect map[string]interface{}, disconnect map[string]interface{}, router echo.Context) ([]byte, error)
+	SolvePublicQuery(ctx context.Context, model string, _args interface{}, selectionSet *ast.SelectionSet, router echo.Context) ([]byte, error)
+	SolvePublicQueryCount(ctx context.Context, model string, _args interface{}, router echo.Context) ([]byte, error)
+	SolvePublicMutation(ctx context.Context, resolverName string, _id *string, _ids []string, status *string, local *string, userInputPayload interface{}, connect interface{}, disconnect interface{}, router echo.Context) ([]byte, error)
 }
 
 // Marshal & Unmarshal []byte result
