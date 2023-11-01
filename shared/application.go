@@ -6,6 +6,19 @@ import (
 	"github.com/tailor-inc/graphql"
 )
 
+type EdgeRelation struct {
+	XFrom       string   `json:"_from,omitempty"`
+	XTo         string   `json:"_to,omitempty"`
+	Key         string   `json:"_key,omitempty"`
+	Relation    string   `json:"relation,omitempty"`
+	From        string   `json:"from,omitempty"`
+	To          string   `json:"to,omitempty"`
+	CreatedAt   string   `json:"created_at,omitempty"`
+	Role        string   `json:"role,omitempty"`
+	KnownAs     string   `json:"known_as,omitempty"`
+	Permissions []string `json:"permissions,omitempty"`
+}
+
 type ConnectDisconnectParam struct {
 	DocCollectionName string
 	DocRelationName   string
@@ -21,6 +34,12 @@ type ConnectDisconnectParam struct {
 	BackendConnectionModelType *protobuff.ModelType
 
 	KnownAs string
+}
+
+type DocumentRevisionHistory struct {
+	Id         string `json:"id"`
+	RevisionAt string `json:"revision_at"`
+	Status     string `json:"status"`
 }
 
 type DefaultDocumentStructure struct {

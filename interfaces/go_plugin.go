@@ -10,7 +10,7 @@ import (
 // Greeter is the interface that we're exposing as a plugin.
 type Greeter interface {
 	Greet() string
-	ExeSchema(routerCtx echo.Context, cache *shared.ApplicationCache) ([]byte, error)
+	ExeSchema(routerCtx echo.Context, cache *shared.ApplicationCache, projectDriver ApitoProjectDB) ([]byte, error)
 }
 
 // Here is an implementation that talks over RPC
@@ -28,11 +28,12 @@ func (g *GreeterRPC) Greet() string {
 	return resp
 }
 
-func (g *GreeterRPC) ExeSchema(routerCtx echo.Context, cache *shared.ApplicationCache) ([]byte, error) {
+func (g *GreeterRPC) ExeSchema(routerCtx echo.Context, cache *shared.ApplicationCache, projectDB ApitoProjectDB) ([]byte, error) {
 	var resp []byte
 	err := g.client.Call("Plugin.ExeSchema", map[string]interface{}{
 		"routerCtx": routerCtx,
 		"cache":     cache,
+		"projectDB": projectDB,
 	}, &resp)
 	if err != nil {
 		// You usually want your interfaces to return errors. If they don't,
@@ -55,7 +56,11 @@ func (s *GreeterRPCServer) Greet(args interface{}, resp *string) error {
 }
 
 func (s *GreeterRPCServer) ExeSchema(args map[string]interface{}, resp []byte) error {
-	resp, err := s.Impl.ExeSchema(args["routerCtx"].(echo.Context), args["cache"].(*shared.ApplicationCache))
+	resp, err := s.Impl.ExeSchema(
+		args["routerCtx"].(echo.Context),
+		args["cache"].(*shared.ApplicationCache),
+		args["projectDB"].(ApitoProjectDB),
+	)
 	if err != nil {
 		return err
 	}
