@@ -2,13 +2,15 @@ package interfaces
 
 import (
 	"github.com/hashicorp/go-plugin"
+	"github.com/labstack/echo/v4"
 	"net/rpc"
 )
 
 // Greeter is the interface that we're exposing as a plugin.
 type Greeter interface {
 	Greet() string
-	ExeSchema(projectId string, server GqlServer) ([]byte, error)
+	//ExeSchema(projectId string, server GqlServer) ([]byte, error)
+	ExeSchema(router echo.Context) ([]byte, error)
 }
 
 // Here is an implementation that talks over RPC
@@ -26,11 +28,10 @@ func (g *GreeterRPC) Greet() string {
 	return resp
 }
 
-func (g *GreeterRPC) ExeSchema(projectId string, server GqlServer) ([]byte, error) {
+func (g *GreeterRPC) ExeSchema(router echo.Context) ([]byte, error) {
 	var resp []byte
 	err := g.client.Call("Plugin.ExeSchema", map[string]interface{}{
-		"project_id": projectId,
-		"server":     server,
+		"router": router,
 	}, &resp)
 	if err != nil {
 		// You usually want your interfaces to return errors. If they don't,
@@ -53,7 +54,7 @@ func (s *GreeterRPCServer) Greet(args interface{}, resp *string) error {
 }
 
 func (s *GreeterRPCServer) ExeSchema(args map[string]interface{}, resp []byte) error {
-	resp, err := s.Impl.ExeSchema(args["project_id"].(string), args["server"].(GqlServer))
+	resp, err := s.Impl.ExeSchema(args["router"].(echo.Context))
 	if err != nil {
 		return err
 	}
