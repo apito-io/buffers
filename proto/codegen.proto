@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package proto;
+option go_package = "gitlab.com/apito.io/buffers/proto";
+
+service CodeGen {
+  rpc Greet(HelloRequest) returns (HelloResponse);
+  rpc GenCodes(GenCodesRequest) returns (GenCodesResponse);
+}
+
+message GenCodesRequest {
+  string project_id = 1;
+  bool rebuild = 2;
+}
+
+message GenCodesResponse {
+  string project_id = 1;
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloResponse {
+  string greeting = 1;
+}
