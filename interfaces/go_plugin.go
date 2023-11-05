@@ -7,7 +7,7 @@ import (
 
 type CodeGenerator interface {
 	Greet() string
-	GenCodes(rebuild bool) error
+	GenCodes(projectId string, rebuild bool) error
 }
 
 type CodeGeneratorRPC struct{ client *rpc.Client }
@@ -23,10 +23,11 @@ func (g *CodeGeneratorRPC) Greet() string {
 	return resp
 }
 
-func (g *CodeGeneratorRPC) GenCodes(rebuild bool) error {
+func (g *CodeGeneratorRPC) GenCodes(projectId string, rebuild bool) error {
 	var resp interface{}
 	return g.client.Call("Plugin.GenCodes", map[string]interface{}{
-		"rebuild": rebuild,
+		"project_id": projectId,
+		"rebuild":    rebuild,
 	}, &resp)
 }
 
@@ -41,7 +42,7 @@ func (s *CodeGeneratorRPCServer) Greet(args interface{}, resp *string) error {
 }
 
 func (s *CodeGeneratorRPCServer) ExeSchema(args map[string]interface{}, resp []byte) error {
-	return s.Impl.GenCodes(args["rebuild"].(bool))
+	return s.Impl.GenCodes(args["project_id"].(string), args["rebuild"].(bool))
 }
 
 // This is the implementation of plugin.Plugin so we can serve/consume this
