@@ -45,7 +45,7 @@ func (s *CodeGeneratorRPCServer) Greet(args interface{}, resp *string) error {
 	return nil
 }
 
-func (s *CodeGeneratorRPCServer) ExeSchema(args map[string]interface{}, resp *string) error {
+func (s *CodeGeneratorRPCServer) GenCodes(args map[string]interface{}, resp *string) error {
 	var err error
 	*resp, err = s.Impl.GenCodes(args["project_id"].(string), args["rebuild"].(bool))
 	return err
