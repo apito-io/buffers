@@ -4,8 +4,8 @@ package proto;
 option go_package = "gitlab.com/apito.io/buffers/proto";
 
 service CodeGen {
-  rpc Greet(HelloRequest) returns (HelloResponse);
-  rpc GenCodes(GenCodesRequest) returns (GenCodesResponse);
+  rpc GenCodes(GenCodesRequest) returns (CodeGenSuccess);
+  rpc BuildSchemaPlugin(BuildSchemaPluginRequest) returns (BuildSchemaPluginResponse);
 }
 
 message GenCodesRequest {
@@ -13,14 +13,19 @@ message GenCodesRequest {
   bool rebuild = 2;
 }
 
-message GenCodesResponse {
+message BuildSchemaPluginRequest {
   string project_id = 1;
 }
 
-message HelloRequest {
-  string name = 1;
+message CodeGenSuccess {
+  string project_id = 1;
+  bool has_generated_model = 2;
+  bool has_generated_codes = 3;
+  bool has_generated_resolver_root = 4;
+  bool has_generated_resolver = 5;
 }
 
-message HelloResponse {
-  string greeting = 1;
+message BuildSchemaPluginResponse {
+  repeated CodeGenSuccess resp = 1;
 }
+

@@ -19,16 +19,16 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	CodeGen_Greet_FullMethodName    = "/proto.CodeGen/Greet"
-	CodeGen_GenCodes_FullMethodName = "/proto.CodeGen/GenCodes"
+	CodeGen_GenCodes_FullMethodName          = "/proto.CodeGen/GenCodes"
+	CodeGen_BuildSchemaPlugin_FullMethodName = "/proto.CodeGen/BuildSchemaPlugin"
 )
 
 // CodeGenClient is the client API for CodeGen service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CodeGenClient interface {
-	Greet(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloResponse, error)
-	GenCodes(ctx context.Context, in *GenCodesRequest, opts ...grpc.CallOption) (*GenCodesResponse, error)
+	GenCodes(ctx context.Context, in *GenCodesRequest, opts ...grpc.CallOption) (*CodeGenSuccess, error)
+	BuildSchemaPlugin(ctx context.Context, in *BuildSchemaPluginRequest, opts ...grpc.CallOption) (*BuildSchemaPluginResponse, error)
 }
 
 type codeGenClient struct {
@@ -39,18 +39,18 @@ func NewCodeGenClient(cc grpc.ClientConnInterface) CodeGenClient {
 	return &codeGenClient{cc}
 }
 
-func (c *codeGenClient) Greet(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloResponse, error) {
-	out := new(HelloResponse)
-	err := c.cc.Invoke(ctx, CodeGen_Greet_FullMethodName, in, out, opts...)
+func (c *codeGenClient) GenCodes(ctx context.Context, in *GenCodesRequest, opts ...grpc.CallOption) (*CodeGenSuccess, error) {
+	out := new(CodeGenSuccess)
+	err := c.cc.Invoke(ctx, CodeGen_GenCodes_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *codeGenClient) GenCodes(ctx context.Context, in *GenCodesRequest, opts ...grpc.CallOption) (*GenCodesResponse, error) {
-	out := new(GenCodesResponse)
-	err := c.cc.Invoke(ctx, CodeGen_GenCodes_FullMethodName, in, out, opts...)
+func (c *codeGenClient) BuildSchemaPlugin(ctx context.Context, in *BuildSchemaPluginRequest, opts ...grpc.CallOption) (*BuildSchemaPluginResponse, error) {
+	out := new(BuildSchemaPluginResponse)
+	err := c.cc.Invoke(ctx, CodeGen_BuildSchemaPlugin_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -61,8 +61,8 @@ func (c *codeGenClient) GenCodes(ctx context.Context, in *GenCodesRequest, opts 
 // All implementations must embed UnimplementedCodeGenServer
 // for forward compatibility
 type CodeGenServer interface {
-	Greet(context.Context, *HelloRequest) (*HelloResponse, error)
-	GenCodes(context.Context, *GenCodesRequest) (*GenCodesResponse, error)
+	GenCodes(context.Context, *GenCodesRequest) (*CodeGenSuccess, error)
+	BuildSchemaPlugin(context.Context, *BuildSchemaPluginRequest) (*BuildSchemaPluginResponse, error)
 	mustEmbedUnimplementedCodeGenServer()
 }
 
@@ -70,11 +70,11 @@ type CodeGenServer interface {
 type UnimplementedCodeGenServer struct {
 }
 
-func (UnimplementedCodeGenServer) Greet(context.Context, *HelloRequest) (*HelloResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Greet not implemented")
-}
-func (UnimplementedCodeGenServer) GenCodes(context.Context, *GenCodesRequest) (*GenCodesResponse, error) {
+func (UnimplementedCodeGenServer) GenCodes(context.Context, *GenCodesRequest) (*CodeGenSuccess, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GenCodes not implemented")
+}
+func (UnimplementedCodeGenServer) BuildSchemaPlugin(context.Context, *BuildSchemaPluginRequest) (*BuildSchemaPluginResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BuildSchemaPlugin not implemented")
 }
 func (UnimplementedCodeGenServer) mustEmbedUnimplementedCodeGenServer() {}
 
@@ -87,24 +87,6 @@ type UnsafeCodeGenServer interface {
 
 func RegisterCodeGenServer(s grpc.ServiceRegistrar, srv CodeGenServer) {
 	s.RegisterService(&CodeGen_ServiceDesc, srv)
-}
-
-func _CodeGen_Greet_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(HelloRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(CodeGenServer).Greet(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: CodeGen_Greet_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CodeGenServer).Greet(ctx, req.(*HelloRequest))
-	}
-	return interceptor(ctx, in, info, handler)
 }
 
 func _CodeGen_GenCodes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -125,6 +107,24 @@ func _CodeGen_GenCodes_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CodeGen_BuildSchemaPlugin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BuildSchemaPluginRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CodeGenServer).BuildSchemaPlugin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CodeGen_BuildSchemaPlugin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CodeGenServer).BuildSchemaPlugin(ctx, req.(*BuildSchemaPluginRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // CodeGen_ServiceDesc is the grpc.ServiceDesc for CodeGen service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -133,12 +133,12 @@ var CodeGen_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*CodeGenServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Greet",
-			Handler:    _CodeGen_Greet_Handler,
-		},
-		{
 			MethodName: "GenCodes",
 			Handler:    _CodeGen_GenCodes_Handler,
+		},
+		{
+			MethodName: "BuildSchemaPlugin",
+			Handler:    _CodeGen_BuildSchemaPlugin_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
