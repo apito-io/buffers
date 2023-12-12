@@ -4,7 +4,7 @@
 // - protoc             v3.17.3
 // source: codegen.proto
 
-package proto
+package codegen
 
 import (
 	context "context"
@@ -19,8 +19,8 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	CodeGen_GenCodes_FullMethodName          = "/proto.CodeGen/GenCodes"
-	CodeGen_BuildSchemaPlugin_FullMethodName = "/proto.CodeGen/BuildSchemaPlugin"
+	CodeGen_GenCodes_FullMethodName          = "/codegen.CodeGen/GenCodes"
+	CodeGen_BuildSchemaPlugin_FullMethodName = "/codegen.CodeGen/BuildSchemaPlugin"
 )
 
 // CodeGenClient is the client API for CodeGen service.
@@ -129,7 +129,7 @@ func _CodeGen_BuildSchemaPlugin_Handler(srv interface{}, ctx context.Context, de
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var CodeGen_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "proto.CodeGen",
+	ServiceName: "codegen.CodeGen",
 	HandlerType: (*CodeGenServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{

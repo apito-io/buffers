@@ -1,10 +1,9 @@
-package interfaces
+package shared
 
 import (
 	"context"
 	"encoding/json"
 	"github.com/apito-cms/gqlgen/graphql"
-	"github.com/graph-gophers/dataloader/v7"
 	"github.com/labstack/echo/v4"
 	"github.com/vektah/gqlparser/v2/ast"
 )
@@ -12,12 +11,6 @@ import (
 type SchemaLoaderInterface interface {
 	SwitchSchema(projectId string, server GqlServer) graphql.ExecutableSchema
 	LoadedSchemaName() []string
-}
-
-// DataLoaders Dataloaders
-type DataLoaders struct {
-	MultiLoader *dataloader.Loader[string, interface{}]
-	//SingleLoader *dataloader.Loader[string, interface{}]
 }
 
 // GqlServer to Gql connect functions

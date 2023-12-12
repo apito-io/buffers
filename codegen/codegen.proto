@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-package proto;
-option go_package = "gitlab.com/apito.io/buffers/proto";
+package codegen;
+option go_package = "gitlab.com/apito.io/buffers/codegen";
 
 service CodeGen {
   rpc GenCodes(GenCodesRequest) returns (CodeGenSuccess);
