@@ -1,13 +1,12 @@
-package shared
+package interfaces
 
 import (
 	"encoding/json"
-	"github.com/apito-cms/buffers/interfaces"
 	"github.com/graph-gophers/dataloader/v7"
 )
 
 type GraphQLServer struct {
-	ProjectDriver interfaces.ProjectDBInterface
+	ProjectDriver ProjectDBInterface
 	Dataloaders   DataLoaders
 }
 
