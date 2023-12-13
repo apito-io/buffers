@@ -2,12 +2,12 @@ package interfaces
 
 import (
 	"encoding/json"
+	"github.com/apito-cms/buffers/protobuff"
 	"github.com/graph-gophers/dataloader/v7"
 )
 
-type GraphQLServer struct {
-	ProjectDriver ProjectDBInterface
-	Dataloaders   DataLoaders
+type GraphQLExecutorInterface interface {
+	SetProjectDriverAndParam(_project *protobuff.Project) error
 }
 
 // DataLoaders Dataloaders
