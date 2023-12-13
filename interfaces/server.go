@@ -8,8 +8,11 @@ import (
 
 type GraphQLExecutorInterface interface {
 	SetProjectDriverAndParam(_project *protobuff.Project) error
+	InitDataloaders(_func dataloader.BatchFunc[string, interface{}])
+
 	GetProjectDriver() ProjectDBInterface
 	SetProjectDriver(driver ProjectDBInterface)
+
 	GetDataloaders() DataLoaders
 	SetDataloaders(loader DataLoaders)
 }
