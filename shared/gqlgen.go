@@ -14,9 +14,9 @@ type SchemaLoaderInterface interface {
 
 // GqlServer to Gql connect functions
 type GqlServer interface {
-	SolvePublicQuery(ctx context.Context, model string, _args interface{}, selectionSet *ast.SelectionSet, cache ApplicationCache) ([]byte, error)
-	SolvePublicQueryCount(ctx context.Context, model string, _args interface{}, cache ApplicationCache) ([]byte, error)
-	SolvePublicMutation(ctx context.Context, resolverName string, _id *string, _ids []*string, status *string, local *string, userInputPayload interface{}, connect interface{}, disconnect interface{}, cache ApplicationCache) ([]byte, error)
+	SolvePublicQuery(ctx context.Context, model string, _args interface{}, selectionSet *ast.SelectionSet, cache *ApplicationCache) ([]byte, error)
+	SolvePublicQueryCount(ctx context.Context, model string, _args interface{}, cache *ApplicationCache) ([]byte, error)
+	SolvePublicMutation(ctx context.Context, resolverName string, _id *string, _ids []*string, status *string, local *string, userInputPayload interface{}, connect interface{}, disconnect interface{}, cache *ApplicationCache) ([]byte, error)
 }
 
 // Marshal & Unmarshal []byte result
