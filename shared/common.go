@@ -2,8 +2,35 @@ package shared
 
 import (
 	"github.com/apito-cms/buffers/protobuff"
+	"github.com/graph-gophers/dataloader"
 	"github.com/tailor-inc/graphql"
 )
+
+type RawSchema struct {
+	Queries   graphql.Fields
+	Mutations graphql.Fields
+}
+
+type ApplicationCache struct {
+	Project     *protobuff.Project            `json:"project,omitempty"`
+	Param       *CommonSystemParams           `json:"param,omitempty"`
+	RawSchemas  *RawSchema                    `json:"raw_schema,omitempty"`
+	Dataloaders map[string]*dataloader.Loader `json:"dataloaders,omitempty"`
+
+	IncomingRequest []*IncomingRequest `json:"incoming_request"`
+}
+
+type IncomingRequest struct {
+	OperationType  string
+	FilteredModels []*FilteredModel
+	IsFunction     bool
+}
+
+type FilteredModel struct {
+	Name              string
+	WhereFilter       []string
+	IsConnectionQuery bool
+}
 
 type CommonSystemParams struct {
 	Role          *protobuff.Role `json:"role,omitempty"`
