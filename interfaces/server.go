@@ -9,6 +9,9 @@ import (
 type GraphQLExecutorInterface interface {
 	SetProjectDriverAndParam(_project *protobuff.Project) error
 	GetProjectDriver() ProjectDBInterface
+	SetProjectDriver(driver ProjectDBInterface)
+	GetDataloaders() DataLoaders
+	SetDataloaders(loader DataLoaders)
 }
 
 // DataLoaders Dataloaders
