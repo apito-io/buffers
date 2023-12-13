@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"github.com/apito-cms/gqlgen/graphql"
-	"github.com/labstack/echo/v4"
 	"github.com/vektah/gqlparser/v2/ast"
 )
 
@@ -16,8 +15,8 @@ type SchemaLoaderInterface interface {
 // GqlServer to Gql connect functions
 type GqlServer interface {
 	SolvePublicQuery(ctx context.Context, model string, _args interface{}, selectionSet *ast.SelectionSet, cache ApplicationCache) ([]byte, error)
-	SolvePublicQueryCount(ctx context.Context, model string, _args interface{}, router echo.Context) ([]byte, error)
-	SolvePublicMutation(ctx context.Context, resolverName string, _id *string, _ids []*string, status *string, local *string, userInputPayload interface{}, connect interface{}, disconnect interface{}, router echo.Context) ([]byte, error)
+	SolvePublicQueryCount(ctx context.Context, model string, _args interface{}, cache ApplicationCache) ([]byte, error)
+	SolvePublicMutation(ctx context.Context, resolverName string, _id *string, _ids []*string, status *string, local *string, userInputPayload interface{}, connect interface{}, disconnect interface{}, cache ApplicationCache) ([]byte, error)
 }
 
 // Marshal & Unmarshal []byte result
