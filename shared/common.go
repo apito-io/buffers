@@ -1,10 +1,24 @@
 package shared
 
 import (
+	"encoding/json"
 	"github.com/apito-cms/buffers/protobuff"
-	"github.com/graph-gophers/dataloader"
+	dlv6 "github.com/graph-gophers/dataloader"
+	"github.com/graph-gophers/dataloader/v7"
 	"github.com/tailor-inc/graphql"
 )
+
+// DataLoaders Dataloaders
+type DataLoaders struct {
+	MultiLoader *dataloader.Loader[string, interface{}]
+	//SingleLoader *dataloader.Loader[string, interface{}]
+}
+
+type Response struct {
+	Data       interface{}            `json:"data,omitempty"`
+	Errors     json.RawMessage        `json:"errors,omitempty"`
+	Extensions map[string]interface{} `json:"extensions,omitempty"`
+}
 
 type RawSchema struct {
 	Queries   graphql.Fields
@@ -12,10 +26,10 @@ type RawSchema struct {
 }
 
 type ApplicationCache struct {
-	Project     *protobuff.Project            `json:"project,omitempty"`
-	Param       *CommonSystemParams           `json:"param,omitempty"`
-	RawSchemas  *RawSchema                    `json:"raw_schema,omitempty"`
-	Dataloaders map[string]*dataloader.Loader `json:"dataloaders,omitempty"`
+	Project     *protobuff.Project      `json:"project,omitempty"`
+	Param       *CommonSystemParams     `json:"param,omitempty"`
+	RawSchemas  *RawSchema              `json:"raw_schema,omitempty"`
+	Dataloaders map[string]*dlv6.Loader `json:"dataloaders,omitempty"`
 
 	IncomingRequest []*IncomingRequest `json:"incoming_request"`
 }

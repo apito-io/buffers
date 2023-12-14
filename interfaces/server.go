@@ -1,9 +1,12 @@
 package interfaces
 
 import (
-	"encoding/json"
+	"context"
 	"github.com/apito-cms/buffers/protobuff"
+	"github.com/apito-cms/buffers/shared"
+	"github.com/apito-cms/gqlgen/graphql"
 	"github.com/graph-gophers/dataloader/v7"
+	"github.com/vektah/gqlparser/v2/ast"
 )
 
 type GraphQLExecutorInterface interface {
@@ -13,18 +16,15 @@ type GraphQLExecutorInterface interface {
 	GetProjectDriver() ProjectDBInterface
 	SetProjectDriver(driver ProjectDBInterface)
 
-	GetDataloaders() DataLoaders
-	SetDataloaders(loader DataLoaders)
+	GetDataloaders() shared.DataLoaders
+	SetDataloaders(loader shared.DataLoaders)
+
+	SolvePublicQuery(ctx context.Context, model string, _args interface{}, selectionSet *ast.SelectionSet, cache *shared.ApplicationCache) ([]byte, error)
+	SolvePublicQueryCount(ctx context.Context, model string, _args interface{}, cache *shared.ApplicationCache) ([]byte, error)
+	SolvePublicMutation(ctx context.Context, resolverName string, _id *string, _ids []*string, status *string, local *string, userInputPayload interface{}, connect interface{}, disconnect interface{}, cache *shared.ApplicationCache) ([]byte, error)
 }
 
-// DataLoaders Dataloaders
-type DataLoaders struct {
-	MultiLoader *dataloader.Loader[string, interface{}]
-	//SingleLoader *dataloader.Loader[string, interface{}]
-}
-
-type Response struct {
-	Data       interface{}            `json:"data,omitempty"`
-	Errors     json.RawMessage        `json:"errors,omitempty"`
-	Extensions map[string]interface{} `json:"extensions,omitempty"`
+type SchemaLoaderInterface interface {
+	SwitchSchema(projectId string, server GraphQLExecutorInterface) graphql.ExecutableSchema
+	LoadedSchemaName() []string
 }
