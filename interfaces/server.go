@@ -12,7 +12,7 @@ import (
 type GraphQLExecutorInterface interface {
 	GetExecutorVersion() (string, error)
 
-	SetProjectDriverAndParam(_project *protobuff.Project) error
+	SetProjectDriverAndParam(_driver *protobuff.DriverCredentials) error
 	InitDataloaders(_func dataloader.BatchFunc[string, interface{}])
 
 	GetProjectDriver() ProjectDBInterface
