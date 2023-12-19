@@ -11,15 +11,13 @@ import (
 
 type GraphQLExecutorInterface interface {
 	GetExecutorVersion() (string, error)
-
-	SetProjectDriverAndParam(_driver *protobuff.DriverCredentials) error
-	InitDataloaders(_func dataloader.BatchFunc[string, interface{}])
-
+	SetApplicationCache(cache *shared.ApplicationCache)
+	Init(_driver *protobuff.DriverCredentials) error
 	GetProjectDriver() ProjectDBInterface
 	SetProjectDriver(driver ProjectDBInterface)
-
 	GetDataloaders() shared.DataLoaders
-	SetDataloaders(loader shared.DataLoaders)
+
+	DataLoaderHandlr(ctx context.Context, keys []string) []*dataloader.Result[interface{}]
 
 	SolvePublicQuery(ctx context.Context, model string, _args interface{}, selectionSet *ast.SelectionSet, cache *shared.ApplicationCache) ([]byte, error)
 	SolvePublicQueryCount(ctx context.Context, model string, _args interface{}, cache *shared.ApplicationCache) ([]byte, error)
