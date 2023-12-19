@@ -15,7 +15,7 @@ type GraphQLExecutorInterface interface {
 	Init(_driver *protobuff.DriverCredentials) error
 	GetProjectDriver() ProjectDBInterface
 	SetProjectDriver(driver ProjectDBInterface)
-	GetDataloaders() shared.DataLoaders
+	GetDataloaders() *shared.DataLoaders
 
 	DataLoaderHandlr(ctx context.Context, keys []string) []*dataloader.Result[interface{}]
 
