@@ -9,7 +9,9 @@ service MicroService {
 
 message GenSchemaRequest {
   string project_id = 1;
-  bytes cache = 2;
+  bytes request = 2;
+  bytes cache = 3;
+  bool updateCache = 4;
 }
 
 message GenSchemaResponse {
