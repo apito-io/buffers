@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package codegen;
+option go_package = "gitlab.com/apito.io/buffers/micro";
+
+service MicroService {
+  rpc ExeSchema(GenSchemaRequest) returns (GenSchemaResponse);
+}
+
+message GenSchemaRequest {
+  string project_id = 1;
+  bytes cache = 2;
+}
+
+message GenSchemaResponse {
+  string project_id = 1;
+  bytes result = 2;
+}
