@@ -426,15 +426,15 @@ message ProjectSchema {
 message ModelType {
     string name = 1; // @gotags: firestore:"name,omitempty"
     string description = 2; // @gotags: firestore:"name,omitempty"
-    repeated FieldInfo fields = 2; // @gotags: firestore:"fields,omitempty"
-    repeated ConnectionType connections = 3; // @gotags: firestore:"connections,omitempty"
-    repeated string hook_ids = 4; // @gotags: firestore:"hook_ids,omitempty"
-    repeated string locals = 5; // @gotags: firestore:"locals,omitempty"
-    repeated string repeated_groups = 6; // @gotags: firestore:"locals,omitempty"
-    bool system_generated = 7; // @gotags: firestore:"system_generated,omitempty"
-    bool single_page = 8; // @gotags: firestore:"system_generated,omitempty"
-    string single_page_uuid = 9; // @gotags: firestore:"system_generated,omitempty"
-    bool has_connections = 10; // @gotags: firestore:"has_connections,omitempty"
+    repeated FieldInfo fields = 3; // @gotags: firestore:"fields,omitempty"
+    repeated ConnectionType connections = 4; // @gotags: firestore:"connections,omitempty"
+    repeated string hook_ids = 5; // @gotags: firestore:"hook_ids,omitempty"
+    repeated string locals = 6; // @gotags: firestore:"locals,omitempty"
+    repeated string repeated_groups = 7; // @gotags: firestore:"locals,omitempty"
+    bool system_generated = 8; // @gotags: firestore:"system_generated,omitempty"
+    bool single_page = 9; // @gotags: firestore:"system_generated,omitempty"
+    string single_page_uuid = 10; // @gotags: firestore:"system_generated,omitempty"
+    bool has_connections = 11; // @gotags: firestore:"has_connections,omitempty"
 }
 
 message CloudFunction {
