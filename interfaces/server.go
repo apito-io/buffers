@@ -11,7 +11,7 @@ import (
 
 type GraphQLExecutorInterface interface {
 	GetExecutorVersion() (string, error)
-	GetMicroServicePort() (string, error)
+	GetMicroServicePort(id string) (string, error)
 
 	SetApplicationCache(cache *shared.ApplicationCache)
 	Init(_driver *protobuff.DriverCredentials) error
