@@ -14,7 +14,7 @@ type GraphQLExecutorInterface interface {
 	GetMicroServicePort(id string) (string, error)
 
 	SetApplicationCache(cache *shared.ApplicationCache)
-	Init(_driver *protobuff.DriverCredentials) error
+	Init(_driver *protobuff.InitParams) error
 	GetProjectDriver() ProjectDBInterface
 	SetProjectDriver(driver ProjectDBInterface)
 	GetDataloaders() *shared.DataLoaders

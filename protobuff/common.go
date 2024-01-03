@@ -312,6 +312,13 @@ type ProjectUsages struct {
 	Usages    *UsagesTracking `protobuf:"bytes,7,opt,name=usages,proto3" json:"usages,omitempty" firestore:"usage,omitempty"`                             // @gotags: firestore:"usage,omitempty"
 }
 
+type InitParams struct {
+	ProjectID string             `json:"project_id"`
+	ProjectDB *DriverCredentials `json:"system_credentials"`
+	CacheDB   *DriverCredentials `json:"cache_db"`
+	SharedDB  *DriverCredentials `json:"shared_db"`
+}
+
 type DriverCredentials struct {
 
 	// for sql migration purposes
