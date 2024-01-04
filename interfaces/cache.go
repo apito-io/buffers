@@ -6,7 +6,7 @@ import (
 	"github.com/apito-cms/buffers/shared"
 )
 
-type CacheDB interface {
+type CacheDBInterface interface {
 	GetProject(ctx context.Context, projectId string) (*protobuff.Project, error)
 	SaveProject(ctx context.Context, project *protobuff.Project) (*protobuff.Project, error)
 

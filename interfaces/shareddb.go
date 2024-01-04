@@ -1,6 +1,6 @@
 package interfaces
 
-type SharedDB interface {
+type SharedDBInterface interface {
 	Get(id string) (interface{}, error)
 	Set(id string, data interface{}) error
 }
