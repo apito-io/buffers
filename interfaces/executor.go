@@ -10,8 +10,13 @@ import (
 )
 
 type GraphQLExecutorInterface interface {
+	Init(_driver *protobuff.InitParams) error
+
 	GetExecutorVersion() (string, error)
 	GetMicroServicePort(id string) (string, error)
+
+	SetApplicationCache(cache *shared.ApplicationCache)
+	GetApplicationCache() *shared.ApplicationCache
 
 	GetProjectDriver() ProjectDBInterface
 	SetProjectDriver(driver ProjectDBInterface)
@@ -19,11 +24,7 @@ type GraphQLExecutorInterface interface {
 	GetSharedDBDriver() SharedDBInterface
 	SetSharedDBDriver(driver SharedDBInterface)
 
-	SetApplicationCache(cache *shared.ApplicationCache)
-	Init(_driver *protobuff.InitParams) error
-
 	GetDataloaders() *shared.DataLoaders
-
 	DataLoaderHandlr(ctx context.Context, keys []string) []*dataloader.Result[interface{}]
 
 	SolvePublicQuery(ctx context.Context, model string, _args interface{}, selectionSet *ast.SelectionSet, cache *shared.ApplicationCache) ([]byte, error)
