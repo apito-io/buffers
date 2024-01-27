@@ -15,6 +15,9 @@ type GraphQLExecutorInterface interface {
 	GetExecutorVersion() (string, error)
 	GetMicroServicePort(id string) (string, error)
 
+	SavePID(projectId, pid string) error
+	GetPID(projectId string) (string, error)
+
 	SetApplicationCache(cache *shared.ApplicationCache)
 	GetApplicationCache() *shared.ApplicationCache
 
