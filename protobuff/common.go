@@ -483,12 +483,13 @@ type Validation struct {
 }
 
 type FieldInfo struct {
-	Identifier              string       `protobuf:"bytes,1,opt,name=identifier,proto3" json:"identifier,omitempty" firestore:"identifier,omitempty"`                                                                            // @gotags: firestore:"identifier,omitempty"
-	Description             string       `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty" firestore:"description,omitempty"`                                                                         // @gotags: firestore:"description,omitempty"
-	InputType               string       `protobuf:"bytes,3,opt,name=input_type,json=inputType,proto3" json:"input_type,omitempty" firestore:"input_type,omitempty"`                                                             // @gotags: firestore:"input_type,omitempty" // string
-	FieldType               string       `protobuf:"bytes,4,opt,name=field_type,json=fieldType,proto3" json:"field_type,omitempty" firestore:"field_type,omitempty"`                                                             // @gotags: firestore:"field_type,omitempty" // list
-	SubFieldInfo            []*FieldInfo `protobuf:"bytes,5,rep,name=sub_field_info,json=subFieldInfo,proto3" json:"sub_field_info,omitempty" firestore:"modules,omitempty"`                                                     // @gotags: firestore:"modules,omitempty" // to avoid a loop
-	Validation              *Validation  `protobuf:"bytes,6,opt,name=validation,proto3" json:"validation,omitempty" firestore:"validation,omitempty"`                                                                            // @gotags: firestore:"validation,omitempty"
+	Identifier              string       `protobuf:"bytes,1,opt,name=identifier,proto3" json:"identifier,omitempty" firestore:"identifier,omitempty"`                // @gotags: firestore:"identifier,omitempty"
+	Description             string       `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty" firestore:"description,omitempty"`             // @gotags: firestore:"description,omitempty"
+	InputType               string       `protobuf:"bytes,3,opt,name=input_type,json=inputType,proto3" json:"input_type,omitempty" firestore:"input_type,omitempty"` // @gotags: firestore:"input_type,omitempty" // string
+	FieldType               string       `protobuf:"bytes,4,opt,name=field_type,json=fieldType,proto3" json:"field_type,omitempty" firestore:"field_type,omitempty"` // @gotags: firestore:"field_type,omitempty" // list
+	FieldSubType            string       `json:"field_sub_type,omitempty"`
+	SubFieldInfo            []*FieldInfo `json:"sub_field_info,omitempty" firestore:"modules,omitempty"`                                                                                                                         // @gotags: firestore:"modules,omitempty" // to avoid a loop
+	Validation              *Validation  `json:"validation,omitempty" firestore:"validation,omitempty"`                                                                                                                          // @gotags: firestore:"validation,omitempty"
 	Serial                  uint32       `protobuf:"varint,7,opt,name=serial,proto3" json:"serial,omitempty" firestore:"serial,omitempty"`                                                                                       // @gotags: firestore:"serial,omitempty"
 	Label                   string       `protobuf:"bytes,8,opt,name=label,proto3" json:"label,omitempty" firestore:"label,omitempty"`                                                                                           // @gotags: firestore:"label,omitempty"
 	SystemGenerated         bool         `protobuf:"varint,9,opt,name=system_generated,json=systemGenerated,proto3" json:"system_generated,omitempty" firestore:"system_generated,omitempty"`                                    // @gotags: firestore:"system_generated,omitempty"
