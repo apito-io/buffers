@@ -44,6 +44,7 @@ type FilteredModel struct {
 	Name              string
 	WhereFilter       []string
 	IsConnectionQuery bool
+	HasMetaQuery      bool
 }
 
 type CommonSystemParams struct {
