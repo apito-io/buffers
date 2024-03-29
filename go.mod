@@ -1,9 +1,8 @@
-module gitlab.com/apito.io/buffers
+module github.com/apito-cms/buffers
 
 go 1.22.1
 
 require (
-	github.com/apito-cms/buffers v0.0.0-20240323071628-63fd85cb4635
 	github.com/apito-cms/gqlgen v0.17.39-0.20230923161444-aff80d5c26fe
 	github.com/graph-gophers/dataloader v5.0.0+incompatible
 	github.com/graph-gophers/dataloader/v7 v7.1.0
