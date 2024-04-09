@@ -10,24 +10,26 @@ import (
 )
 
 type GraphQLExecutorInterface interface {
-	Init(_driver *protobuff.InitParams) error
+	Init(ctx context.Context, _driver *protobuff.InitParams) error
 
-	GetExecutorVersion() (string, error)
-	GetMicroServicePort(id string) (string, error)
+	CodeGeneration(ctx context.Context, projectId string) error
 
-	SavePID(projectId, pid string) error
-	GetPID(projectId string) (string, error)
+	GetExecutorVersion(ctx context.Context) (string, error)
+	GetMicroServicePort(ctx context.Context, id string) (string, error)
 
-	SetApplicationCache(cache *shared.ApplicationCache)
-	GetApplicationCache() *shared.ApplicationCache
+	SavePID(ctx context.Context, projectId, pid string) error
+	GetPID(ctx context.Context, projectId string) (string, error)
 
-	GetProjectDriver() ProjectDBInterface
-	SetProjectDriver(driver ProjectDBInterface)
+	SetApplicationCache(ctx context.Context, cache *shared.ApplicationCache)
+	GetApplicationCache(ctx context.Context) *shared.ApplicationCache
 
-	GetSharedDBDriver() SharedDBInterface
-	SetSharedDBDriver(driver SharedDBInterface)
+	GetProjectDriver(ctx context.Context) ProjectDBInterface
+	SetProjectDriver(ctx context.Context, driver ProjectDBInterface)
 
-	GetDataloaders() *shared.DataLoaders
+	GetSharedDBDriver(ctx context.Context) SharedDBInterface
+	SetSharedDBDriver(ctx context.Context, driver SharedDBInterface)
+
+	GetDataloaders(ctx context.Context) *shared.DataLoaders
 	DataLoaderHandlr(ctx context.Context, keys []string) []*dataloader.Result[interface{}]
 
 	SolvePublicQuery(ctx context.Context, model string, _args interface{}, selectionSet *ast.SelectionSet, cache *shared.ApplicationCache) ([]byte, error)
@@ -37,11 +39,11 @@ type GraphQLExecutorInterface interface {
 	ConnectDisconnectParamBuilder(ctx context.Context, schema *protobuff.ProjectSchema, uid string, collectionName string, connectionIds map[string]interface{}, modelType *protobuff.ModelType) ([]*shared.ConnectDisconnectParam, error)
 	HandlePayloadFormatting(ctx context.Context, param *shared.CommonSystemParams, isFaker bool, local string, fields []*protobuff.FieldInfo, inputPayload map[string]interface{}, dbPayload map[string]interface{}) (map[string]interface{}, error)
 
-	UploadImageFromURL(projectId, modelName, imageUrl string) (*protobuff.FileDetails, error)
+	UploadImageFromURL(ctx context.Context, projectId, modelName, imageUrl string) (*protobuff.FileDetails, error)
 	HandleMediaURL(ctx context.Context, param *shared.CommonSystemParams, media map[string]interface{}) (interface{}, error)
 }
 
 type SchemaLoaderInterface interface {
-	SwitchSchema(projectId string, server GraphQLExecutorInterface) graphql.ExecutableSchema
-	LoadedSchemaName() []string
+	SwitchSchema(ctx context.Context, projectId string, server GraphQLExecutorInterface) graphql.ExecutableSchema
+	LoadedSchemaName(ctx context.Context) []string
 }

@@ -4,7 +4,7 @@ package codegen;
 option go_package = "gitlab.com/apito.io/buffers/micro";
 
 service MicroService {
-  rpc GenCodes(GenCodesRequest) returns (CodeGenSuccess);
+  rpc TriggerCodeGeneration(GenCodesRequest) returns (CodeGenSuccess);
   rpc ExeSchema(GenSchemaRequest) returns (GenSchemaResponse);
 }
 
