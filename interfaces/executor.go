@@ -15,10 +15,6 @@ type GraphQLExecutorInterface interface {
 	CodeGeneration(ctx context.Context, projectId string) error
 
 	GetExecutorVersion(ctx context.Context) (string, error)
-	GetMicroServicePort(ctx context.Context, id string) (string, error)
-
-	SavePID(ctx context.Context, projectId, pid string) error
-	GetPID(ctx context.Context, projectId string) (string, error)
 
 	SetApplicationCache(ctx context.Context, cache *shared.ApplicationCache)
 	GetApplicationCache(ctx context.Context) *shared.ApplicationCache
