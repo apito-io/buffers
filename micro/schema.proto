@@ -4,7 +4,21 @@ package codegen;
 option go_package = "gitlab.com/apito.io/buffers/micro";
 
 service MicroService {
+  rpc GenCodes(GenCodesRequest) returns (CodeGenSuccess);
   rpc ExeSchema(GenSchemaRequest) returns (GenSchemaResponse);
+}
+
+message GenCodesRequest {
+  string project_id = 1;
+  bool rebuild = 2;
+}
+
+message CodeGenSuccess {
+  string project_id = 1;
+  bool has_generated_model = 2;
+  bool has_generated_codes = 3;
+  bool has_generated_resolver_root = 4;
+  bool has_generated_resolver = 5;
 }
 
 message GenSchemaRequest {
