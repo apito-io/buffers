@@ -4,7 +4,6 @@ import (
 	"context"
 	"github.com/apito-cms/buffers/protobuff"
 	"github.com/apito-cms/buffers/shared"
-	"github.com/apito-cms/gqlgen/codegen/config"
 	"github.com/apito-cms/gqlgen/graphql"
 	"github.com/graph-gophers/dataloader/v7"
 	"github.com/vektah/gqlparser/v2/ast"
@@ -13,7 +12,7 @@ import (
 type GraphQLExecutorInterface interface {
 	Init(ctx context.Context, _driver *protobuff.InitParams) error
 
-	CodeGeneration(ctx context.Context, projectId string, _cfg *config.Config) error
+	CodeGeneration(ctx context.Context, projectId string) error
 
 	GetExecutorVersion(ctx context.Context) (string, error)
 
