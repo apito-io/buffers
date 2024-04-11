@@ -11,6 +11,7 @@ service MicroService {
 message GenCodesRequest {
   string project_id = 1;
   bool rebuild = 2;
+  string gqlgen_config_path = 3;
 }
 
 message CodeGenSuccess {
