@@ -12,7 +12,7 @@ import (
 type GraphQLExecutorInterface interface {
 	Init(ctx context.Context, _driver *protobuff.InitParams) error
 
-	CodeGeneration(ctx context.Context, projectId string) error
+	CodeGeneration(ctx context.Context, projectId string, gqlgenCfgPath string) error
 
 	GetExecutorVersion(ctx context.Context) (string, error)
 
