@@ -4,7 +4,6 @@ import (
 	"context"
 	"github.com/apito-cms/buffers/protobuff"
 	"github.com/apito-cms/buffers/shared"
-	"github.com/apito-cms/gqlgen/graphql"
 	"github.com/graph-gophers/dataloader/v7"
 	"github.com/vektah/gqlparser/v2/ast"
 )
@@ -37,9 +36,4 @@ type GraphQLExecutorInterface interface {
 
 	UploadImageFromURL(ctx context.Context, projectId, modelName, imageUrl string) (*protobuff.FileDetails, error)
 	HandleMediaURL(ctx context.Context, param *shared.CommonSystemParams, media map[string]interface{}) (interface{}, error)
-}
-
-type SchemaLoaderInterface interface {
-	SwitchSchema(ctx context.Context, projectId string, server GraphQLExecutorInterface) graphql.ExecutableSchema
-	LoadedSchemaName(ctx context.Context) []string
 }
