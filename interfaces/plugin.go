@@ -43,6 +43,9 @@ type StoragePluginInterface interface {
 	// ListFiles list all the files that this plugin is serving
 	ListFiles(ctx context.Context, filter map[string]interface{}) ([]*extensions.FileDetails, error)
 
+	// CountFiles count files
+	CountFiles(ctx context.Context, filter map[string]interface{}) (int64, error)
+
 	// DeleteFile delete a single file
 	DeleteFile(ctx context.Context, id string) error
 }
