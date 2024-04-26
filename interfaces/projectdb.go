@@ -5,7 +5,6 @@ import (
 	"github.com/apito-cms/buffers/protobuff"
 	"github.com/apito-cms/buffers/shared"
 	"github.com/graph-gophers/dataloader"
-	"github.com/tailor-inc/graphql"
 	"github.com/vektah/gqlparser/v2/ast"
 )
 
@@ -52,15 +51,15 @@ type ProjectDBInterface interface {
 	// Get a Relation Data of a single document by id, it could be object or array
 	GetAllRelationDocumentsOfSingleDocument(ctx context.Context, from string, arg *shared.CommonSystemParams) (interface{}, error)
 
-	// List media data
-	ListMedias(ctx context.Context, projectId string, param *graphql.ResolveParams) ([]*protobuff.FileDetails, error)
+	/*	// List media data
+		ListMedias(ctx context.Context, projectId string, param *graphql.ResolveParams) ([]*protobuff.FileDetails, error)
 
-	// Count media data
-	CountMedias(ctx context.Context, projectId string, param *graphql.ResolveParams) (int, error)
+		// Count media data
+		CountMedias(ctx context.Context, projectId string, param *graphql.ResolveParams) (int, error)
 
-	// List media data
-	DeleteMediaFile(ctx context.Context, param shared.CommonSystemParams) error
-
+		// List media data
+		DeleteMediaFile(ctx context.Context, param shared.CommonSystemParams) error
+	*/
 	// GetSingleProjectDocument Get a single Project document by id
 	GetSingleProjectDocumentBytes(ctx context.Context, param shared.CommonSystemParams, s *ast.SelectionSet) ([]byte, error)
 
