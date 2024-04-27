@@ -38,7 +38,7 @@ type StoragePluginInterface interface {
 	RESTApiRegister(ctx context.Context) ([]*extensions.ThirdPartyRESTApi, error)
 
 	// UploadFile calls when the function is called
-	UploadFile(ctx context.Context, file *extensions.FileDetails) (interface{}, error)
+	UploadFile(ctx context.Context, file *extensions.FileDetails) (*extensions.FileDetails, error)
 
 	// ListFiles list all the files that this plugin is serving
 	ListFiles(ctx context.Context, filter map[string]interface{}) ([]*extensions.FileDetails, error)
