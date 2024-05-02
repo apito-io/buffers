@@ -85,7 +85,7 @@ type ProjectDBInterface interface {
 	// -- Mutation --- //
 
 	// Create a Media Document
-	CreateMediaDocument(ctx context.Context, projectId string, media *protobuff.FileDetails) (*protobuff.FileDetails, error)
+	//CreateMediaDocument(ctx context.Context, projectId string, media *protobuff.FileDetails) (*protobuff.FileDetails, error)
 
 	// Create or Add a Document to project
 	AddDocumentToProject(ctx context.Context, projectId string, modelName string, doc *shared.DefaultDocumentStructure) (interface{}, error)
