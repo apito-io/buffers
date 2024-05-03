@@ -113,6 +113,11 @@ type LoginRequest struct {
 	Secret   string `json:"secret,omitempty" firestore:"secret,omitempty"`     // @gotags: firestore:"secret,omitempty"
 }
 
+type PassChangeRequest struct {
+	OldPassword string `json:"old_password,omitempty" firestore:"old_password,omitempty"` // @gotags: firestore:"old_password,omitempty"
+	NewPassword string `json:"new_password,omitempty" firestore:"new_password,omitempty"` // @gotags: firestore:"new_password,omitempty"
+}
+
 type Role struct {
 	Id                        string                    `json:"id,omitempty" firestore:"id,omitempty"`                                                 // @gotags: firestore:"id,omitempty"
 	ApiPermissions            map[string]*APIPermission `json:"api_permissions,omitempty" firestore:"permissions,omitempty"`                           // @gotags: firestore:"permissions,omitempty"
