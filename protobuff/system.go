@@ -80,6 +80,9 @@ type SystemUser struct {
 	ProjectLimit     uint32 `json:"project_limit,omitempty" firestore:"project_limit,omitempty"`          // @gotags: firestore:"project_limit,omitempty"
 
 	Projects []*Project `bun:"rel:has-many" json:"projects,omitempty" firestore:"projects,omitempty"` // @gotags: firestore:"projects,omitempty"
+
+	IsEnterpriseUser           bool   `json:"is_enterprise_user,omitempty" firestore:"is_enterprise_user,omitempty"`                     // @gotags: firestore:"is_enterprise_user,omitempty"
+	EnterpriseSubscriptionCode string `json:"enterprise_subscription_code,omitempty" firestore:"enterprise_subscription_code,omitempty"` // @gotags: firestore:"enterprise_subscription_code,omitempty"
 }
 
 type AddOnsDetails struct {
@@ -173,6 +176,9 @@ type Project struct {
 	SystemMessages      []*SystemMessage   `bun:"rel:has-many" json:"system_messages,omitempty" firestore:"system_messages,omitempty"`                                                  // @gotags: firestore:"system_messages,omitempty"
 	Workspaces          []*Workspace       `bun:"rel:has-many" json:"workspaces,omitempty" firestore:"workspaces,omitempty"`                                                            // @gotags: firestore:"workspaces,omitempty"
 	ActivatedPluginsIds *ActivatedPlugins  `bun:"rel:belongs-to,join:id=project_id" json:"activated_plugins_ids,omitempty" firestore:"activated_plugins_ids,omitempty"`                 // @gotags: firestore:"activated_plugins_ids,omitempty"
+
+	IsSubscribed bool `json:"is_subscribed,omitempty" firestore:"is_subscribed,omitempty"` // @gotags: firestore:"is_subscribed,omitempty"
+
 	// for microservice
 	MicroServicePort string `json:"micro_service_port,omitempty" firestore:"micro_service_port,omitempty"`
 }
