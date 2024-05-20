@@ -121,3 +121,8 @@ type EdgeRelation struct {
 	KnownAs     string   `json:"known_as,omitempty"`
 	Permissions []string `json:"permissions,omitempty"`
 }
+
+type ModelDocsResponse struct {
+	Docs  []*DefaultDocumentStructure `json:"docs"`
+	Count int                         `json:"count"`
+}

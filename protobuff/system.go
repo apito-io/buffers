@@ -128,7 +128,7 @@ type PluginDetails struct {
 	Serial           int64                   `json:"serial,omitempty" firestore:"serial,omitempty"`                       // @gotags: firestore:"serial,omitempty"
 	Version          string                  `json:"version,omitempty" firestore:"version,omitempty"`                     // @gotags: firestore:"version,omitempty"
 	Description      string                  `json:"description,omitempty" firestore:"description,omitempty"`             // @gotags: firestore:"description,omitempty"
-	Type             *PluginType             `json:"type,omitempty" firestore:"type,omitempty"`                           // @gotags: firestore:"type,omitempty"
+	Type             PluginType              `json:"type,omitempty" firestore:"type,omitempty"`                           // @gotags: firestore:"type,omitempty"
 	Role             string                  `json:"role,omitempty" firestore:"role,omitempty"`                           // @gotags: firestore:"role,omitempty"
 	EnvVars          []*FunctionEnvVariables `json:"env_vars,omitempty" firestore:"env_vars,omitempty"`                   // @gotags: firestore:"env_vars,omitempty"
 	ExportedVariable string                  `json:"exported_variable,omitempty" firestore:"exported_variable,omitempty"` // @gotags: firestore:"exported_variable,omitempty"
@@ -136,8 +136,8 @@ type PluginDetails struct {
 	RepositoryUrl    string                  `json:"repository_url,omitempty" firestore:"repository_url,omitempty"`       // @gotags: firestore:"repository_url,omitempty"
 	Branch           string                  `json:"branch,omitempty" firestore:"branch,omitempty"`                       // @gotags: firestore:"branch,omitempty"
 	Author           string                  `json:"author,omitempty" firestore:"author,omitempty"`                       // @gotags: firestore:"author,omitempty"
-	LoadStatus       *PluginLoadStatus       `json:"load_status,omitempty" firestore:"load_status,omitempty"`             // @gotags: firestore:"load_status,omitempty"
-	ActivateStatus   *PluginActivateStatus   `json:"activate_status,omitempty" firestore:"activate_status,omitempty"`     // @gotags: firestore:"activate_status,omitempty"
+	LoadStatus       PluginLoadStatus        `json:"load_status,omitempty" firestore:"load_status,omitempty"`             // @gotags: firestore:"load_status,omitempty"
+	ActivateStatus   PluginActivateStatus    `json:"activate_status,omitempty" firestore:"activate_status,omitempty"`     // @gotags: firestore:"activate_status,omitempty"
 }
 
 type APIToken struct {
@@ -220,4 +220,10 @@ type CloudFunction struct {
 	RuntimeConfig            *FunctionRuntimeConfig            `json:"runtime_config,omitempty" firestore:"runtime_config,omitempty"`                         // @gotags: firestore:"runtime_config,omitempty"`
 	UpdatedAt                string                            `json:"updated_at,omitempty" firestore:"updated_at,omitempty"`                                 // @gotags: firestore:"updated_at,omitempty"`
 	CreatedAt                string                            `json:"created_at,omitempty" firestore:"created_at,omitempty"`                                 // @got
+}
+
+type ProjectWithRoles struct {
+	Project     *Project `json:"project"`
+	Role        string   `json:"role"`
+	Permissions []string `json:"permissions"`
 }
