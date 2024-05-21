@@ -61,6 +61,15 @@ func (u *Role) UnmarshalApiPermissions(data []byte) error {
 	return json.Unmarshal(data, &u.ApiPermissions)
 }
 
+type UserSubscriptionType int32
+
+const (
+	UserSubscriptionType_Free       UserSubscriptionType = 0
+	UserSubscriptionType_Basic      UserSubscriptionType = 1
+	UserSubscriptionType_Pro        UserSubscriptionType = 2
+	UserSubscriptionType_Enterprise UserSubscriptionType = 3
+)
+
 type SystemUser struct {
 	XKey             string `json:"_key,omitempty" firestore:"_key,omitempty"`                            // @gotags: firestore:"_key,omitempty"
 	Id               string `bun:"type:uuid,pk" json:"id,omitempty" firestore:"id,omitempty"`             // @gotags: firestore:"id,omitempty"
@@ -79,10 +88,9 @@ type SystemUser struct {
 	LastLoggedIn     string `json:"last_logged_in,omitempty" firestore:"last_logged_in,omitempty"`        // @gotags: firestore:"last_logged_in,omitempty"
 	ProjectLimit     uint32 `json:"project_limit,omitempty" firestore:"project_limit,omitempty"`          // @gotags: firestore:"project_limit,omitempty"
 
-	Projects []*Project `bun:"rel:has-many" json:"projects,omitempty" firestore:"projects,omitempty"` // @gotags: firestore:"projects,omitempty"
+	UserSubscriptionType UserSubscriptionType `json:"user_subscription_type,omitempty" firestore:"user_subscription_type,omitempty"` // @gotags: firestore:"user_subscription_type,omitempty"
 
-	IsEnterpriseUser           bool   `json:"is_enterprise_user,omitempty" firestore:"is_enterprise_user,omitempty"`                     // @gotags: firestore:"is_enterprise_user,omitempty"
-	EnterpriseSubscriptionCode string `json:"enterprise_subscription_code,omitempty" firestore:"enterprise_subscription_code,omitempty"` // @gotags: firestore:"enterprise_subscription_code,omitempty"
+	Projects []*Project `bun:"rel:has-many" json:"projects,omitempty" firestore:"projects,omitempty"` // @gotags: firestore:"projects,omitempty"
 }
 
 type AddOnsDetails struct {
@@ -151,6 +159,23 @@ type APIToken struct {
 	Expire    string `json:"expire,omitempty" firestore:"expire,omitempty"`         // @gotags: firestore:"expire,omitempty"
 }
 
+type SubscriptionCheckRequest struct {
+	SubscriptionType UserSubscriptionType `json:"subscription_type"`
+	Name             string               `json:"name"`
+	SubscriptionCode string               `json:"subscription_code"`
+	FeaturePromise   []string             `json:"feature_promise"`
+}
+
+type ProjectCreateRequest struct {
+	Id          string             `json:"id"`
+	Name        string             `json:"name"`
+	Description string             `json:"description"`
+	Token       string             `json:"token"`
+	Engine      string             `json:"engine"`
+	Driver      *DriverCredentials `json:"driver"`
+	Example     string             `json:"example"`
+}
+
 // Project user project
 type Project struct {
 	XKey                string             `json:"_key,omitempty" firestore:"_key,omitempty"`                                                                                           // @gotags: firestore:"_key,omitempty"
@@ -177,7 +202,7 @@ type Project struct {
 	Workspaces          []*Workspace       `bun:"rel:has-many" json:"workspaces,omitempty" firestore:"workspaces,omitempty"`                                                            // @gotags: firestore:"workspaces,omitempty"
 	ActivatedPluginsIds *ActivatedPlugins  `bun:"rel:belongs-to,join:id=project_id" json:"activated_plugins_ids,omitempty" firestore:"activated_plugins_ids,omitempty"`                 // @gotags: firestore:"activated_plugins_ids,omitempty"
 
-	IsSubscribed bool `json:"is_subscribed,omitempty" firestore:"is_subscribed,omitempty"` // @gotags: firestore:"is_subscribed,omitempty"
+	IsPaymentDue bool `json:"is_payment_due,omitempty" firestore:"is_payment_due,omitempty"` // @gotags: firestore:"is_payment_due,omitempty"
 
 	// for microservice
 	MicroServicePort string `json:"micro_service_port,omitempty" firestore:"micro_service_port,omitempty"`
