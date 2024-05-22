@@ -64,11 +64,12 @@ func (u *Role) UnmarshalApiPermissions(data []byte) error {
 type UserSubscriptionType int32
 
 const (
-	UserSubscriptionType_Trial      UserSubscriptionType = 0
-	UserSubscriptionType_Free       UserSubscriptionType = 1
-	UserSubscriptionType_Basic      UserSubscriptionType = 2
-	UserSubscriptionType_Pro        UserSubscriptionType = 3
-	UserSubscriptionType_Enterprise UserSubscriptionType = 4
+	UserSubscriptionType_Undefined  UserSubscriptionType = 0
+	UserSubscriptionType_Trial      UserSubscriptionType = 1
+	UserSubscriptionType_Free       UserSubscriptionType = 2
+	UserSubscriptionType_Basic      UserSubscriptionType = 3
+	UserSubscriptionType_Pro        UserSubscriptionType = 4
+	UserSubscriptionType_Enterprise UserSubscriptionType = 5
 )
 
 type SystemUser struct {
