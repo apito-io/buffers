@@ -197,11 +197,6 @@ type ProjectCreateRequest struct {
 	Example     string             `json:"example"`
 }
 
-type ActivatedPlugins struct {
-	Storage  string `json:"storage,omitempty"`
-	Function string `json:"function,omitempty"`
-}
-
 type Workspace struct {
 	ProjectID    string `json:"project_id,omitempty" firestore:"project_id,omitempty"`       // @gotags: firestore:"project_id,omitempty"
 	Name         string `json:"name,omitempty" firestore:"name,omitempty"`                   // @gotags: firestore:"name,omitempty"
@@ -245,6 +240,9 @@ type Project struct {
 	SystemMessages []*SystemMessage `bun:"rel:has-many" json:"system_messages,omitempty" firestore:"system_messages,omitempty"` // @gotags: firestore:"system_messages,omitempty"
 	Workspaces     []*Workspace     `bun:"rel:has-many" json:"workspaces,omitempty" firestore:"workspaces,omitempty"`           // @gotags: firestore:"workspaces,omitempty"
 	//ActivatedPluginsIds *ActivatedPlugins `bun:"rel:belongs-to,join:id=project_id" json:"activated_plugins_ids,omitempty" firestore:"activated_plugins_ids,omitempty"` // @gotags: firestore:"activated_plugins_ids,omitempty"
+
+	DefaultStoragePlugin  string `json:"default_storage_plugin,omitempty" firestore:"default_storage_plugin,omitempty"`   // @gotags: firestore:"default_storage_plugin,omitempty"
+	DefaultFunctionPlugin string `json:"default_function_plugin,omitempty" firestore:"default_function_plugin,omitempty"` // @gotags: firestore:"default_function_plugin,omitempty"
 
 	UserSubscriptionType UserSubscriptionType `json:"user_subscription_type,omitempty" firestore:"user_subscription_type,omitempty"` // @gotags: firestore:"user_subscription_type,omitempty"
 	IsPaymentDue         bool                 `json:"is_payment_due,omitempty" firestore:"is_payment_due,omitempty"`                 // @gotags: firestore:"is_payment_due,omitempty"
