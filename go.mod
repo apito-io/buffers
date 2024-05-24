@@ -8,6 +8,9 @@ require (
 	github.com/graph-gophers/dataloader/v7 v7.1.0
 	github.com/labstack/echo/v4 v4.11.4
 	github.com/tailor-inc/graphql v0.5.3
+	github.com/uptrace/bun v1.2.1
+	github.com/uptrace/bun/dialect/pgdialect v1.2.1
+	github.com/uptrace/bun/driver/pgdriver v1.2.1
 	github.com/vektah/gqlparser/v2 v2.5.11
 	google.golang.org/grpc v1.62.1
 	google.golang.org/protobuf v1.33.0
@@ -22,7 +25,6 @@ require (
 	github.com/mattn/go-isatty v0.0.20 // indirect
 	github.com/opentracing/opentracing-go v1.2.0 // indirect
 	github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc // indirect
-	github.com/uptrace/bun v1.2.1 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasttemplate v1.2.2 // indirect
 	github.com/vmihailenco/msgpack/v5 v5.4.1 // indirect
@@ -32,4 +34,5 @@ require (
 	golang.org/x/sys v0.18.0 // indirect
 	golang.org/x/text v0.14.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240318140521-94a12d6c2237 // indirect
+	mellium.im/sasl v0.3.1 // indirect
 )
