@@ -2,7 +2,7 @@ package interfaces
 
 import (
 	"context"
-	"github.com/apito-cms/gqlgen/graphql"
+	"github.com/99designs/gqlgen/graphql"
 )
 
 type SchemaLoaderInterface interface {
