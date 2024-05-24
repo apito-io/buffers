@@ -98,14 +98,14 @@ type SystemUser struct {
 	ProjectLimit         uint32               `json:"project_limit,omitempty" firestore:"project_limit,omitempty"`                   // @gotags: firestore:"project_limit,omitempty"
 	UserSubscriptionType UserSubscriptionType `json:"user_subscription_type,omitempty" firestore:"user_subscription_type,omitempty"` // @gotags: firestore:"user_subscription_type,omitempty"
 
-	Projects      []*Project       `bun:"rel:has-many,join:id=owner_id" json:"projects,omitempty" firestore:"projects,omitempty"` // @gotags: firestore:"projects,omitempty"
-	Organizations []*Organizations `bun:"rel:has-many" json:"organizations,omitempty" firestore:"organizations,omitempty"`        // @gotags: firestore:"organizations,omitempty"
+	Projects      []*Project      `bun:"rel:has-many,join:id=owner_id" json:"projects,omitempty" firestore:"projects,omitempty"` // @gotags: firestore:"projects,omitempty"
+	Organizations []*Organization `bun:"rel:has-many" json:"organizations,omitempty" firestore:"organizations,omitempty"`        // @gotags: firestore:"organizations,omitempty"
 
 	CreatedAt string `bun:"type:timestamp,notnull,default:current_timestamp" json:"created_at,omitempty" firestore:"created_at,omitempty"` // @gotags: firestore:"created_at,omitempty"
 	UpdatedAt string `bun:"type:timestamp,notnull" json:"updated_at,omitempty" firestore:"updated_at,omitempty"`                           // @gotags: firestore:"updated_at,omitempty"
 }
 
-type Organizations struct {
+type Organization struct {
 	XKey        string `json:"_key,omitempty" firestore:"_key,omitempty"`               // @gotags: firestore:"_key,omitempty"
 	ProjectID   string `json:"project_id,omitempty" firestore:"project_id,omitempty"`   // @gotags: firestore:"project_id,omitempty"
 	OwnerID     string `json:"owner_id,omitempty" firestore:"owner_id,omitempty"`       // @gotags: firestore:"owner_id,omitempty"
