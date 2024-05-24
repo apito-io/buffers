@@ -80,7 +80,7 @@ type ProjectDBInterface interface {
 
 	CountMultiDocumentOfProject(ctx context.Context, param shared.CommonSystemParams, previewModel bool) (int, error)
 
-	AddTeamMetaInfo(ctx context.Context, docs []*protobuff.UserMeta) ([]*protobuff.UserMeta, error)
+	AddTeamMetaInfo(ctx context.Context, docs []*protobuff.SystemUser) ([]*protobuff.SystemUser, error)
 
 	// -- Mutation --- //
 
