@@ -244,8 +244,8 @@ type Project struct {
 	DefaultStoragePlugin  string `json:"default_storage_plugin,omitempty" firestore:"default_storage_plugin,omitempty"`   // @gotags: firestore:"default_storage_plugin,omitempty"
 	DefaultFunctionPlugin string `json:"default_function_plugin,omitempty" firestore:"default_function_plugin,omitempty"` // @gotags: firestore:"default_function_plugin,omitempty"
 
-	UserSubscriptionType UserSubscriptionType `json:"user_subscription_type,omitempty" firestore:"user_subscription_type,omitempty"` // @gotags: firestore:"user_subscription_type,omitempty"
-	IsPaymentDue         bool                 `json:"is_payment_due,omitempty" firestore:"is_payment_due,omitempty"`                 // @gotags: firestore:"is_payment_due,omitempty"
+	//UserSubscriptionType UserSubscriptionType `json:"user_subscription_type,omitempty" firestore:"user_subscription_type,omitempty"` // @gotags: firestore:"user_subscription_type,omitempty"
+	IsPaymentDue bool `json:"is_payment_due,omitempty" firestore:"is_payment_due,omitempty"` // @gotags: firestore:"is_payment_due,omitempty"
 
 	// for microservice
 	MicroServicePort string `json:"micro_service_port,omitempty" firestore:"micro_service_port,omitempty"`
