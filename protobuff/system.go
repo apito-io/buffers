@@ -95,11 +95,11 @@ type SystemUser struct {
 	ReadOnlyProject bool   `json:"read_only_project,omitempty" firestore:"read_only_project,omitempty"` // @gotags: firestore:"read_only_project,omitempty"
 	LastLoggedIn    string `json:"last_logged_in,omitempty" firestore:"last_logged_in,omitempty"`       // @gotags: firestore:"last_logged_in,omitempty"
 
-	ProjectLimit uint32 `json:"project_limit,omitempty" firestore:"project_limit,omitempty"` // @gotags: firestore:"project_limit,omitempty"
-	//UserSubscriptionType UserSubscriptionType `json:"user_subscription_type,omitempty" firestore:"user_subscription_type,omitempty"` // @gotags: firestore:"user_subscription_type,omitempty"
+	ProjectLimit         uint32               `json:"project_limit,omitempty" firestore:"project_limit,omitempty"`                   // @gotags: firestore:"project_limit,omitempty"
+	UserSubscriptionType UserSubscriptionType `json:"user_subscription_type,omitempty" firestore:"user_subscription_type,omitempty"` // @gotags: firestore:"user_subscription_type,omitempty"
 
 	//Projects      []*Project      `bun:"rel:has-many,join:id=owner_id" json:"projects,omitempty" firestore:"projects,omitempty"` // @gotags: firestore:"projects,omitempty"
-	//Organizations []*Organization `bun:"rel:has-many" json:"organizations,omitempty" firestore:"organizations,omitempty"`        // @gotags: firestore:"organizations,omitempty"
+	Organizations []*Organization `bun:"rel:has-many" json:"organizations,omitempty" firestore:"organizations,omitempty"` // @gotags: firestore:"organizations,omitempty"
 
 	CreatedAt string `bun:"type:timestamp,notnull,default:current_timestamp" json:"created_at,omitempty" firestore:"created_at,omitempty"` // @gotags: firestore:"created_at,omitempty"
 	UpdatedAt string `bun:"type:timestamp,notnull" json:"updated_at,omitempty" firestore:"updated_at,omitempty"`                           // @gotags: firestore:"updated_at,omitempty"
@@ -244,8 +244,8 @@ type Project struct {
 	DefaultStoragePlugin  string `json:"default_storage_plugin,omitempty" firestore:"default_storage_plugin,omitempty"`   // @gotags: firestore:"default_storage_plugin,omitempty"
 	DefaultFunctionPlugin string `json:"default_function_plugin,omitempty" firestore:"default_function_plugin,omitempty"` // @gotags: firestore:"default_function_plugin,omitempty"
 
-	//UserSubscriptionType UserSubscriptionType `json:"user_subscription_type,omitempty" firestore:"user_subscription_type,omitempty"` // @gotags: firestore:"user_subscription_type,omitempty"
-	IsPaymentDue bool `json:"is_payment_due,omitempty" firestore:"is_payment_due,omitempty"` // @gotags: firestore:"is_payment_due,omitempty"
+	UserSubscriptionType UserSubscriptionType `json:"user_subscription_type,omitempty" firestore:"user_subscription_type,omitempty"` // @gotags: firestore:"user_subscription_type,omitempty"
+	IsPaymentDue         bool                 `json:"is_payment_due,omitempty" firestore:"is_payment_due,omitempty"`                 // @gotags: firestore:"is_payment_due,omitempty"
 
 	// for microservice
 	MicroServicePort string `json:"micro_service_port,omitempty" firestore:"micro_service_port,omitempty"`
