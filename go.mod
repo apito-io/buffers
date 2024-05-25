@@ -1,23 +1,20 @@
 module github.com/apito-cms/buffers
 
-go 1.22.1
+go 1.22.3
 
 require (
 	github.com/99designs/gqlgen v0.17.47
 	github.com/graph-gophers/dataloader v5.0.0+incompatible
 	github.com/graph-gophers/dataloader/v7 v7.1.0
-	github.com/labstack/echo/v4 v4.11.4
+	github.com/labstack/echo/v4 v4.12.0
 	github.com/tailor-inc/graphql v0.5.3
 	github.com/uptrace/bun v1.2.1
-	github.com/uptrace/bun/dialect/pgdialect v1.2.1
-	github.com/uptrace/bun/driver/pgdriver v1.2.1
 	github.com/vektah/gqlparser/v2 v2.5.12
-	google.golang.org/grpc v1.62.1
+	google.golang.org/grpc v1.64.0
 	google.golang.org/protobuf v1.34.1
 )
 
 require (
-	github.com/golang/protobuf v1.5.4 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/labstack/gommon v0.4.2 // indirect
@@ -35,5 +32,4 @@ require (
 	golang.org/x/sys v0.20.0 // indirect
 	golang.org/x/text v0.15.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240318140521-94a12d6c2237 // indirect
-	mellium.im/sasl v0.3.1 // indirect
 )
