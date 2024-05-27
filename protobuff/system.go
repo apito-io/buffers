@@ -76,7 +76,8 @@ type SystemUser struct {
 	XKey string `json:"_key,omitempty" firestore:"_key,omitempty"`                // @gotags: firestore:"_key,omitempty"
 	Id   string `bun:"type:uuid,pk" json:"id,omitempty" firestore:"id,omitempty"` // @gotags: firestore:"id,omitempty"
 
-	Name             string `json:"name,omitempty" firestore:"name,omitempty"`                             // @gotags: firestore:"name,omitempty"
+	FirstName        string `json:"first_name,omitempty" firestore:"first_name,omitempty"`                 // @gotags: firestore:"first_name,omitempty"
+	LastName         string `json:"last_name,omitempty" firestore:"last_name,omitempty"`                   // @gotags: firestore:"last_name,omitempty"
 	Role             string `json:"role,omitempty" firestore:"role,omitempty"`                             // @gotags: firestore:"role,omitempty"
 	Username         string `json:"username,omitempty" firestore:"username,omitempty"`                     // @gotags: firestore:"username,omitempty"
 	Email            string `json:"email,omitempty" firestore:"email,omitempty"`                           // @gotags: firestore:"email,omitempty"
@@ -86,6 +87,9 @@ type SystemUser struct {
 
 	ProjectUser               bool     `json:"project_user,omitempty" firestore:"project_user,omitempty"`        // @gotags: firestore:"project_user,omitempty"
 	AdministrativePermissions []string `json:"administrative_permissions,omitempty" firestore:"email,omitempty"` // @gotags: firestore:"email,omitempty"
+
+	ProjectAssignedRole      string   `json:"assigned_role,omitempty"`
+	ProjectAccessPermissions []string `json:"access_permissions,omitempty"`
 
 	OrganizationID string `json:"organization_id,omitempty" firestore:"organization_id,omitempty"` // @gotags: firestore:"organization_id,omitempty"
 	IsSuperAdmin   bool   `json:"is_super_admin,omitempty" firestore:"is_super_admin,omitempty"`   // @gotags: firestore:"is_super_admin,omitempty"
@@ -99,19 +103,37 @@ type SystemUser struct {
 	UserSubscriptionType UserSubscriptionType `json:"user_subscription_type,omitempty" firestore:"user_subscription_type,omitempty"` // @gotags: firestore:"user_subscription_type,omitempty"
 
 	//Projects      []*Project      `bun:"rel:has-many,join:id=owner_id" json:"projects,omitempty" firestore:"projects,omitempty"` // @gotags: firestore:"projects,omitempty"
-	Organizations []*Organization `bun:"rel:has-many" json:"organizations,omitempty" firestore:"organizations,omitempty"` // @gotags: firestore:"organizations,omitempty"
+	Teams []*Team `bun:"m2m:user_to_teams,join:SystemUser=Team" json:"organizations,omitempty" firestore:"organizations,omitempty"` // @gotags: firestore:"organizations,omitempty"
+
+	Organization []*Organization `bun:"rel:has-many,join:id=user_id" json:"organization,omitempty" firestore:"organization,omitempty"` // @gotags: firestore:"organization,omitempty"
 
 	CreatedAt string `bun:"type:timestamp,notnull,default:current_timestamp" json:"created_at,omitempty" firestore:"created_at,omitempty"` // @gotags: firestore:"created_at,omitempty"
 	UpdatedAt string `bun:"type:timestamp,notnull" json:"updated_at,omitempty" firestore:"updated_at,omitempty"`                           // @gotags: firestore:"updated_at,omitempty"
 }
 
 type Organization struct {
-	XKey        string `json:"_key,omitempty" firestore:"_key,omitempty"`               // @gotags: firestore:"_key,omitempty"
-	ProjectID   string `json:"project_id,omitempty" firestore:"project_id,omitempty"`   // @gotags: firestore:"project_id,omitempty"
-	OwnerID     string `json:"owner_id,omitempty" firestore:"owner_id,omitempty"`       // @gotags: firestore:"owner_id,omitempty"
-	Id          string `json:"id,omitempty" firestore:"id,omitempty"`                   // @gotags: firestore:"id,omitempty"
-	Name        string `json:"name,omitempty" firestore:"name,omitempty"`               // @gotags: firestore:"name,omitempty"
-	Description string `json:"description,omitempty" firestore:"description,omitempty"` // @gotags: firestore:"description,omitempty"
+	XKey        string `json:"_key,omitempty" firestore:"_key,omitempty"`                // @gotags: firestore:"_key,omitempty"
+	Id          string `bun:"type:uuid,pk" json:"id,omitempty" firestore:"id,omitempty"` // @gotags: firestore:"id,omitempty"
+	UserID      string `json:"user_id,omitempty" firestore:"user_id,omitempty"`          // @gotags: firestore:"user_id,omitempty"
+	Name        string `json:"name,omitempty" firestore:"name,omitempty"`                // @gotags: firestore:"name,omitempty"
+	Description string `json:"description,omitempty" firestore:"description,omitempty"`  // @gotags: firestore:"description,omitempty"
+}
+
+type AuditLogs struct {
+	XKey      string `json:"_key,omitempty" firestore:"_key,omitempty"` // @gotags: firestore:"_key,omitempty"
+	Id        string `json:"id,omitempty" firestore:"id,omitempty"`     // @gotags: firestore:"id,omitempty"
+	UserID    string `json:"user_id,omitempty" firestore:"user_id,omitempty"`
+	ProjectID string `json:"project_id,omitempty" firestore:"project_id,omitempty"`
+	Activity  string `json:"activity,omitempty" firestore:"activity,omitempty"`
+	Details   string `json:"details,omitempty" firestore:"details,omitempty"`
+	CreatedAt string `json:"created_at,omitempty" firestore:"created_at,omitempty"`
+}
+
+type UserToTeams struct {
+	UserID     string      `json:"user_id,omitempty" firestore:"user_id,omitempty"`                                              // @gotags: firestore:"user_id,omitempty"
+	SystemUser *SystemUser `bun:"rel:belongs-to,join:user_id=id" json:"system_user,omitempty" firestore:"system_user,omitempty"` // @gotags: firestore:"system_user,omitempty"
+	TeamID     string      `json:"team_id,omitempty" firestore:"team_id,omitempty"`                                              // @gotags: firestore:"team_id,omitempty"
+	Team       *Team       `bun:"rel:belongs-to,join:team_id=id" json:"team,omitempty" firestore:"team,omitempty"`               // @gotags: firestore:"team,omitempty"
 }
 
 type AddOnsDetails struct {
@@ -232,11 +254,11 @@ type Project struct {
 	Driver             *DriverCredentials `bun:"rel:belongs-to,join:id=project_id" json:"driver,omitempty"  firestore:"driver,omitempty"`                                                               // @gotags: gorm:"foreignKey:ProjectID" firestore:"driver,omitempty"
 	TempBanned         bool               `json:"temp_banned,omitempty" firestore:"temp_banned,omitempty"`                                                                                              // @gotags: firestore:"temp_banned,omitempty"
 
-	TrialEnds   string          `json:"trial_ends,omitempty" firestore:"trial_ends,omitempty"`                                  // @gotags: firestore:"trial_ends,omitempty"
-	FromExample string          `json:"from_example,omitempty" firestore:"from_example,omitempty"`                              // @gotags: firestore:"from_example,omitempty"
-	Limits      *UsagesTracking `bun:"rel:belongs-to,join:id=project_id" json:"limits,omitempty"  firestore:"limits,omitempty"` // @gotags: gorm:"foreignKey:ProjectID" firestore:"limits,omitempty"
+	TrialEnds       string          `json:"trial_ends,omitempty" firestore:"trial_ends,omitempty"`                                  // @gotags: firestore:"trial_ends,omitempty"
+	ProjectTemplate string          `json:"project_template,omitempty" firestore:"project_template,omitempty"`                      // @gotags: firestore:"project_template,omitempty"
+	Limits          *UsagesTracking `bun:"rel:belongs-to,join:id=project_id" json:"limits,omitempty"  firestore:"limits,omitempty"` // @gotags: gorm:"foreignKey:ProjectID" firestore:"limits,omitempty"
 
-	Teams          []*TeamMembers   `bun:"rel:has-many" json:"teams,omitempty"  firestore:"teams,omitempty"`                    // @gotags: gorm:"foreignKey:ProjectID" firestore:"teams,omitempty"
+	Teams          []*SystemUser    `bun:"rel:has-many" json:"teams,omitempty"  firestore:"teams,omitempty"`                    // @gotags: gorm:"foreignKey:ProjectID" firestore:"teams,omitempty"
 	SystemMessages []*SystemMessage `bun:"rel:has-many" json:"system_messages,omitempty" firestore:"system_messages,omitempty"` // @gotags: firestore:"system_messages,omitempty"
 	Workspaces     []*Workspace     `bun:"rel:has-many" json:"workspaces,omitempty" firestore:"workspaces,omitempty"`           // @gotags: firestore:"workspaces,omitempty"
 	//ActivatedPluginsIds *ActivatedPlugins `bun:"rel:belongs-to,join:id=project_id" json:"activated_plugins_ids,omitempty" firestore:"activated_plugins_ids,omitempty"` // @gotags: firestore:"activated_plugins_ids,omitempty"
@@ -244,19 +266,21 @@ type Project struct {
 	DefaultStoragePlugin  string `json:"default_storage_plugin,omitempty" firestore:"default_storage_plugin,omitempty"`   // @gotags: firestore:"default_storage_plugin,omitempty"
 	DefaultFunctionPlugin string `json:"default_function_plugin,omitempty" firestore:"default_function_plugin,omitempty"` // @gotags: firestore:"default_function_plugin,omitempty"
 
-	//UserSubscriptionType UserSubscriptionType `json:"user_subscription_type,omitempty" firestore:"user_subscription_type,omitempty"` // @gotags: firestore:"user_subscription_type,omitempty"
+	//UserSubscriptionType `json:"user_subscription_type,omitempty" firestore:"user_subscription_type,omitempty"` // @gotags: firestore:"user_subscription_type,omitempty"
 	IsPaymentDue bool `json:"is_payment_due,omitempty" firestore:"is_payment_due,omitempty"` // @gotags: firestore:"is_payment_due,omitempty"
 
 	// for microservice
 	MicroServicePort string `json:"micro_service_port,omitempty" firestore:"micro_service_port,omitempty"`
 }
 
-type TeamMembers struct {
-	// for sql migration purposes
-	ProjectID         string   `json:"project_id,omitempty" firestore:"project_id,omitempty"` // @gotags: firestore:"project_id,omitempty"
-	UserId            string   `json:"user_id,omitempty"`
-	AssignedRole      string   `json:"assigned_role,omitempty"`
-	AccessPermissions []string `json:"access_permissions,omitempty"`
+type Team struct {
+	XKey           string `json:"_key,omitempty" firestore:"_key,omitempty"`
+	ID             string `bun:"type:uuid,pk" json:"id,omitempty" firestore:"id,omitempty"`        // @gotags: firestore:"id,omitempty"
+	OrganizationID string `json:"organization_id,omitempty" firestore:"organization_id,omitempty"` // @gotags: firestore:"organization_id,omitempty"
+	CreatedBy      string `json:"created_by,omitempty" firestore:"created_by,omitempty"`           // @gotags: firestore:"created_by,omitempty"
+
+	Name        string `json:"name,omitempty" firestore:"name,omitempty"`               // @gotags: firestore:"name,omitempty"
+	Description string `json:"description,omitempty" firestore:"description,omitempty"` // @gotags: firestore:"description,omitempty"
 }
 
 type ProjectSchema struct {
