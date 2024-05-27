@@ -92,7 +92,9 @@ type SystemUser struct {
 	ProjectAccessPermissions []string `json:"access_permissions,omitempty"`
 
 	OrganizationID string `json:"organization_id,omitempty" firestore:"organization_id,omitempty"` // @gotags: firestore:"organization_id,omitempty"
-	IsSuperAdmin   bool   `json:"is_super_admin,omitempty" firestore:"is_super_admin,omitempty"`   // @gotags: firestore:"is_super_admin,omitempty"
+
+	IsAdmin      bool `json:"is_admin,omitempty" firestore:"is_admin,omitempty"`             // @gotags: firestore:"is_admin,omitempty"
+	IsSuperAdmin bool `json:"is_super_admin,omitempty" firestore:"is_super_admin,omitempty"` // @gotags: firestore:"is_super_admin,omitempty"
 
 	RefreshToken    string `json:"refresh_token,omitempty" firestore:"refresh_token,omitempty"`         // @gotags: firestore:"refresh_token,omitempty"
 	AccessToken     string `json:"access_token,omitempty" firestore:"access_token,omitempty"`           // @gotags: firestore:"access_token,omitempty"
