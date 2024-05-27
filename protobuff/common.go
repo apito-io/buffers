@@ -73,12 +73,9 @@ type ImageMetaInfo struct {
 }
 
 type RegisterRequest struct {
-	Username         string `json:"username,omitempty" firestore:"username,omitempty"`            // @gotags: firestore:"username,omitempty"
-	Email            string `json:"email,omitempty" firestore:"email,omitempty"`                  // @gotags: firestore:"email,omitempty"
-	Secret           string `json:"secret,omitempty" firestore:"secret,omitempty"`                // @gotags: firestore:"secret,omitempty"
-	FullName         string `json:"full_name,omitempty" firestore:"full_name,omitempty"`          // @gotags: firestore:"full_name,omitempty"
-	Profession       string `json:"profession,omitempty" firestore:"profession,omitempty"`        // @gotags: firestore:"profession,omitempty"
-	VerificationCode string `json:"verification_code,omitempty" firestore:"profession,omitempty"` // @gotags: firestore:"profession,omitempty"
+	User             SystemUser `json:"user,omitempty" firestore:"user,omitempty"`                     // @gotags: firestore:"user,omitempty"
+	VerificationCode string     `json:"verification_code,omitempty" firestore:"profession,omitempty"`  // @gotags: firestore:"profession,omitempty"
+	AddedByAdmin     bool       `json:"added_by_admin,omitempty" firestore:"added_by_admin,omitempty"` // @gotags: firestore:"added_by_admin,omitempty"
 }
 
 type LoginRequest struct {
@@ -90,12 +87,6 @@ type LoginRequest struct {
 type PassChangeRequest struct {
 	OldPassword string `json:"old_password,omitempty" firestore:"old_password,omitempty"` // @gotags: firestore:"old_password,omitempty"
 	NewPassword string `json:"new_password,omitempty" firestore:"new_password,omitempty"` // @gotags: firestore:"new_password,omitempty"
-}
-
-type ProjectLimit struct {
-	Free  uint32 `protobuf:"varint,1,opt,name=free,proto3" json:"free,omitempty" firestore:"free,omitempty"`    // @gotags: firestore:"free,omitempty"
-	Hobby uint32 `protobuf:"varint,2,opt,name=hobby,proto3" json:"hobby,omitempty" firestore:"hobby,omitempty"` // @gotags: firestore:"hobby,omitempty"
-	Pro   uint32 `protobuf:"varint,3,opt,name=pro,proto3" json:"pro,omitempty" firestore:"pro,omitempty"`       // @gotags: firestore:"pro,omitempty"
 }
 
 type MetaField struct {

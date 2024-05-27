@@ -120,13 +120,15 @@ type Organization struct {
 }
 
 type AuditLogs struct {
-	XKey      string `json:"_key,omitempty" firestore:"_key,omitempty"` // @gotags: firestore:"_key,omitempty"
-	Id        string `json:"id,omitempty" firestore:"id,omitempty"`     // @gotags: firestore:"id,omitempty"
-	UserID    string `json:"user_id,omitempty" firestore:"user_id,omitempty"`
-	ProjectID string `json:"project_id,omitempty" firestore:"project_id,omitempty"`
-	Activity  string `json:"activity,omitempty" firestore:"activity,omitempty"`
-	Details   string `json:"details,omitempty" firestore:"details,omitempty"`
-	CreatedAt string `json:"created_at,omitempty" firestore:"created_at,omitempty"`
+	XKey             string `json:"_key,omitempty" firestore:"_key,omitempty"` // @gotags: firestore:"_key,omitempty"
+	Id               string `json:"id,omitempty" firestore:"id,omitempty"`     // @gotags: firestore:"id,omitempty"
+	UserID           string `json:"user_id,omitempty" firestore:"user_id,omitempty"`
+	ProjectID        string `json:"project_id,omitempty" firestore:"project_id,omitempty"`
+	Activity         string `json:"activity,omitempty" firestore:"activity,omitempty"`
+	ExecutedFunction string `json:"executed_function,omitempty" firestore:"executed_function,omitempty"`
+	Payload          string `json:"payload,omitempty" firestore:"payload,omitempty"`
+	Details          string `json:"details,omitempty" firestore:"details,omitempty"`
+	CreatedAt        string `json:"created_at,omitempty" firestore:"created_at,omitempty"`
 }
 
 type UserToTeams struct {
