@@ -122,21 +122,25 @@ type Organization struct {
 }
 
 type AuditLogs struct {
-	XKey                 string `json:"_key,omitempty" firestore:"_key,omitempty"` // @gotags: firestore:"_key,omitempty"
-	Id                   string `json:"id,omitempty" firestore:"id,omitempty"`     // @gotags: firestore:"id,omitempty"
-	UserID               string `json:"user_id,omitempty" firestore:"user_id,omitempty"`
-	ProjectID            string `json:"project_id,omitempty" firestore:"project_id,omitempty"`
-	RequestPath          string `json:"request_path,omitempty" firestore:"request_path,omitempty"`
-	Activity             string `json:"activity,omitempty" firestore:"activity,omitempty"`
-	ExecutedFunction     string `json:"executed_function,omitempty" firestore:"executed_function,omitempty"`
-	JSONPayload          string `json:"json_payload,omitempty" firestore:"json_payload,omitempty"`
+	XKey      string `json:"_key,omitempty" firestore:"_key,omitempty"` // @gotags: firestore:"_key,omitempty"
+	Id        string `json:"id,omitempty" firestore:"id,omitempty"`     // @gotags: firestore:"id,omitempty"
+	UserID    string `json:"user_id,omitempty" firestore:"user_id,omitempty"`
+	ProjectID string `json:"project_id,omitempty" firestore:"project_id,omitempty"`
+
+	RequestPayload  string `json:"request_payload,omitempty" firestore:"request_payload,omitempty"`
+	RequestPath     string `json:"request_path,omitempty" firestore:"request_path,omitempty"`
+	ResponseCode    int    `json:"response_code,omitempty" firestore:"response_code,omitempty"`
+	ResponsePayload string `json:"response_payload,omitempty" firestore:"response_payload,omitempty"`
+
+	Activity         string `json:"activity,omitempty" firestore:"activity,omitempty"`
+	InternalFunction string `json:"internal_function,omitempty" firestore:"internal_function,omitempty"`
+
 	GraphqlOperationName string `json:"graphql_operation_name,omitempty" firestore:"graphql_operation_name,omitempty"`
 	GraphqlPayload       string `json:"graphql_payload,omitempty" firestore:"graphql_payload,omitempty"`
 	GraphqlVariable      string `json:"graphql_variable,omitempty" firestore:"graphql_variable,omitempty"`
-	PostBody             string `json:"post_body,omitempty" firestore:"post_body,omitempty"`
-	InternalError        string `json:"internal_error,omitempty" firestore:"internal_error,omitempty"`
-	Details              string `json:"details,omitempty" firestore:"details,omitempty"`
-	CreatedAt            string `json:"created_at,omitempty" firestore:"created_at,omitempty"`
+
+	InternalError string `json:"internal_error,omitempty" firestore:"internal_error,omitempty"`
+	CreatedAt     string `json:"created_at,omitempty" firestore:"created_at,omitempty"`
 }
 
 type UserToTeams struct {
