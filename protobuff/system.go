@@ -122,15 +122,21 @@ type Organization struct {
 }
 
 type AuditLogs struct {
-	XKey             string `json:"_key,omitempty" firestore:"_key,omitempty"` // @gotags: firestore:"_key,omitempty"
-	Id               string `json:"id,omitempty" firestore:"id,omitempty"`     // @gotags: firestore:"id,omitempty"
-	UserID           string `json:"user_id,omitempty" firestore:"user_id,omitempty"`
-	ProjectID        string `json:"project_id,omitempty" firestore:"project_id,omitempty"`
-	Activity         string `json:"activity,omitempty" firestore:"activity,omitempty"`
-	ExecutedFunction string `json:"executed_function,omitempty" firestore:"executed_function,omitempty"`
-	Payload          string `json:"payload,omitempty" firestore:"payload,omitempty"`
-	Details          string `json:"details,omitempty" firestore:"details,omitempty"`
-	CreatedAt        string `json:"created_at,omitempty" firestore:"created_at,omitempty"`
+	XKey                 string `json:"_key,omitempty" firestore:"_key,omitempty"` // @gotags: firestore:"_key,omitempty"
+	Id                   string `json:"id,omitempty" firestore:"id,omitempty"`     // @gotags: firestore:"id,omitempty"
+	UserID               string `json:"user_id,omitempty" firestore:"user_id,omitempty"`
+	ProjectID            string `json:"project_id,omitempty" firestore:"project_id,omitempty"`
+	RequestPath          string `json:"request_path,omitempty" firestore:"request_path,omitempty"`
+	Activity             string `json:"activity,omitempty" firestore:"activity,omitempty"`
+	ExecutedFunction     string `json:"executed_function,omitempty" firestore:"executed_function,omitempty"`
+	JSONPayload          string `json:"json_payload,omitempty" firestore:"json_payload,omitempty"`
+	GraphqlOperationName string `json:"graphql_operation_name,omitempty" firestore:"graphql_operation_name,omitempty"`
+	GraphqlPayload       string `json:"graphql_payload,omitempty" firestore:"graphql_payload,omitempty"`
+	GraphqlVariable      string `json:"graphql_variable,omitempty" firestore:"graphql_variable,omitempty"`
+	PostBody             string `json:"post_body,omitempty" firestore:"post_body,omitempty"`
+	InternalError        string `json:"internal_error,omitempty" firestore:"internal_error,omitempty"`
+	Details              string `json:"details,omitempty" firestore:"details,omitempty"`
+	CreatedAt            string `json:"created_at,omitempty" firestore:"created_at,omitempty"`
 }
 
 type UserToTeams struct {
