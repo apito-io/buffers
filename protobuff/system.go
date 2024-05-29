@@ -84,6 +84,7 @@ type SystemUser struct {
 	Secret           string `json:"secret,omitempty" firestore:"secret,omitempty"`                         // @gotags: firestore:"secret,omitempty"
 	Avatar           string `json:"avatar,omitempty" firestore:"avatar,omitempty"`                         // @gotags: firestore:"avatar,omitempty"
 	CurrentProjectId string `json:"current_project_id,omitempty" firestore:"current_project_id,omitempty"` // @gotags: firestore:"current_project_id,omitempty"
+	RegisterProvider string `json:"register_provider,omitempty" firestore:"register_provider,omitempty"`   // @gotags: firestore:"register_provider,omitempty"
 
 	ProjectUser               bool     `json:"project_user,omitempty" firestore:"project_user,omitempty"`        // @gotags: firestore:"project_user,omitempty"
 	AdministrativePermissions []string `json:"administrative_permissions,omitempty" firestore:"email,omitempty"` // @gotags: firestore:"email,omitempty"

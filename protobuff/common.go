@@ -73,9 +73,9 @@ type ImageMetaInfo struct {
 }
 
 type RegisterRequest struct {
-	User             SystemUser `json:"user,omitempty" firestore:"user,omitempty"`                     // @gotags: firestore:"user,omitempty"
-	VerificationCode string     `json:"verification_code,omitempty" firestore:"profession,omitempty"`  // @gotags: firestore:"profession,omitempty"
-	AddedByAdmin     bool       `json:"added_by_admin,omitempty" firestore:"added_by_admin,omitempty"` // @gotags: firestore:"added_by_admin,omitempty"
+	User             *SystemUser `json:"user,omitempty" firestore:"user,omitempty"`                     // @gotags: firestore:"user,omitempty"
+	VerificationCode string      `json:"verification_code,omitempty" firestore:"profession,omitempty"`  // @gotags: firestore:"profession,omitempty"
+	AddedByAdmin     bool        `json:"added_by_admin,omitempty" firestore:"added_by_admin,omitempty"` // @gotags: firestore:"added_by_admin,omitempty"
 }
 
 type LoginRequest struct {
