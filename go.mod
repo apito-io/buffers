@@ -7,6 +7,7 @@ require (
 	github.com/graph-gophers/dataloader v5.0.0+incompatible
 	github.com/graph-gophers/dataloader/v7 v7.1.0
 	github.com/labstack/echo/v4 v4.12.0
+	github.com/redis/go-redis/v9 v9.5.2
 	github.com/tailor-inc/graphql v0.5.3
 	github.com/uptrace/bun v1.2.1
 	github.com/vektah/gqlparser/v2 v2.5.12
@@ -15,6 +16,8 @@ require (
 )
 
 require (
+	github.com/cespare/xxhash/v2 v2.2.0 // indirect
+	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/labstack/gommon v0.4.2 // indirect
