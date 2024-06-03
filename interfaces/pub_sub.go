@@ -2,6 +2,7 @@ package interfaces
 
 import (
 	"context"
+	"github.com/apito-cms/buffers/protobuff"
 	"github.com/redis/go-redis/v9"
 )
 
@@ -14,11 +15,11 @@ type PubSubServiceInterface interface {
 	Publish(ctx context.Context, chanel string, data interface{}) error
 
 	// AddSubscriber method adds a subscriber to the Pub/Sub service and returns a pointer to the Subscriber object and an error if the operation fails.
-	AddSubscriber(ctx context.Context, userID string) (*Subscriber, error)
+	AddSubscriber(ctx context.Context, userID string) (*protobuff.Subscriber, error)
 
 	// RemoveSubscriber method removes a subscriber from the Pub/Sub service and returns an error if the operation fails.
 	RemoveSubscriber(ctx context.Context, userID string) error
 
 	// GetSubscriber method retrieves a subscriber from the Pub/Sub service and returns a pointer to the Subscriber object and an error if the operation fails.
-	GetSubscriber(ctx context.Context, userID string) (*Subscriber, error)
+	GetSubscriber(ctx context.Context, userID string) (*protobuff.Subscriber, error)
 }

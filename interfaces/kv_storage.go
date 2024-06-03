@@ -8,7 +8,7 @@ import (
 // KeyValueServiceInterface is an interface that defines the methods for interacting with Redis.
 type KeyValueServiceInterface interface {
 	// AddToSortedSets adds a key to a sorted set with a given TTL (Time To Live) in seconds.
-	AddToSortedSets(ctx context.Context, setName string, key string, ttlSeconds int) error
+	AddToSortedSets(ctx context.Context, setName string, key string, exp time.Duration) error
 
 	// GetFromSortedSets retrieves a key from a sorted set.
 	GetFromSortedSets(ctx context.Context, setName string, key string) (float64, error)
