@@ -58,6 +58,8 @@ type CommonSystemParams struct {
 
 	ResolveParams *graphql.ResolveParams `json:"resolve_params,omitempty"`
 
+	SystemCollectionName string `json:"system_collection_name,omitempty"`
+
 	DocumentId  string                    `json:"document_id,omitempty"`
 	Document    *DefaultDocumentStructure `json:"document,omitempty"`
 	Model       *protobuff.ModelType      `json:"model_type,omitempty"`
