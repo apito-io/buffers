@@ -74,7 +74,9 @@ type CommonSystemParams struct {
 
 	DocPublishStatus string `json:"doc_publish_status,omitempty"`
 
-	IsSystemRequest bool `json:"is_system_request,omitempty"`
+	IsSystemRequest                 bool `json:"is_system_request,omitempty"`
+	IsDataloaderRequest             bool `json:"is_dataloader_request,omitempty"`
+	IsEntireCollectionSearchRequest bool `json:"is_entire_collection_search_request,omitempty"`
 
 	UnmarshalStructure interface{} `json:"unmarshal_structure"`
 }
