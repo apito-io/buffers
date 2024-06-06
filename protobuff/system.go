@@ -264,22 +264,22 @@ type SystemMessage struct {
 
 // Project user project
 type Project struct {
-	XKey               string             `json:"_key,omitempty" firestore:"_key,omitempty"` // @gotags: firestore:"_key,omitempty"
-	Id                 string             `bun:"type:uuid,pk" json:"id,omitempty" firestore:"id,omitempty"`
-	OwnerId            string             `json:"owner_id,omitempty" firestore:"owner_id,omitempty"`
-	OrganizationID     string             `json:"organization_id,omitempty" firestore:"organization_id,omitempty"`                                                                                      // @gotags: firestore:"organization_id,omitempty"
-	ProjectName        string             `json:"project_name,omitempty" firestore:"project_name,omitempty"`                                                                                            // @gotags: firestore:"project_name,omitempty"
-	ProjectDescription string             `json:"project_description,omitempty" firestore:"project_description,omitempty"`                                                                              // @gotags: firestore:"project_description,omitempty"
-	Schema             *ProjectSchema     `bun:"rel:belongs-to,join:id=project_id" json:"schema,omitempty" firestore:"schema,omitempty"`                                                                // @gotags: firestore:"schema,omitempty"
-	CreatedAt          string             `json:"created_at,omitempty" firestore:"created_at,omitempty"`                                                                                                // @gotags: firestore:"created_at,omitempty"
-	UpdatedAt          string             `json:"updated_at,omitempty" firestore:"updated_at,omitempty"`                                                                                                // @gotags: firestore:"updated_at,omitempty"
-	ExpireAt           string             `json:"expire_at,omitempty" firestore:"expire_at,omitempty"`                                                                                                  // @gotags: firestore:"expire_at,omitempty"
-	Plugins            []*PluginDetails   `bun:"rel:has-many" json:"plugins,omitempty" firestore:"plugins,omitempty"`                                                                                   // @gotags: firestore:"plugins,omitempty"
-	Addons             *AddOnsDetails     `bun:"rel:belongs-to,join:id=project_id" json:"addons,omitempty"  firestore:"addons,omitempty"`                                                               // @gotags: gorm:"foreignKey:ProjectID" firestore:"addons,omitempty"
-	Tokens             []*APIToken        `bun:"rel:has-many" json:"tokens,omitempty" firestore:"tokens,omitempty"`                                                                                     // @gotags: gorm:"foreignKey:ProjectID" firestore:"tokens,omitempty"
-	Roles              map[string]*Role   `bun:"type:jsonb" json:"roles,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" firestore:"roles,omitempty"` // @gotags: firestore:"roles,omitempty"
-	Driver             *DriverCredentials `bun:"rel:belongs-to,join:id=project_id" json:"driver,omitempty"  firestore:"driver,omitempty"`                                                               // @gotags: gorm:"foreignKey:ProjectID" firestore:"driver,omitempty"
-	TempBanned         bool               `json:"temp_banned,omitempty" firestore:"temp_banned,omitempty"`                                                                                              // @gotags: firestore:"temp_banned,omitempty"
+	XKey           string             `json:"_key,omitempty" firestore:"_key,omitempty"` // @gotags: firestore:"_key,omitempty"
+	Id             string             `bun:"type:uuid,pk" json:"id,omitempty" firestore:"id,omitempty"`
+	OwnerId        string             `json:"owner_id,omitempty" firestore:"owner_id,omitempty"`
+	OrganizationID string             `json:"organization_id,omitempty" firestore:"organization_id,omitempty"`                                                                                      // @gotags: firestore:"organization_id,omitempty"
+	Name           string             `json:"name,omitempty" firestore:"name,omitempty"`                                                                                                            // @gotags: firestore:"project_name,omitempty"
+	Description    string             `json:"description,omitempty" firestore:"description,omitempty"`                                                                                              // @gotags: firestore:"project_description,omitempty"
+	Schema         *ProjectSchema     `bun:"rel:belongs-to,join:id=project_id" json:"schema,omitempty" firestore:"schema,omitempty"`                                                                // @gotags: firestore:"schema,omitempty"
+	CreatedAt      string             `json:"created_at,omitempty" firestore:"created_at,omitempty"`                                                                                                // @gotags: firestore:"created_at,omitempty"
+	UpdatedAt      string             `json:"updated_at,omitempty" firestore:"updated_at,omitempty"`                                                                                                // @gotags: firestore:"updated_at,omitempty"
+	ExpireAt       string             `json:"expire_at,omitempty" firestore:"expire_at,omitempty"`                                                                                                  // @gotags: firestore:"expire_at,omitempty"
+	Plugins        []*PluginDetails   `bun:"rel:has-many" json:"plugins,omitempty" firestore:"plugins,omitempty"`                                                                                   // @gotags: firestore:"plugins,omitempty"
+	Addons         *AddOnsDetails     `bun:"rel:belongs-to,join:id=project_id" json:"addons,omitempty"  firestore:"addons,omitempty"`                                                               // @gotags: gorm:"foreignKey:ProjectID" firestore:"addons,omitempty"
+	Tokens         []*APIToken        `bun:"rel:has-many" json:"tokens,omitempty" firestore:"tokens,omitempty"`                                                                                     // @gotags: gorm:"foreignKey:ProjectID" firestore:"tokens,omitempty"
+	Roles          map[string]*Role   `bun:"type:jsonb" json:"roles,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3" firestore:"roles,omitempty"` // @gotags: firestore:"roles,omitempty"
+	Driver         *DriverCredentials `bun:"rel:belongs-to,join:id=project_id" json:"driver,omitempty"  firestore:"driver,omitempty"`                                                               // @gotags: gorm:"foreignKey:ProjectID" firestore:"driver,omitempty"
+	TempBanned     bool               `json:"temp_banned,omitempty" firestore:"temp_banned,omitempty"`                                                                                              // @gotags: firestore:"temp_banned,omitempty"
 
 	TrialEnds       string          `json:"trial_ends,omitempty" firestore:"trial_ends,omitempty"`                                  // @gotags: firestore:"trial_ends,omitempty"
 	ProjectTemplate string          `json:"project_template,omitempty" firestore:"project_template,omitempty"`                      // @gotags: firestore:"project_template,omitempty"
