@@ -416,11 +416,6 @@ type MonthlySubscription struct {
 	ProjectId          string             `json:"project_id,omitempty" firestore:"cancel_url,omitempty"`                   // @gotags: firestore:"cancel_url,omitempty"
 }
 
-type UserSubscription struct {
-	Subscription *MonthlySubscription `json:"subscription,omitempty" firestore:"subscription,omitempty"` // @gotags: firestore:"subscription,omitempty"
-	Invoices     []*ProjectInvoices   `json:"invoices,omitempty" firestore:"invoices,omitempty"`         // @gotags: firestore:"invoices,omitempty"
-}
-
 type ProjectUsages struct {
 	Id        string          `json:"id,omitempty" firestore:"id,omitempty"`                 // @gotags: firestore:"id,omitempty"
 	XKey      string          `json:"_key,omitempty" firestore:"_key,omitempty"`             // @gotags: firestore:"_key,omitempty"
