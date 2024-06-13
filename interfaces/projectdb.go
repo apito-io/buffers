@@ -5,7 +5,6 @@ import (
 	"github.com/apito-cms/buffers/protobuff"
 	"github.com/apito-cms/buffers/shared"
 	"github.com/graph-gophers/dataloader"
-	"github.com/vektah/gqlparser/v2/ast"
 )
 
 type ProjectDBInterface interface {
@@ -61,10 +60,10 @@ type ProjectDBInterface interface {
 		DeleteMediaFile(ctx context.Context, param shared.CommonSystemParams) error
 	*/
 	// GetSingleProjectDocument Get a single Project document by id
-	GetSingleProjectDocumentBytes(ctx context.Context, param shared.CommonSystemParams, s *ast.SelectionSet) ([]byte, error)
+	GetSingleProjectDocumentBytes(ctx context.Context, param shared.CommonSystemParams) ([]byte, error)
 
 	// GetSingleProjectDocument Get a single Project document by id
-	GetSingleProjectDocument(ctx context.Context, param shared.CommonSystemParams, s *ast.SelectionSet) (*shared.DefaultDocumentStructure, error)
+	GetSingleProjectDocument(ctx context.Context, param shared.CommonSystemParams) (*shared.DefaultDocumentStructure, error)
 
 	// GetSingleProjectDocumentRevisions Get a single Project document by id
 	GetSingleProjectDocumentRevisions(ctx context.Context, param shared.CommonSystemParams) ([]*shared.DocumentRevisionHistory, error)
@@ -73,10 +72,10 @@ type ProjectDBInterface interface {
 	GetSingleRawDocumentFromProject(ctx context.Context, param shared.CommonSystemParams) (interface{}, error)
 
 	// QueryMultiDocumentOfProject Query Multiple Documents
-	QueryMultiDocumentOfProjectBytes(ctx context.Context, param shared.CommonSystemParams, s *ast.SelectionSet) ([]byte, error)
+	QueryMultiDocumentOfProjectBytes(ctx context.Context, param shared.CommonSystemParams) ([]byte, error)
 
 	// QueryMultiDocumentOfProject Query Multiple Documents
-	QueryMultiDocumentOfProject(ctx context.Context, param shared.CommonSystemParams, s *ast.SelectionSet) ([]*shared.DefaultDocumentStructure, error)
+	QueryMultiDocumentOfProject(ctx context.Context, param shared.CommonSystemParams) ([]*shared.DefaultDocumentStructure, error)
 
 	CountMultiDocumentOfProject(ctx context.Context, param shared.CommonSystemParams, previewModel bool) (int, error)
 
@@ -118,10 +117,10 @@ type ProjectDBInterface interface {
 	GetRelationIds(ctx context.Context, param *shared.ConnectDisconnectParam) ([]string, error)
 
 	//
-	RelationshipDataLoader(ctx context.Context, param *shared.CommonSystemParams, s *ast.SelectionSet, connection map[string]interface{}, keys []string) ([]*dataloader.Result, error)
+	RelationshipDataLoader(ctx context.Context, param *shared.CommonSystemParams, connection map[string]interface{}) ([]*dataloader.Result, error)
 
 	//
-	RelationshipDataLoaderBytes(ctx context.Context, param *shared.CommonSystemParams, s *ast.SelectionSet, connection map[string]interface{}, keys []string) ([]byte, error)
+	RelationshipDataLoaderBytes(ctx context.Context, param *shared.CommonSystemParams, connection map[string]interface{}, keys []string) ([]byte, error)
 
 	// Doc count resolver
 	CountDocOfProject(ctx context.Context, param *shared.CommonSystemParams) (interface{}, error)
