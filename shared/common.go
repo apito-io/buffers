@@ -6,6 +6,7 @@ import (
 	dlv6 "github.com/graph-gophers/dataloader"
 	"github.com/graph-gophers/dataloader/v7"
 	"github.com/tailor-inc/graphql"
+	"github.com/vektah/gqlparser/v2/ast"
 )
 
 // DataLoaders Dataloaders
@@ -74,9 +75,14 @@ type CommonSystemParams struct {
 
 	DocPublishStatus string `json:"doc_publish_status,omitempty"`
 
-	IsSystemRequest                 bool `json:"is_system_request,omitempty"`
-	IsDataloaderRequest             bool `json:"is_dataloader_request,omitempty"`
+	IsSystemRequest bool `json:"is_system_request,omitempty"`
+
 	IsEntireCollectionSearchRequest bool `json:"is_entire_collection_search_request,omitempty"`
+
+	IsDataloaderRequest  bool              `json:"is_dataloader_request,omitempty"`
+	IsIntersectionResult bool              `json:"is_intersection_result,omitempty"`
+	OnlyReturnCount      bool              `json:"only_return_count,omitempty"`
+	QuerySelectionSets   *ast.SelectionSet `json:"query_selection_sets,omitempty"`
 
 	UnmarshalStructure interface{} `json:"unmarshal_structure"`
 }
