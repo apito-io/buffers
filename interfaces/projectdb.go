@@ -59,6 +59,7 @@ type ProjectDBInterface interface {
 		// List media data
 		DeleteMediaFile(ctx context.Context, param shared.CommonSystemParams) error
 	*/
+
 	// GetSingleProjectDocument Get a single Project document by id
 	GetSingleProjectDocumentBytes(ctx context.Context, param shared.CommonSystemParams) ([]byte, error)
 
@@ -120,7 +121,7 @@ type ProjectDBInterface interface {
 	RelationshipDataLoader(ctx context.Context, param *shared.CommonSystemParams, connection map[string]interface{}) ([]*dataloader.Result, error)
 
 	//
-	RelationshipDataLoaderBytes(ctx context.Context, param *shared.CommonSystemParams, connection map[string]interface{}, keys []string) ([]byte, error)
+	RelationshipDataLoaderBytes(ctx context.Context, param *shared.CommonSystemParams, connection map[string]interface{}) ([]byte, error)
 
 	// Doc count resolver
 	CountDocOfProject(ctx context.Context, param *shared.CommonSystemParams) (interface{}, error)
