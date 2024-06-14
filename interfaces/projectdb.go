@@ -4,7 +4,6 @@ import (
 	"context"
 	"github.com/apito-cms/buffers/protobuff"
 	"github.com/apito-cms/buffers/shared"
-	"github.com/graph-gophers/dataloader"
 )
 
 type ProjectDBInterface interface {
@@ -118,7 +117,7 @@ type ProjectDBInterface interface {
 	GetRelationIds(ctx context.Context, param *shared.ConnectDisconnectParam) ([]string, error)
 
 	//
-	RelationshipDataLoader(ctx context.Context, param *shared.CommonSystemParams, connection map[string]interface{}) ([]*dataloader.Result, error)
+	RelationshipDataLoader(ctx context.Context, param *shared.CommonSystemParams, connection map[string]interface{}) ([]interface{}, error)
 
 	//
 	RelationshipDataLoaderBytes(ctx context.Context, param *shared.CommonSystemParams, connection map[string]interface{}) ([]byte, error)
