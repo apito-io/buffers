@@ -117,7 +117,7 @@ type ProjectDBInterface interface {
 	GetRelationIds(ctx context.Context, param *shared.ConnectDisconnectParam) ([]string, error)
 
 	//
-	RelationshipDataLoader(ctx context.Context, param *shared.CommonSystemParams, connection map[string]interface{}) ([]interface{}, error)
+	RelationshipDataLoader(ctx context.Context, param *shared.CommonSystemParams, connection map[string]interface{}) (interface{}, error)
 
 	//
 	RelationshipDataLoaderBytes(ctx context.Context, param *shared.CommonSystemParams, connection map[string]interface{}) ([]byte, error)
