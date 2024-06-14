@@ -9,6 +9,11 @@ import (
 	"github.com/vektah/gqlparser/v2/ast"
 )
 
+type SearchResponse[T any] struct {
+	Results        []*T
+	GroupedResults map[string][]*T
+}
+
 // DataLoaders Dataloaders
 type DataLoaders struct {
 	MultiLoader *dataloader.Loader[string, interface{}]
