@@ -86,10 +86,18 @@ type CommonSystemParams struct {
 
 	IsEntireCollectionSearchRequest bool `json:"is_entire_collection_search_request,omitempty"`
 
-	IsDataloaderRequest  bool              `json:"is_dataloader_request,omitempty"`
-	IsIntersectionResult bool              `json:"is_intersection_result,omitempty"`
-	OnlyReturnCount      bool              `json:"only_return_count,omitempty"`
-	QuerySelectionSets   *ast.SelectionSet `json:"query_selection_sets,omitempty"`
+	IsDataloaderRequest bool `json:"is_dataloader_request,omitempty"`
+
+	IsIntersectionResult bool `json:"is_intersection_result,omitempty"`
+
+	OnlyReturnCount bool `json:"only_return_count,omitempty"`
+
+	// these three used in intersection of two collections
+	SkipSort       bool   `json:"skip_sort,omitempty"`
+	SkipPagination bool   `json:"skip_pagination,omitempty"`
+	ReturnOnlyID   string `json:"return_only_id,omitempty"`
+
+	QuerySelectionSets *ast.SelectionSet `json:"query_selection_sets,omitempty"`
 
 	UnmarshalStructure interface{} `json:"unmarshal_structure"`
 }
