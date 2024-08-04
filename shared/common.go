@@ -78,7 +78,7 @@ type CommonSystemParams struct {
 	DocumentIDs []string `json:"document_ids,omitempty"`
 
 	Document    *DefaultDocumentStructure `json:"document,omitempty"`
-	Model       *protorbuff.ModelType     `json:"model_type,omitempty"`
+	Model       *protobuff.ModelType      `json:"model_type,omitempty"`
 	ConDisParam []*ConnectDisconnectParam `json:"con_dis_param,omitempty"`
 	FieldInfo   *protobuff.FieldInfo      `json:"field_info,omitempty"`
 
