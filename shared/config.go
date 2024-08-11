@@ -9,9 +9,8 @@ type CommonDatabaseConfig struct {
 }
 
 type CacheDBConfig struct {
-	DB          *CommonDatabaseConfig
-	CacheDriver string
-	CacheTTL    string
+	DB       *CommonDatabaseConfig
+	CacheTTL string
 }
 
 type SystemDBConfig struct {
