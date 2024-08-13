@@ -50,14 +50,6 @@ type SystemUser struct {
 	UpdatedAt string `bun:"type:timestamp,notnull" json:"updated_at,omitempty" firestore:"updated_at,omitempty"`
 }
 
-type Organization struct {
-	XKey        string `json:"_key,omitempty" firestore:"_key,omitempty"`
-	Id          string `bun:"type:uuid,pk" json:"id,omitempty" firestore:"id,omitempty"`
-	UserID      string `json:"user_id,omitempty" firestore:"user_id,omitempty"`
-	Name        string `json:"name,omitempty" firestore:"name,omitempty"`
-	Description string `json:"description,omitempty" firestore:"description,omitempty"`
-}
-
 type DriverCredentials struct {
 	// for sql migration purposes
 	ProjectID string `bun:"type:uuid,pk" json:"project_id,omitempty" firestore:"project_id,omitempty"`
@@ -124,27 +116,29 @@ type SystemMessage struct {
 
 // Project user project
 type Project struct {
-	XKey            string             `json:"_key,omitempty" firestore:"_key,omitempty"`
-	Id              string             `bun:"type:uuid,pk" json:"id,omitempty" firestore:"id,omitempty"`
-	OwnerId         string             `json:"owner_id,omitempty" firestore:"owner_id,omitempty"`
-	OrganizationID  string             `json:"organization_id,omitempty" firestore:"organization_id,omitempty"`
-	Name            string             `json:"name,omitempty" firestore:"name,omitempty"`
-	Description     string             `json:"description,omitempty" firestore:"description,omitempty"`
-	Schema          *ProjectSchema     `bun:"rel:belongs-to,join:id=project_id" json:"schema,omitempty" firestore:"schema,omitempty"`
-	CreatedAt       string             `json:"created_at,omitempty" firestore:"created_at,omitempty"`
-	UpdatedAt       string             `json:"updated_at,omitempty" firestore:"updated_at,omitempty"`
-	ExpireAt        string             `json:"expire_at,omitempty" firestore:"expire_at,omitempty"`
-	Plugins         []*PluginDetails   `bun:"rel:has-many" json:"plugins,omitempty" firestore:"plugins,omitempty"`
-	Tokens          []*APIToken        `bun:"rel:has-many" json:"tokens,omitempty" firestore:"tokens,omitempty"`
-	Driver          *DriverCredentials `bun:"rel:belongs-to,join:id=project_id" json:"driver,omitempty"  firestore:"driver,omitempty"`
-	ProjectTemplate string             `json:"project_template,omitempty" firestore:"project_template,omitempty"`
-	SystemMessages  []*SystemMessage   `bun:"rel:has-many" json:"system_messages,omitempty" firestore:"system_messages,omitempty"`
+	XKey    string `json:"_key,omitempty" firestore:"_key,omitempty"`
+	Id      string `bun:"type:uuid,pk" json:"id,omitempty" firestore:"id,omitempty"`
+	OwnerId string `json:"owner_id,omitempty" firestore:"owner_id,omitempty"`
+
+	Name        string         `json:"name,omitempty" firestore:"name,omitempty"`
+	Description string         `json:"description,omitempty" firestore:"description,omitempty"`
+	Schema      *ProjectSchema `bun:"rel:belongs-to,join:id=project_id" json:"schema,omitempty" firestore:"schema,omitempty"`
+
+	ExpireAt string           `json:"expire_at,omitempty" firestore:"expire_at,omitempty"`
+	Plugins  []*PluginDetails `bun:"rel:has-many" json:"plugins,omitempty" firestore:"plugins,omitempty"`
+	Tokens   []*APIToken      `bun:"rel:has-many" json:"tokens,omitempty" firestore:"tokens,omitempty"`
+
+	ProjectTemplate string           `json:"project_template,omitempty" firestore:"project_template,omitempty"`
+	SystemMessages  []*SystemMessage `bun:"rel:has-many" json:"system_messages,omitempty" firestore:"system_messages,omitempty"`
 	//ActivatedPluginsIds *ActivatedPlugins `bun:"rel:belongs-to,join:id=project_id" json:"activated_plugins_ids,omitempty" firestore:"activated_plugins_ids,omitempty"`
 
 	DefaultStoragePlugin  string `json:"default_storage_plugin,omitempty" firestore:"default_storage_plugin,omitempty"`
 	DefaultFunctionPlugin string `json:"default_function_plugin,omitempty" firestore:"default_function_plugin,omitempty"`
 
 	Locals []string `json:"locals,omitempty" firestore:"locals,omitempty"`
+
+	CreatedAt string `json:"created_at,omitempty" firestore:"created_at,omitempty"`
+	UpdatedAt string `json:"updated_at,omitempty" firestore:"updated_at,omitempty"`
 }
 
 type ProjectSchema struct {

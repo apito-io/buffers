@@ -11,18 +11,13 @@ import (
 type SystemDBInterface interface {
 
 	// RunMigration runs the database migrations
-	RunMigration() error
-
-	// GetOrganizations retrieves multiple user organizations by their IDs
-	GetOrganizations(ctx context.Context, userId string) (*shared.SearchResponse[protobuff.Organization], error)
+	RunMigration(ctx context.Context) error
 
 	// GetSystemUser retrieves a system user by their ID
 	GetSystemUser(ctx context.Context, id string) (*protobuff.SystemUser, error)
 
+	// GetSystemUserByUsername retrieves a system user by their username
 	GetSystemUserByUsername(ctx context.Context, username string) (*protobuff.SystemUser, error)
-
-	// FindOrganizationAdmin retrieves an organization admin by their ID
-	FindOrganizationAdmin(ctx context.Context, orgId string) (*protobuff.SystemUser, error)
 
 	// UpdateSystemUser updates a system user's profile
 	UpdateSystemUser(ctx context.Context, user *protobuff.SystemUser, replace bool) error
