@@ -90,15 +90,9 @@ type PassChangeRequest struct {
 }
 
 type MetaField struct {
-	CreatedAt      string      `json:"created_at,omitempty" firestore:"created_at,omitempty"`
-	UpdatedAt      string      `json:"updated_at,omitempty" firestore:"updated_at,omitempty"`
-	CreatedBy      *SystemUser `json:"created_by,omitempty" firestore:"title,omitempty"`
-	LastModifiedBy *SystemUser `json:"last_modified_by,omitempty" firestore:"created_by,omitempty"`
-	Status         string      `json:"status,omitempty" firestore:"status,omitempty"`
-	TenantId       string      `json:"tenant_id,omitempty" firestore:"tenant_id,omitempty"`
-	RootRevisionId string      `json:"root_revision_id,omitempty" firestore:"root_revision_id,omitempty"`
-	Revision       bool        `json:"revision,omitempty" firestore:"revision,omitempty"`
-	RevisionAt     string      `json:"revision_at,omitempty" firestore:"revision_at,omitempty"`
+	CreatedAt string `json:"created_at,omitempty" firestore:"created_at,omitempty"`
+	UpdatedAt string `json:"updated_at,omitempty" firestore:"updated_at,omitempty"`
+	Status    string `json:"status,omitempty" firestore:"status,omitempty"`
 }
 
 type PreviewMode struct {
