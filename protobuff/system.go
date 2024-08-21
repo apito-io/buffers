@@ -27,27 +27,24 @@ const (
 )
 
 type SystemUser struct {
-	XKey string `json:"_key,omitempty" firestore:"_key,omitempty"`
-	Id   string `bun:"type:uuid,pk" json:"id,omitempty" firestore:"id,omitempty"`
-
-	FirstName string `json:"first_name,omitempty" firestore:"first_name,omitempty"`
-	LastName  string `json:"last_name,omitempty" firestore:"last_name,omitempty"`
-	//Role             string `json:"role,omitempty" firestore:"role,omitempty"`
+	XKey             string `json:"_key,omitempty" firestore:"_key,omitempty"`
+	ID               string `bun:"type:uuid,pk" json:"id,omitempty" firestore:"id,omitempty"`
+	FirstName        string `json:"first_name,omitempty" firestore:"first_name,omitempty"`
+	LastName         string `json:"last_name,omitempty" firestore:"last_name,omitempty"`
 	Username         string `json:"username,omitempty" firestore:"username,omitempty"`
 	Email            string `json:"email,omitempty" firestore:"email,omitempty"`
 	Secret           string `json:"secret,omitempty" firestore:"secret,omitempty"`
 	Avatar           string `json:"avatar,omitempty" firestore:"avatar,omitempty"`
-	CurrentProjectId string `json:"current_project_id,omitempty" firestore:"current_project_id,omitempty"`
 	RegisterProvider string `json:"register_provider,omitempty" firestore:"register_provider,omitempty"`
 
-	ProjectUser bool `json:"project_user,omitempty" firestore:"project_user,omitempty"`
+	Projects []*Project `bun:"rel:has-many,join:id=system_user_id" json:"projects,omitempty" firestore:"projects,omitempty"`
 
 	RefreshToken string `json:"refresh_token,omitempty" firestore:"refresh_token,omitempty"`
 	AccessToken  string `json:"access_token,omitempty" firestore:"access_token,omitempty"`
 	LastLoggedIn string `json:"last_logged_in,omitempty" firestore:"last_logged_in,omitempty"`
 
 	CreatedAt string `bun:"type:timestamp,notnull,default:current_timestamp" json:"created_at,omitempty" firestore:"created_at,omitempty"`
-	UpdatedAt string `bun:"type:timestamp,notnull" json:"updated_at,omitempty" firestore:"updated_at,omitempty"`
+	UpdatedAt string `bun:"type:timestamp,notnull,default:current_timestamp" json:"updated_at,omitempty" firestore:"updated_at,omitempty"`
 }
 
 type DriverCredentials struct {
@@ -73,7 +70,7 @@ type DriverCredentials struct {
 type PluginDetails struct {
 	ProjectID        string                  `json:"project_id,omitempty" firestore:"project_id,omitempty"`
 	Icon             string                  `json:"icon,omitempty" firestore:"icon,omitempty"`
-	Id               string                  `json:"id,omitempty" firestore:"id,omitempty"`
+	ID               string                  `json:"id,omitempty" firestore:"id,omitempty"`
 	Title            string                  `json:"title,omitempty" firestore:"title,omitempty"`
 	Serial           int64                   `json:"serial,omitempty" firestore:"serial,omitempty"`
 	Version          string                  `json:"version,omitempty" firestore:"version,omitempty"`
@@ -97,7 +94,7 @@ type APIToken struct {
 }
 
 type ProjectCreateRequest struct {
-	Id          string             `json:"id"`
+	ID          string             `json:"id"`
 	Name        string             `json:"name"`
 	Description string             `json:"description"`
 	Token       string             `json:"token"`
@@ -116,13 +113,13 @@ type SystemMessage struct {
 
 // Project user project
 type Project struct {
-	XKey    string `json:"_key,omitempty" firestore:"_key,omitempty"`
-	Id      string `bun:"type:uuid,pk" json:"id,omitempty" firestore:"id,omitempty"`
-	OwnerId string `json:"owner_id,omitempty" firestore:"owner_id,omitempty"`
+	XKey         string `json:"_key,omitempty" firestore:"_key,omitempty"`
+	ID           string `bun:"type:uuid,pk" json:"id,omitempty" firestore:"id,omitempty"`
+	SystemUserID string `bun:"type:uuid,notnull" json:"system_user_id,omitempty" firestore:"system_user_id,omitempty"`
 
 	Name        string         `json:"name,omitempty" firestore:"name,omitempty"`
 	Description string         `json:"description,omitempty" firestore:"description,omitempty"`
-	Schema      *ProjectSchema `bun:"rel:belongs-to,join:id=project_id" json:"schema,omitempty" firestore:"schema,omitempty"`
+	Schema      *ProjectSchema `bun:"-" json:"schema,omitempty" firestore:"schema,omitempty"`
 
 	ExpireAt string           `json:"expire_at,omitempty" firestore:"expire_at,omitempty"`
 	Plugins  []*PluginDetails `bun:"rel:has-many" json:"plugins,omitempty" firestore:"plugins,omitempty"`
@@ -142,17 +139,34 @@ type Project struct {
 }
 
 type ProjectSchema struct {
-	ProjectID string           `bun:"type:uuid,pk" json:"project_id,omitempty" firestore:"project_id,omitempty"`
 	Models    []*ModelType     `bun:"rel:has-many" json:"models,omitempty" firestore:"models,omitempty"`
 	Functions []*CloudFunction `bun:"rel:has-many" json:"functions,omitempty" firestore:"functions,omitempty"`
 }
 
+type FieldInfo struct {
+	FieldID                 string       `bun:",pk" json:"field_id,omitempty" firestore:"field_id,omitempty"`
+	Identifier              string       `json:"identifier,omitempty" firestore:"identifier,omitempty"`
+	Description             string       `json:"description,omitempty" firestore:"description,omitempty"`
+	InputType               string       `json:"input_type,omitempty" firestore:"input_type,omitempty"`
+	FieldType               string       `json:"field_type,omitempty" firestore:"field_type,omitempty"`
+	FieldSubType            string       `json:"field_sub_type,omitempty"`
+	SubFieldInfo            []*FieldInfo `json:"sub_field_info,omitempty" firestore:"modules,omitempty"`
+	Validation              *Validation  `json:"validation,omitempty" firestore:"validation,omitempty"`
+	Serial                  uint32       `json:"serial,omitempty" firestore:"serial,omitempty"`
+	Label                   string       `json:"label,omitempty" firestore:"label,omitempty"`
+	SystemGenerated         bool         `json:"system_generated,omitempty" firestore:"system_generated,omitempty"`
+	RepeatedGroupIdentifier string       `json:"repeated_group_identifier,omitempty" firestore:"repeated_group_identifier,omitempty"`
+	IsObjectField           bool         `json:"is_object_field,omitempty" firestore:"is_object_field,omitempty"`
+	ParentField             string       `json:"parent_field,omitempty" firestore:"parent_field,omitempty"`
+}
+
 type ModelType struct {
 	ProjectID       string            `bun:"type:uuid,pk" json:"project_id,omitempty" firestore:"project_id,omitempty"`
+	ModelID         string            `bun:",pk" json:"model_id,omitempty" firestore:"model_id,omitempty"`
+	Fields          []*FieldInfo      `bun:"rel:has-many,join:model_id=field_id" json:"fields,omitempty" firestore:"fields,omitempty"`
+	Connections     []*ConnectionType `bun:"rel:has-many,join:model_id=connection_id"  json:"connections,omitempty" firestore:"connections,omitempty"`
 	Name            string            `json:"name,omitempty" firestore:"name,omitempty"`
 	Description     string            `json:"description,omitempty"`
-	Fields          []*FieldInfo      `json:"fields,omitempty" firestore:"fields,omitempty"`
-	Connections     []*ConnectionType `json:"connections,omitempty" firestore:"connections,omitempty"`
 	HookIds         []string          `json:"hook_ids,omitempty" firestore:"hook_ids,omitempty"`
 	Locals          []string          `json:"locals,omitempty" firestore:"locals,omitempty"`
 	RepeatedGroups  []string          `json:"repeated_groups,omitempty" firestore:"locals,omitempty"`
@@ -160,6 +174,14 @@ type ModelType struct {
 	SinglePage      bool              `json:"single_page,omitempty" firestore:"system_generated,omitempty"`
 	SinglePageUuid  string            `json:"single_page_uuid,omitempty" firestore:"system_generated,omitempty"`
 	HasConnections  bool              `json:"has_connections,omitempty" firestore:"has_connections,omitempty"`
+}
+
+type ConnectionType struct {
+	ConnectionID string `json:"connection_id,omitempty" firestore:"connection_id,omitempty"`
+	Model        string `json:"model,omitempty" firestore:"model,omitempty"`
+	Relation     string `json:"relation,omitempty" firestore:"relation,omitempty"`
+	Type         string `json:"type,omitempty" firestore:"type,omitempty"`
+	KnownAs      string `json:"known_as,omitempty" firestore:"known_as,omitempty"`
 }
 
 type FunctionEnvVariables struct {
@@ -174,7 +196,7 @@ type CloudFunctionRequestResponseType struct {
 
 type CloudFunction struct {
 	ProjectID                string                            `bun:"type:uuid,pk" json:"project_id,omitempty" firestore:"project_id,omitempty"`
-	Id                       string                            `json:"id,omitempty" firestore:"id,omitempty"`
+	ID                       string                            `json:"id,omitempty" firestore:"id,omitempty"`
 	Name                     string                            `json:"name,omitempty" firestore:"name,omitempty"`
 	Description              string                            `json:"description,omitempty" firestore:"description,omitempty"`
 	EnvVars                  []*FunctionEnvVariables           `json:"env_vars,omitempty" firestore:"env_vars,omitempty"`
@@ -186,8 +208,8 @@ type CloudFunction struct {
 	ProviderExportedVariable string                            `json:"provider_exported_variable,omitempty" firestore:"provider_exported_variable,omitempty"`
 	FunctionExportedVariable string                            `json:"function_exported_variable,omitempty" firestore:"function_exported_variable,omitempty"`
 	RuntimeConfig            *FunctionRuntimeConfig            `json:"runtime_config,omitempty" firestore:"runtime_config,omitempty"`
-	UpdatedAt                string                            `json:"updated_at,omitempty" firestore:"updated_at,omitempty"`
-	CreatedAt                string                            `json:"created_at,omitempty" firestore:"created_at,omitempty"`
+	UpdatedAt                string                            `bun:",nullzero,notnull,default:current_timestamp" json:"updated_at,omitempty" firestore:"updated_at,omitempty"`
+	CreatedAt                string                            `bun:",nullzero,notnull,default:current_timestamp" json:"created_at,omitempty" firestore:"created_at,omitempty"`
 }
 
 type FunctionRuntimeConfig struct {
@@ -215,27 +237,4 @@ type Validation struct {
 	IsPassword        bool      `json:"is_password,omitempty" firestore:"is_gallery,omitempty"`
 	IsSystemRole      bool      `json:"is_system_role,omitempty" firestore:"is_gallery,omitempty"`
 	IsUrl             bool      `json:"is_url,omitempty" firestore:"is_url,omitempty"`
-}
-
-type FieldInfo struct {
-	Identifier              string       `json:"identifier,omitempty" firestore:"identifier,omitempty"`
-	Description             string       `json:"description,omitempty" firestore:"description,omitempty"`
-	InputType               string       `json:"input_type,omitempty" firestore:"input_type,omitempty"`
-	FieldType               string       `json:"field_type,omitempty" firestore:"field_type,omitempty"`
-	FieldSubType            string       `json:"field_sub_type,omitempty"`
-	SubFieldInfo            []*FieldInfo `json:"sub_field_info,omitempty" firestore:"modules,omitempty"`
-	Validation              *Validation  `json:"validation,omitempty" firestore:"validation,omitempty"`
-	Serial                  uint32       `json:"serial,omitempty" firestore:"serial,omitempty"`
-	Label                   string       `json:"label,omitempty" firestore:"label,omitempty"`
-	SystemGenerated         bool         `json:"system_generated,omitempty" firestore:"system_generated,omitempty"`
-	RepeatedGroupIdentifier string       `json:"repeated_group_identifier,omitempty" firestore:"repeated_group_identifier,omitempty"`
-	IsObjectField           bool         `json:"is_object_field,omitempty" firestore:"is_object_field,omitempty"`
-	ParentField             string       `json:"parent_field,omitempty" firestore:"parent_field,omitempty"`
-}
-
-type ConnectionType struct {
-	Model    string `json:"model,omitempty" firestore:"model,omitempty"`
-	Relation string `json:"relation,omitempty" firestore:"relation,omitempty"`
-	Type     string `json:"type,omitempty" firestore:"type,omitempty"`
-	KnownAs  string `json:"known_as,omitempty" firestore:"known_as,omitempty"`
 }
