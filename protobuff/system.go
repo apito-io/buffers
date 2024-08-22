@@ -37,6 +37,8 @@ type SystemUser struct {
 	Avatar           string `json:"avatar,omitempty" firestore:"avatar,omitempty"`
 	RegisterProvider string `json:"register_provider,omitempty" firestore:"register_provider,omitempty"`
 
+	CurrentProjectId string `json:"current_project_id,omitempty" firestore:"current_project_id,omitempty"`
+
 	Projects []*Project `bun:"rel:has-many,join:id=system_user_id" json:"projects,omitempty" firestore:"projects,omitempty"`
 
 	RefreshToken string `json:"refresh_token,omitempty" firestore:"refresh_token,omitempty"`
