@@ -123,4 +123,21 @@ type ProjectDBInterface interface {
 
 	// RenameField renames a field in a model along with its data key.
 	RenameField(ctx context.Context, oldFieldName string, repeatedFieldGroup *string, param shared.CommonSystemParams) error
+
+	// --- MISC Functions for plugins and other services ---
+
+	// CreateTableOrCollection creates a table for a specific project.
+	CreateTableOrCollection(ctx context.Context, name string, properties map[string]string) error
+
+	// DropTableOrCollection drops a table for a specific project.
+	DropTableOrCollection(ctx context.Context, name string) error
+
+	// AddDataToTableOrCollection adds data to a specific project table.
+	AddDataToTableOrCollection(ctx context.Context, table string, data map[string]interface{}) error
+
+	// UpdateDataToTableOrCollection updates data in a specific project table.
+	UpdateDataToTableOrCollection(ctx context.Context, table string, data map[string]interface{}) (interface{}, error)
+
+	// DeleteDataFromTableOrCollection deletes data from a specific project table.
+	DeleteDataFromTableOrCollection(ctx context.Context, table string, id string) error
 }

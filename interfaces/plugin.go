@@ -9,9 +9,10 @@ import (
 // NormalPluginInterface interface functions
 type NormalPluginInterface interface {
 	// Init This functions runs when any extension runs
-	Init(env []*extensions.EnvVariables) error
+	Init(projectDB ProjectDBInterface, envs []*extensions.EnvVariables) error
 
 	// Migration If your extension has any migration script you can put it here
+	// You can use projectDB functions to run any migrations in project database like create table or add data to a table
 	Migration() error
 
 	// SchemaRegister Define the GraphQL Schema That Will be Added If this extension registers
